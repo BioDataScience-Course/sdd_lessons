@@ -1,0 +1,13 @@
+---
+title: "Tutoriel SDD-UMONS : installation de la machine virtuelle SciViews Box 2018"
+author: "Grosjean Philippe & Engels Guyliann"
+date: "Version 1.0 - avril 2018"
+output:
+  html_notebook: 
+    highlight: kate
+    theme: spacelab
+---
+
+**TODO**
+
+![](figures/svBox-1024.png)
