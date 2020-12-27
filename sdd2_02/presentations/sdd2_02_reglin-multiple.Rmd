@@ -1,0 +1,112 @@
+---
+title: 'Science des données II : cours 2'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Régression linéaire multiple
+author: Philippe Grosjean & Guyliann Engels
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+
+### Objectifs du cours
+
+\putat{200}{-30}{\includegraphics[width=50mm]{../../template/resources.pdf}}
+
+- Découvrir la régression linéaire multiple et polynomiale
+ 
+- Bien analyser les résidus
+ 
+- Connaitre et savoir utiliser le critère d'Akaike 
+
+
+# La régression linéaire multiple
+
+### Régression linéaire multiple
+
+$$
+y = \alpha_1 . x_1 + \alpha_2 . x_2 + ... + \alpha_n . x_n + \beta + \epsilon
+$$
+
+- L’erreur $\epsilon$ suit une \alert{loi Normale} de moyenne nulle et d'écart type constant $\sigma$: $\epsilon \sim \textrm{N}(0, \sigma)$
+
+- La variance des résidus est constante (\alert{homoscedasticité})
+
+- L’\alert{erreur est indépendante} (problèmes des mesures répliquées dans le temps ou dans l’espace)
+
+- L’**analyse des résidus** permet de vérifier ces différentes conditions, de détecter des valeurs aberrantes, et de mettre en évidence des relations non-linéaires
+
+
+### Régression linéaire multiple (2)
+
+- La régression linéaire simple est apparentée à l’ANOVA à 1 facteur (même principe).
+
+- \alert{De même, la régression linéaire multiple est apparentée à l’ANOVA à plusieurs facteurs}.
+
+- **Une variable réponse** qui dépend de **plusieurs variables indépendantes** simultanément.
+
+- Dans R, la régression multiple est une extension naturelle de la régression linéaire simple. Les mêmes outils sont utilisables. **Les snippets proposent des variantes pour régressions multiples**
+
+#### Exemple
+
+Le jeu de données _trees_ (ou son équivalent _cerisiers_), volume de bois en fonction de la hauteur et du diamètre de l’arbre.
+
+
+# La régression polynomiale
+
+### Régression polynomiale
+
+- **Rappel:** un polynome est une expression du type (_notez la ressemblance avec l'équation de la régression multiple_):
+
+$$
+a_0 + a_1 . x + a_2 . x^2 + ... + a_n . x^n
+$$
+
+- Un polynome d'**ordre 2** (_x_ élevé jusqu'à la puissance 2) donne une \alert{parabole}; un polynôme d'**ordre 3** correspond à une \alert{courbe en S}.
+
+- En considérant les puissances successives de la \alert{même variable} dans la régression multiple, on obtient une \alert{régression polynômiale}.
+
+- Ce qui est intéressant : on utilise alors la régression **linéaire** pour ajuster en réalité une **courbe** (parabole, etc.)
+
+#### Exemple
+
+Utilisons la régression polynomiale sur _cerisiers_.
+
+
+# Analyses autour de la régression linéaire
+
+### Analyse des résidus
+
+- Utiliser les différentes présentations graphiques pour visualiser graphiquement la distribution des résidus
+    * **Résidus en fonction des valeurs prédites**: vue générale et détection de \alert{non linéarité} et de \alert{valeurs extrêmes}
+    * **Graphqiue quantile-quantile** pour vérifier leur \alert{distribution nomale}
+    * **Racine carré des résidus standardisés en fonction des valeurs prédites** pour vérifier l'\alert{homoscédasticité}.
+
+#### Exemple
+
+Illustration de l'utilisation de ces graphiques sur le jeu de données _cerisiers_
+
+
+### Critère d'Akaike
+
+- Le R^2^ peut servir à quantifier la qualité d'ajustement d'un **modèle linéaire simple**.
+
+- Dans le cas d'un **modèle multiple**, la complexité du modèle est liée au \alert{nombre de paramètres à estimer}
+
+- Plus un modèle est complexe, plus il est **flexible** et donc, il s'ajuste bien sur les points. Donc, c'est normal que le R^2^ **augmente**
+
+_=> mauvais critère pour comparer des modèles de complexité différente_
+
+#### Le critère d'Akaike
+
+introduit un terme de pénalisation en fonction du nombre de paramètres (_nbrpar_) à prédire qui rétablit l'équilibre (et au lieu d'utiliser le R^2^, il utilise une autre descripteur statistique qui quantifie le degré d'ajustement, la _log-vraissemblance_) :
+
+$$
+\textrm{AIC} = -2 . \textrm{log-vraisemblance} + 2 . \textrm{nbrpar}
+$$

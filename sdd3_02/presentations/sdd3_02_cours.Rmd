@@ -1,0 +1,104 @@
+---
+title: 'Science des données III : cours 2'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Classification supervisée (partie 2)
+author: Philippe Grosjean & Guyliann Engels
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+
+# Classification supervisée (machine learning)
+
+## Validation croisée et algorithmes
+
+### Objectifs du cours
+
+\putat{200}{-30}{\includegraphics[width=50mm]{../../template/resources.pdf}}
+
+- Utiliser la validation croisée
+ 
+- Connaitre d'autres algorithmes de classification supervisée : les k plus proches voisins et l'apprentissage par quantification vectorielle
+
+
+### Méthode des k plus proches voisins
+
+"k-Nearest Neighbours" (k-NN). Rapide à calculer, mais performances moyennes. Distance de Malahanobis.  
+_(exemple en utilisant _k_ = 3 voisins) :_
+
+![classification d'un individu inconnu (en gris) par k-NN](../images/knn.pdf)
+
+
+### Apprentissage par quantification vectorielle
+
+k-NN compare à tous les individus du set d'apprentissage. LVQ ("Learning Vector Quantization") crée des "portraits robots" pour chaque classe (= codebook) et compare uniquement à ces derniers.
+
+![classification d'un individu inconnu (en gris) en fonction d'un codebook LVQ](../images/lvq.pdf)
+
+
+## Validation croisée
+
+### La validation croisée
+
+L'obligation de séparer ses précieuses données en set d'apprentissage et set de test est très contraignante.
+
+![Séparation aléatoire en set d'apprentissage et set de test](../images/split-set.pdf)
+
+
+### La validation croisée (2)
+
+- La **validation croisée** est une technique générale qui permet d'utiliser toutes les données en apprentissage et en test, mais **pas simultanément**
+
+- L'évaluation des performances en non biaisée
+
+
+### La validation croisée - principe
+
+Séparation aléatoire en _k_ sous-ensembles de mêmes effectifs  
+(exemple : jeud de données classé manuellement séparé en _k_ = 7 blocs).
+
+![Validation croisée, sépation du jeu de données en 7 sous-ensembles](../images/cv01.pdf)
+
+
+### La validation croisée - principe
+
+**Etape 1 :** le premier bloc est set de test, le reste set d'apprentissage. Classification du set de test.
+
+![Validation croisée, étape 1](../images/cv02.pdf)
+
+
+### La validation croisée - principe
+
+**Etape 2 :** le second bloc est set de test, le reste set d'apprentissage. Pooler la classification du set de test avec celle issue de l'étape précédente.
+
+![Validation croisée, étape 1](../images/cv03.pdf)
+
+
+### La validation croisée - principe
+
+**Etape 7 :** à ce stage, _k_ classifieurs ont été utilisés pour classer au final tous les individus du jeu de données initial.
+
+![Validation croisée, étape 1](../images/cv04.pdf)
+
+
+### La validation croisée - principe
+
+**Etape finale :** les classes manuelles et automatiques de l'ensemble sont croisées dans la matrice de confusion, et les métriques sont calculées pour quantifier les performances.
+
+![Validation croisée, étape 1](../images/cv05.pdf)
+
+
+### Validation croisée en pratique
+
+Application sur `iris`.
+
+#### Comparaison de LDA, kNN et LVQ
+
+Utilisation d'une validation croisée avec _k_ = 10 pour comparer les performances de classification de 3 algorithmes sur le jeu de données `iris` (démo).

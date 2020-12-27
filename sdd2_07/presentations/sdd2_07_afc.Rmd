@@ -1,0 +1,145 @@
+---
+title: 'Science des données II : module 7'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Analyse Factorielle des Correspondances (AFC)
+author: Philippe Grosjean & Guyliann Engels
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+# Analyse Factorielle des Correspondances (AFC)
+
+### Analyse Factorielle des Correspondances (AFC)
+
+- En anglais: \alert{Correspondence Analysis}
+
+- Tableau multivarié, données qualitatives ou semi-quantitatives L’ACP ne peut être utilisée
+
+- \alert{Tableau de contingence} à double entrée, ou ...
+
+- Tableau de type \alert{dénombrement espèces – stations}
+
+- Utilisation de la statistique \alert{Chi-carré}
+
+
+### Rappel - Table de contingence et test du Chi^2^ (1)
+
+- \alert{Table de contingence} : représentation de proportions.
+
+**Exemple:** autopollinisation de fleurs roses d’_Antirrhinum majus_
+=> on s’attend à obtenir les fleurs suivantes selon la génétique Mendélienne :
+
+**`H0: rouge: 25%, rose: 50%, blanche: 25%`**
+
+Le résultat est le suivant :
+
+**`rouge: 54, rose:122, blanche: 58`**
+
+Soit des probabilités estimées respectives de :
+
+**`rouge: 23.1%, rose:52.1%, blanche: 24.8%`**
+
+_Comment savoir si ces observations confirment H0 ?_
+
+
+### Rappel - Table de contingence et test du Chi^2^ (2)
+
+- Tester les \alert{proportions observées $a_i$} (**`R: 54, r: 122, B: 58`**).
+
+- Nombre total de fleurs : 54 + 122 + 58 = \alert{234}.
+
+- Comparaison à un \alert{effectif théorique $\alpha_i$} :
+
+**`R: 0.25 x 234 = 58.5, r: 0.50 x 234 = 117, B: 0.25 x 234 = 58.5`**
+
+- Calcul de la statistique \alert{chi carré » ($\chi^2$)} par :
+
+$$\chi^2=\sum{\frac{(a_i - \alpha_i)^2}{\alpha_i}}$$
+**Cela donne :**
+
+$\chi^2$ = (54-58.5)2/58.5 + (122-117)2/117 + (58-58.5)2/58.5 = 0.56
+
+- Comparaison de cette statistique à la \alert{distribution théorique du $\chi^2$} pour décider si on rejette H~0~ ou pas...
+
+
+### Rappel – Chi^2^ pour un tableau _r_ x _k_
+
+Le test se \alert{généralise} pour un tableau de contingence _r_ x _k_ : 
+
+$$\alpha_i = \frac{\textrm{total ligne} . \textrm{total colonne}}{\textrm{total général}}$$
+
+Le \alert{nombre de ddl} = $(r-1).(k-1)$.
+
+**Notez ceci:**
+
+$$\chi^2=\sum{\frac{(a_i - \alpha_i)^2}{\alpha_i}}$$
+
+- Les termes respectifs du $\chi^2$ pour chaque cellule du tableau \alert{quantifient} l’écart entre les observations et un tableau sous H~0~ où toutes les observations sont indépendantes.
+
+- On peut appliquer une \alert{ACP} si on remplace les effectifs observé par leur contribution au $\chi^2$, puisque l’on obtient alors une variable calculée quantitative.
+
+- Le tableau de contingence peut être traité indifféremment dans
+les deux sens (\alert{pas de distinction cas et variable}).
+
+
+### Distance Euclidienne _versus_ Chi^2^
+
+Distance euclidienne (au carré) :
+
+$$d^2(i,i')=\sum_{j=1}^{p}{(x_{ij}-x_{i'j})^2}$$
+
+Distance du $\chi^2$ :
+
+$$d^2(i,i')=\sum_{j=1}^{p}{\frac{(x_{ij}/x_{i.}-x_{i'j}/x_{i'.})^2}{x_{.j}}}$$
+
+**où :**
+
+- $x_{i.}$ est la somme de la ligne _i_ sur toutes les colonnes,
+- $x_{.j}$ est la somme de la colonne _j_ sur toutes les lignes.
+
+On peut faire le même calcul en \alert{inversant les lignes et les colonnes}.
+
+#### Exemple
+
+_voir séance d'exercices_
+
+
+### Analyse Factorielle des Correspondances
+
+- Projection des correspondances entre les espèces (ligne) et les stations (colonnes) \alert{dans un espace simplifié} = idem que l’ACP.
+
+- **Interprétation :** plus les points sont proches les uns des autres, plus ils ont un comportement similaire.
+
+- Comme les lignes et les colonnes ont même rôle dans un tableau de contingence, \alert{on calcule selon les deux orientations} (=2 ACP) et on \alert{superpose sur le même graphique} =>
+    * **Pour les espèces :** elles sont présentes ou absentes simultanément.
+    * **Pour les stations :** composition faunistique similaire.
+    * **Espèces _versus_ stations :** ces stations sont caractérisées essentiellement par les espèces proches sur le graphe (il y a \alert{correspondance} entre les deux).
+
+
+### AFC dans R
+
+Calcul simple à partir d'un script R:
+
+```{r, eval = FALSE}
+library(MASS)                 # Package contenant la fonction
+data(caith)
+caith                         # Tableau de contingence exemple
+chart$biplot(ca(caith))       # AFC en une seule commande
+```
+
+**Interprétation du graphique :**
+
+- Niveaux de la variable en colonne en rouge,
+
+- Niveaux de la variable en ligne en bleu,
+
+- La distance entre les niveaux d’une variable indique leur \alert{similarité ou différences},
+
+- Le rapprochement entre les points d’une variable et de l’autre indique la \alert{correspondance} entre eux.

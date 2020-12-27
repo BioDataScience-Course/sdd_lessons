@@ -1,0 +1,110 @@
+---
+title: 'Science des données III : cours 5b'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Séries spatio-temporelles (partie 4)
+author: Philippe Grosjean & Guyliann Engels
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+# Séries spatio-temporelles
+
+## Décomposition de séries temporelles
+
+### Objectifs du cours
+
+\putat{200}{-30}{\includegraphics[width=50mm]{../../template/resources.pdf}}
+
+- Appréhender la décomposition des séries (suite)
+ 
+- Savoir utiliser le filtrage par les médianes mobiles
+
+- Comprendre la méthode des différences et le méthode par régression
+
+- Être capable de désaisonnaliser à l'aide de LOESS
+
+
+### Méthode des médianes mobiles
+
+- Même principe que pour les moyennes mobiles, mais on remplace naturellement la moyenne par la **médiane** dans le calcul
+
+- $2.k + 1$ est la taille de fenêtre
+
+- Cette technique a un effet très différent\ : elle permet de réaliser des **paliers successifs** (rapprochement avec les sommes cumulées).
+
+- Dans pastecs, soit `decmedian()`, soit `tsd(method = "median")`, voir `?decmedian`
+
+#### Démonstration
+
+Décomposition des séries **nottem** et **co2** par médianes mobiles. Décomposition de **marbio** et visualisation des différentes masses d'eaux traversées.
+
+
+### Méthode des différences
+
+- **Opérateur retard**\ : décalage de la série dans le temps
+
+$$
+L^k X_t = X_{t-k} \textrm{ avec } k = 0, 1, 2, ...
+$$
+
+- **Différence** entre la série traitée par deux opérateurs retards différents\ :
+
+$$
+\nabla X_t = (L^0 - L^1) X_t = X_t - X_{t-1}
+$$
+
+- On peut **répéter** l'opération\ :
+
+$$
+\nabla^r X_t = (L^0 - L^1)^r X_t
+$$
+
+- Cette technique élimine les **tendances à long terme**
+
+#### Démonstration
+
+Elimination de la tendance dans **co2**
+
+
+### Décomposition par régression
+
+- La régression (linéaire, non linéaire, polynomiale), ... est applicable à des séries temporelles, **mais pas les tests autours d'elle** (pas indépendance des données)
+
+- On peut l'utiliser pour **modéliser** et **éliminer** une composante
+
+- Astuce\ : on peut ajuster un **signal sinusoidal** grâce aux transformations suivantes\ :
+
+$$
+X_1 = \cos 2 \pi . t \textrm{ et } X_2 = \sin 2 \pi . t
+$$
+... et ensuite, effectuer la régression linéaire suivante\ :
+
+$$
+Y_i = a . X_{1i} + b . X_{2i} + \epsilon_i
+$$
+
+#### Démonstration
+
+Application sur **nottem** et **co2**
+
+
+### Décomposition saisonnière avec LOESS
+
+- Utilisation de la fenêtre mobile avec une **régression par polynome** d'ordre _p_, et remplacement de la valeur centrale par la prédiction.
+
+- Si _p_ = 0, cela revient à calculer les moyennes mobiles
+
+- Si _p_ = 1 ou _p_ = 2, un autre **lissage** est effectué
+
+- Une combinaison de différents lissages permet de décomposer en **tendance générale**, **effet saisonnier**, et **résidus** en une seule étape\ : c'est la méthode **LOESS**.
+
+#### Démonstration
+
+Effectuons une décomposition saisonnière de **co2**.

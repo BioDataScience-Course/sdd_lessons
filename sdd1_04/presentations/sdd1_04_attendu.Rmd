@@ -1,0 +1,79 @@
+---
+title: 'Science des données I : module 4'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Etat d'avancement
+author: Guyliann Engels & Philippe Grosjean
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+### Objectif du module
+
+- au début de ce module, vous devez avoir acquis les concepts des modules précédents
+
+
+- à la moitié de ce module 4, vous devez :
+    + être capable de réaliser des graphiques en barres, en camembert et des boites de dispersion
+       
+
+- à la fin de ce module 4, vous devez être capable
+    + de réaliser des graphiques composés
+    + de vous documenter afin de réaliser des graphiques inédits 
+    + de réaliser des graphiques avec des moteurs graphiques variés 
+
+
+### Avancement des projets
+
+
+Vous avez jusqu'à présent travaillé sur les projets suivants : 
+
+
+- [X] Ecrire en markdown
+
+- [ ] Biométrie des oursins 
+
+- [ ] Biométrie humaine 
+
+- [ ] Analyse d'image du zooplancton provenant de Tuléar
+
+
+----
+
+
+Les trois projets en cours doivent contenir :
+
+- une introduction sur la thématique du projet
+
+- une section contenant une description graphique intéressante et riche
+    + Lles graphiques employés sont choisis judicieusement 
+    + les graphiques sont légendés
+    + les graphiques sont expliqués dans le texte de la section
+
+
+### Avancement des projets : Bonus 
+
+Appréhendez une matière nouvelle par vous même et réalisez au moins un tableau de bord statique sur un des projets en cours. 
+
+Afin de vous aider dans la découverte de la nouvelle matière, vous pouvez débuter votre apprentissage avec le lien suivant  <https://rmarkdown.rstudio.com/flexdashboard/index.html> 
+
+Pour les plus étudiants les plus avancés, essayez à la suite de ce premier tableau de bord de réaliser une application web interactive avec shiny. Débutez votre apprentissage avec les liens suivants :
+
+- <http://shiny.rstudio.com/articles/basics.html>
+- <http://shiny.rstudio.com/gallery/>
+
+
+### Blog
+
+Dans le cadre du cours et de la collaboration avec le cours *English for Science*, vous avez réalisé un blog que vous devez à présent maintenir. Vous pouvez vous aider du blog suivant pour maintenir le votre
+
+- le blog : <https://guyliann.github.io/guyliann-engels-blog/>
+
+- le dépot GitHub : <https://github.com/Guyliann/guyliann-engels-blog>
+

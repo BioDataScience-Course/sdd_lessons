@@ -1,0 +1,89 @@
+---
+title: 'Science des données II'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Régression non linéaire
+author: Guyliann Engels & Philippe Grosjean
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+lang: fr
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+SciViews::R
+```
+
+### Vitesse de Réaction
+
+Les chercheurs souhaitent votre expertise pour modéliser la vitesse de transformation du substrat par un enzyme en fonction de la concentration du substrat.
+
+```{r, fig.align='center', out.width='60%'}
+read("../data/speed_reaction.rds") %>.%
+  chart(., speed ~ conc) +
+  geom_point()
+```
+
+Le jeu de données se nomme : **speed_reaction.rds**
+
+### Herbicides 
+
+Les scientifiques s’intéressent au volume d’algues lors de l’application d’un herbicide à concentration variable. Modélisez le volume d’algues en fonction de la concentration d’herbicide employé.
+
+\columnsbegin
+\columnhalf
+
+```{r}
+read("../data/algae.xlsx") %>.%
+  chart(data = ., vol ~ conc)+
+  geom_point() 
+```
+
+\columnhalf
+
+```{r}
+read("../data/algae.xlsx") %>.%
+  chart(data = ., vol ~ log(conc+1))+
+  geom_point() 
+```
+
+\columnsend
+
+Le jeu de données se nomme : **algae.xlsx**
+
+### Effet de l’acide férulique sur la longueur de racines
+
+Modélisez l’effet de l’acide férulique sur la longueur des racines.
+
+```{r, fig.align='center', out.width='60%'}
+read("../data/ryegrass.csv") %>.%
+  chart(data = ., rootl ~ log(conc+1)) +
+  geom_point()
+```
+
+Le jeu de données se nomme : **ryegrass.csv**
+
+### Croissance bactérienne
+
+Modélisez la croissance de ces bactéries.
+
+```{r, fig.align='center', out.width='60%'}
+read("../data/growth_curve.tsv") %>.%
+  chart(data = ., growth_log ~ time) +
+  geom_point()
+```
+
+Le jeu de données se nomme : **growth_curve.tsv**
+
+###  Croissance de l'ombrine ocellée ("red drum" en anglais)
+
+Modélisez la croissance de *Sciaenops ocellatus*
+
+```{r, fig.align='center', out.width='60%'}
+read("reddrum", package = "UsingR") %>.%
+  chart(., length ~ age) +
+  geom_point()
+```
+
+Le jeu de données se nomme **reddrum** dans le package "UsingR"

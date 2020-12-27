@@ -1,0 +1,69 @@
+---
+title: "Se débrouiller dans R"
+output: html_notebook
+---
+
+On veut résoudre un problème dans R. Comment s'y prendre ?
+
+A peu près tout est disponible dans R. Retrouver la fonction qui fait le job. Utilisier les outils de recherche.
+
+- `RSiteSearch()`
+
+Exemple: on veut faire une régression quantile.
+
+```{r, eval=FALSE}
+RSiteSearch("quantile regression")
+# Ne fonctioone pas, mias... ceci bien!
+RSiteSearch("quantile")
+```
+
+D'autres outils de recherche plus performants existent.
+
+- RDocumentation.org (documentation uniquement).
+
+- rseek.org (recherche doc + blogs sur R + ...).
+
+- package **sos**.
+
+```{r, eval=FALSE}
+# Eventuellement l'installer
+#install.packages("sos")
+library(sos)
+help(package = "sos")
+???quantile # Une des fonctions de sos est l'opérateur ???
+findFn("quantile regression")
+```
+
+But n°1: trouver un ou plusieurs packages R qui réalisent le travail.
+
+
+## Trouver la fonction et la comprendre
+
+- Lire la doc (particulièrement s'il y a une vignette)
+
+- étape n°2: on trouve la fonction, ici `rq()`
+
+- Etudier l'aide de la fonction et les tutoriaux éventuels + exemples.
+
+```{r}
+#install.packages("quantreg")
+library(quantreg)
+?rq
+example(rq)
+```
+
+- Vérifie qu'on comprend la logique de la fonction, ses arguments et les résultats renvoyés sur les exemples fournis
+
+
+## Appliquer à notre problème
+
+- Ecrire le code pour appliquer la fonction à notre cas.
+
+
+# Autre recherche: des résulations d'exemples tous faits
+
+- stackoverflow.com, recherche avec tags (notamment [r] ...). On recherchera '[r] quantile regression' (spécifique programmation)
+
+- stats.stackexchange.com (questions plus statistiques)
+
+- blogs spécialisés: https://www.r-bloggers.com

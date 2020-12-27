@@ -1,0 +1,109 @@
+---
+title: 'Science des données II : tp5a'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill \vfill Indices de distance
+author: Guyliann Engels & Philippe Grosjean
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+SciViews::R
+```
+
+### Analyse multivariée : matrice de distance
+
+En partant d'un tableau de type espèce/station, quelles sont les stations les plus similaires ? Ce type de questions nécessite l'utilisation d'outils liés à l'analyse multivariée. 
+
+```{r}
+exo <- data.frame(
+  espece_1 = c(5, 2, 0, 0),
+  espece_2 = c(0, 2, 0, 3),
+  espece_3 = c(0, 3, 1, 4),
+  espece_4 = c(2, 0, 10, 3),
+  row.names =  paste0("station_", 1:4))
+knitr::kable(exo)
+```
+
+Le point de départ de nombreuses analyses multivariées est **la matrice de distance**.  
+
+
+### Les différents indices 
+
+Différents indices de similarité et de disimilarité sont employés pour composer la matrice de distance.
+
+* Similarité
+    + Bray-Curtis : $S_{jk} = 1- \sum_{i=1}^p \frac{ |y_{ij} - y_{jk} | }{\sum_{i=1}^p ( y_{ij} + y_{jk} )}$
+    + Canberra : $S_{jk} = 1- \frac{1}{NZ} \sum_{i=1}^p \frac{ |y_{ij} - y_{jk} | }{( y_{ij} + y_{jk} )}$
+
+Ces deux indices sont à privilégier lors de **dénombrements d'espèces**
+
+* Dissimilarité 
+    + Distance euclidienne : $D_{ij} = \sqrt{\sum_{i=1}^p (y_{ij} - y_{jk} )^2}$
+    + Manhattan : $D_{ij} = \sum_{i=1}^p | y_{ij} - y_{jk} |$
+    
+Ces deux indices sont à privilégier lors de **mesures environnementales**
+
+
+### Calcul de matrices de distances 
+
+Calculez les matrices de dissimilarité entre les stations suivantes avec la distance euclidienne et l'indice de Bray-Curtis.
+
+```{r}
+knitr::kable(exo)
+```
+
+Quels sont les deux stations les plus proches ? Selon Bray-Curtis ? Selon la distance euclidienne ?
+
+
+### Marphy & Marbio
+
+\columnsbegin
+\columnsmall
+
+**Transect entre Nice et Calvi** 
+
+\vfill
+\vfill
+
+ - Etude sur 68 stations 
+    + **Marphy** comprend les mesures de température, de salinité, de fluorescence et de densité.
+    + **Marbio** comprend le dénombrement de différents groupes au sein du zooplancton.
+    
+Les données se trouvent dans le package R `pastecs`
+
+**Réaliser un projet afin d'étudier ce transect.**
+
+\columnlarge
+
+```{r, out.width='95%', fig.align='center'}
+library(tidyverse)
+library(cowplot)
+fr <- map_data("france")
+ggplot(fr, aes(long, lat, group = group)) +
+  geom_polygon(fill= "white", color = "black") +
+  geom_segment(aes(y = 43.7 , x = 7.25, yend = 42.56, xend= 8.75,
+    color = "red"), size = 1, show.legend = FALSE) +
+  theme(axis.line = element_blank(), axis.title = element_blank(),
+    axis.text = element_blank(), axis.ticks = element_blank()) +
+  coord_quickmap()
+```
+
+\columnsend
+
+___ 
+
+
+Employez la fonction **`vegdist()`** du package **`vegan`** afin de calculer vos matrices de distances sur les données proposées :
+
+
+- `marphy`
+- `marbio`
+
+Pour faire appel à l'aide de la fonction, il suffit d'écrire cette dernière précédé d'un point d'interrogation (**`?vegdist`**) dans la console R. Employez un indice cohérent en fonction des données proposées.
+
+N'oubliez pas que les transformations mathématiques sont toujours intéressantes pour donner un impact relatif variable entre espèces abondantes et rares. 
+

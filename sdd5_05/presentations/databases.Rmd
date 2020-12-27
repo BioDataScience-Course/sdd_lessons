@@ -1,0 +1,207 @@
+---
+title: "SDD5 : accès aux bases de données"
+output: html_notebook
+---
+
+SQL est un langage dédié aux requêtes et la manipulation de bases de données relationnelles, constituées de tables (équivalent à des tableaux cas par variables en statistiques) reliées entre elles par une ou plusieurs clés. Par exemple, le champ `auteur` d'une liste de livres dans la table `Livres` renvoie (est lié à) vers le champs `nom` d'une autre table `Ecrivains` qui fournit plus de détails sur chaque auteur de livres.
+
+Il existe différents moteurs de bases de données relationnelles. Les plus courants sont\ : SQLite, MySQL/MariaDB, PosgreSQL, SQL Server, Oracle, ... La plupart de ces solutions nécessitent d'installer un **serveur** de base de données centralisé. Cependant, SQLite, est une solution légère qui permet d'explorer le language SQL ([prononcez "S.Q.L." ou "Sequel"](https://www.vertabelo.com/blog/notes-from-the-lab/sql-or-sequel)), y compris avec des petites bases de données test en mémoire.
+
+
+## Installation de SQLite
+
+Dans la SciViews Box, les drivers SQLite pour la version 2 et la version 3 sont préinstallés. Sous R, vous pouvez utiliser le package `RSQLite` pour accéder à des bases de données qui sont de simples fichiers sur le disque. Cependant, l'onglet **Connections** dans RStudio n'est pas compatible avec `RSQLite`. Il fonctionne, par contre avec les **drivers odbc** qui sont un format commun de drivers pour différentes bases de donnes dont SQLite.
+
+Nous vous proposons, donc, d'installer le driver ODBC adéquat dans votre machine virtuelle pour accéder via le package `odbc` et pouvoir comparer ainsi avec le driver natif de `RSQLite`. Pour cela, nous vous avons préparé un installeur `dbinstall.sh` dans le projet. Lancez une fenêtre terminal, et faites ensuite\ :
+
+```
+~/shared/projects/sdd5_05/dbinstall.sh
+```
+
+Nous utiliserons également des interfaces graphiques. **DB Browser for SQLite** est un programme limité en fonctionnalités, mais plus simple d'utilisation que **SQLite Studio** plus complet. Le premier est préinstallé dans la SciViews Box. Le second est installé à l'aide du script `dbinstall.sh` en même temps que le driver ODBC. Ces deux programmes sont disponibles depuis le menu principal `Applications`, dans la section `Development`.
+
+![](images/sqlite-pgm1.png)
+
+
+## Découverte de SQLite
+
+### Base de données en mémoire
+
+La simplicité de SQLite tient au fait qu'il n'est pas nécessaire d'installer un serveur de bases de données pour l'utiliser. La version la plus simple permet même de travailler directement en mémoire. Ainsi, nous pouvons facilement placer le contenu d'un jeu de données comme `mtcars` et tester ensuite des **requêtes SQL** (l'équivalent des fonctions d'extraction et de remaniement de tableau dans `dplyr`) sur ces données en mémoire.
+
+```{r in-memory}
+library('RSQLite')
+
+# Base de données en mémoire
+con <- dbConnect(RSQLite::SQLite(), dbname = ":memory:")
+
+# Ne contient encore rien
+dbListTables(con)
+
+# Ajoute une table
+dbWriteTable(con, "mtcars", mtcars)
+dbListTables(con)
+
+# Que contient cette table?
+dbListFields(con, "mtcars")
+
+# Lire toute la table
+dbReadTable(con, "mtcars")
+
+# Effectuer une requête SQL sur la table
+res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4")
+dbFetch(res)
+dbClearResult(res)
+
+# On peut aussi récupérer les données morceau par morceau
+res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4")
+while (!dbHasCompleted(res)) {
+  chunk <- dbFetch(res, n = 5)
+  print(nrow(chunk))
+}
+dbClearResult(res)
+
+# Se déconnecter de la base de données
+dbDisconnect(con)
+```
+
+
+### Base de données dans un fichier
+
+Le projet contient une base de données test dans `data/dbtest.sqlite`. Vous pouvez facilement vous connecter dessus. Notez que la même syntaxe est utilisée pour **créer une nouvelle base de données** si le fichier n'existe pas encore au moment de la connexion.
+
+```{r connection-sqlite}
+library('RSQLite')
+con <- dbConnect(SQLite(),
+  dbname = here::here("sdd5_05/data/dbtest.sqlite"))
+```
+
+Voici quelques instructions typiques pour interroger une base de données depuis R\ :
+
+```{r setosa}
+# Liste les tables présentes dans la base de données
+dbListTables(con)
+# Extraction de données à l'aide d'une requête SQL
+(setosa <- dbGetQuery(con, "SELECT * FROM iris WHERE Species is 'setosa'"))
+```
+
+Il est également possible d'effectuer une requête SQL directement dans un chunk\ :
+
+```{sql setosa-direct, connection=con}
+SELECT * FROM iris WHERE Species is 'setosa'
+```
+
+Par défaut, cette requête est imprimée dans le document, et son résultat est perdu ensuite. Il est cependant possible de l'enregistrer sous un nom avec l'option de chunk `output.var=`. Dans ce cas, rien n'est imprimé, mais comme le résultat de la requête est contenu dans l'objet créé, il est facile de le manipuler dans R ensuite dans un autre chunk.
+
+```{sql virginica, connection=con, output.var="virginica"}
+SELECT * FROM iris WHERE Species is 'virginica'
+```
+
+Ensuite, dans un chunk R, vous pouvez manipuler la table contenue dans `virginica`\ :
+
+```{r}
+nrow(virginica)
+summary(virginica)
+```
+
+Ne pas oublier de se déconnecter de la base de données une fois terminé.
+
+```{r}
+dbDisconnect(con)
+```
+
+
+### Driver ODBC dans RStudio
+
+RStudio facilite l'utilisation de bases de données à condition d'utiliser un driver "compatible". Nous avons installé un tel driver ODBC pour les bases de données SQLite. Une autre base de données SQLite a également été installée dans `/home/sv/shared/database.sqlite`. Pour nous y connecter depuis RStudio, nous entrons dans l'onglet **Connections** et nous cliquons sur le bouton `New Connection`. 
+
+![](images/sqlite-rstudio1.png)
+
+Sélectionnons **SQLite3**. Ensuite, nous rentrons `Database=/home/sv/shared/database.sqlite` comme paramètre dans la fenêtre suivante.
+
+![](images/sqlite-rstudio2.png)
+
+Le bouton **Test** permet de vérifier que R peut se connecter à cette base de données. Ensuite, dans **Connect from:**, vous pouvez choisir où vous voulez placer l'instruction de connexion. L'option `Clipboard` est intéressante. Elle place l'instruction dans le presse-papier et vous pouvez alors décider vous-même où la placer. Nous la placerons dans un chunk R dans notre notebook.
+
+```{r}
+library(odbc)
+con <- dbConnect(odbc::odbc(), .connection_string = "Driver={SQLite3};Database=/home/sv/shared/database.sqlite")
+```
+
+Une fois connecté, vous pouvez voir le contenu de la base de données dans l'onglet **Connections**. Pour l'instant, notre base de données est vide. Ajoutons-y une table que nous remplissons à partir des données issues du jeu de données R `mtcars`\ :
+
+```{r}
+dbWriteTable(con, "mtcars", mtcars)
+```
+
+A partir de ce moment, vous pouvez voir vore table `mtcars` (il faut peut être cliquer sur le bouton en forme de flèche qui se mord la queue pour rafraichir l'affichage). Comme dans **Environnement**, si vous cliquez sur la flèche dans un rond bleu devant le nom de la table, vous pouvez voir les colonnes qu'elle contient. En cliquant sur l'icône tableau à droite, vous visualisez la table directement dans RStudio.
+
+![](images/sqlite-rstudio3.png)
+
+A part cela, vous travaillez avec cette base de données dans R en utilisant l'objet `con` comme d'habitude, et vous pouvez aussi utiliser directement des chunks sql.
+
+
+### Utilisation de DB Browser et SQLite Studio
+
+Lancez **DB Browser**. Connectez-vous à `/home/sv/shared/database.sqlite` Vous avez un accès visuel à votre base de données. Explorez les différentes possibilités du logiciel. Failtes de même avec **SQLite Studio** pour retenir au final celui que vous préférez.
+
+![DB Browser for SQLite](images/sqlite-pgm2-dbbrowser.png)
+
+![SQLite Studio](images/sqlite-pgm3-sqlite-studio.png)
+
+
+## Manipulation de bases de données avec dplyr
+
+Les fonctions du package `dplyr` fonctionnent aussi très bien sur des bases de données. Les commandes sont converties en interne en requêtes SQL. Il suffit d'utiliser `collect()` à la fin pour exécuter la requête.
+
+```{r dplyr1}
+dbfile <- "data/dbtest.sqlite"
+my_db <- src_sqlite(dbfile) # Utiliser create = TRUE pour la créer
+my_db
+my_table <- tbl(my_db, sql("SELECT * FROM iris"))
+(df2 <- collect(my_table))
+```
+
+Voici maintenant ce que cela donne en utilisant les verbes de `dplyr`. La fonction `explain()` permet d'expliquer ce qui est fait.
+
+```{r}
+# Sélectionner des variables
+select(my_table, Sepal.Width, Petal.Length:Species)
+# Filtrer les fleurs à gros pétales
+filter(my_table, Petal.Length > 1.5)
+# Réarranger les lignes par longueur de pétale croissante et largeur de sépale décroissant
+arrange(my_table, Petal.Length, desc(Sepal.Width))
+# Créer une nouvelle variables
+mutate(my_table, logPL = log10(Petal.Length))
+# Résumer les données
+explain(summarise(my_table, taille = median(Petal.Length)))
+```
+
+Il est possible de réaliser des choses plus complexes\ !
+
+```{r dplyr2}
+# On peut naturellement chainer tout cela avec le pipe %>% de tidyverse,
+# ou celui de SciViews::R %>.%, ou combiner les requêtes
+# comme on veut. Rien n'est fait avant de *collect()*er les résultats!
+my_table %>.%
+  filter(., Petal.Length > 1.5) %>.%
+  select(., Petal.Length, Sepal.Width, Species) %>.%
+  mutate(., logPL = log10(Petal.Length)) -> query1
+query2 <- arrange(query1, Petal.Length, desc(Sepal.Width))
+query2
+# Récupérer le résultat
+res <- collect(query2)
+res
+```
+
+Enfin, la fonction `sql_translate()` du package `dbplyr` va indiquer comment une instruction R est convertie en code SQL équivalent. **C'est très pratique aussi pour apprendre SQL quand on connait R\ !**
+
+```{r, error=TRUE}
+dbplyr::translate_sql(x^3 < 15 || y > 20)
+dbplyr::translate_sql(mean(x))
+dbplyr::translate_sql(mean(x, na.rm = TRUE))
+# Tout ne fonctionne pas, car R offre plus de possibilités que SQL
+dbplyr::translate_sql(plot(x)) #???
+dbplyr::translate_sql(mean(x, trim = TRUE))
+```
+

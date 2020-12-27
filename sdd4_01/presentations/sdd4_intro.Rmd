@@ -1,0 +1,85 @@
+---
+title: 'Science des données IV'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Organisation et attendu du cours
+author: Guyliann Engels & Philippe Grosjean
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+### Installation de la SciViews Box
+
+L'installation de la SciViews Box vous est proposée via l'URL suivant :
+
+- http://biodatascience-course.sciviews.org/sdd-umons/svbox.html 
+
+Créez également un compte sur github  et installez github desktop
+
+### Acquisition de données 
+
+La conception d'une expérience afin de répondre à une question de recherche suit une structure logique proposée via l'URL suivant :
+
+<http://biodatascience-course.sciviews.org/sdd-umons/acquisition-de-donnees.html>
+
+### Bibliographie 
+
+<http://biodatascience-course.sciviews.org/sdd-umons/contenu.html#bibliographie-ou-references>
+
+L'encodage cohérent de sa bibliographie est une étape indispensable. Partons de l'article suivant [Symbiont acquisition strategy drives host–symbiont associations in the southern Great Barrier Reef](https://link.springer.com/article/10.1007/s00338-008-0412-5)
+
+\columnsbegin
+\columnlarge
+
+- 10.1007-s00338-008-0412-5.pdf
+
+- STAT2008_symbiont_acquisition_
+strategy_great_barrier_reef.pdf
+
+\columnsmall
+
+Un bon nom d'article doit contenir : 
+
+- Date de parution
+
+- Nom du premier auteur
+
+- Mot-clés permettant de connaitre le thème de l'article 
+
+\columnsend
+
+L'utilisation d'un logiciel de gestion bibliographique comme Mendeley est un plus.
+
+### Encodage des données 
+
+La structuration d'un tableau de données n'est pas toujours évidente. Il est cependant conseillé d'employer un tableau cas par variables dont un rappel vous est proposé via l'URL suivant :
+
+<http://biodatascience-course.sciviews.org/sdd-umons/tableaux-de-donnees.html>
+
+### Traitement des données et transmettre les données
+
+- Git et Github 
+
+Les outils les plus performants alliant la gestion de versions et la collaboration  via l'URL suivant : 
+
+<http://biodatascience-course.sciviews.org/sdd-umons/decouverte-des-outils.html#gestionnaire-de-version>
+
+- Projet dans RStuido
+
+Un projet dans R Studio est un outil performant d'organisation de son travail.
+
+<http://biodatascience-course.sciviews.org/sdd-umons/rs.html#rs-projet>
+
+L'utilisation de chemin relatif au sein de ce dernier permet de rendre ce projet **portable**
+
+### A vous de jouer !
+
+Un projet de base vous est proposé afin d'organiser votre recherche à l'URL suivant :
+
+> add url de github classroom

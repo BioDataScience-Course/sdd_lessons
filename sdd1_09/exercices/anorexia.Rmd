@@ -1,0 +1,108 @@
+---
+title: "Anorexie"
+output: html_notebook
+---
+
+## Introduction
+
+...
+
+
+## But
+
+Déterminer si un traitement est efficace et si il fonctionne mieux en hopital ou dans l'environnement familial.
+
+
+## Matériel et méthodes
+
+... (voir aide du jeu de données)
+
+```{r}
+data("anorexia", package = "MASS")
+head(anorexia)
+```
+
+## Description des données
+
+```{r}
+par(mfrow = c(1, 2))
+boxplot(anorexia$Prewt, ylim = c(70, 100))
+boxplot(anorexia$Postwt, ylim = c(70, 100))
+```
+Calculer DeltaM:
+
+```{r}
+library("dplyr")
+anorexia %>% mutate(DeltaM = Postwt - Prewt) -> anorexia
+```
+
+Statistiques sur ces données:
+
+```{r}
+summary(anorexia)
+```
+
+```{r}
+boxplot(anorexia$DeltaM)
+abline(h = 0, col = "red")
+```
+
+## Test de Student t univarié
+
+H0: DeltaM moyen = 0
+H1: DeltaM moyen != 0
+
+Seuil alpha 5%.
+
+```{r}
+t.test(anorexia$DeltaM,
+  alternative = "two.sided", mu = 0, conf.level = 0.95)
+```
+
+DeltaM est significativement différente de zéro au seuil alpha de 5%.
+
+
+## Test de Student t apparié
+
+```{r}
+t.test(anorexia$Postwt, anorexia$Prewt,
+  alternative = "two.sided", conf.level = 0.95, paired = TRUE)
+```
+
+## Test de Student t indépendant
+
+Comparer Cont avec FT:
+
+H0 : moyenne Deltam_Cont - moyenne DeltaM_FT = 0
+H1 : moyenne Deltam_Cont - moyenne DeltaM_FT < 0
+
+```{r}
+library(dplyr)
+anorexia %>% filter(Treat != "CBT") -> anorexia2
+t.test(DeltaM ~ Treat, data = anorexia2,
+  alternative = "less", conf.level = 0.95, var.equal = FALSE)
+```
+
+Le traitement en famille est significativement plus efficace que le contrôle au seuil alpha de 5% (test t indépendant, t = -3.30, ddl = 37, p = 0.001).
+
+
+## Test de Wilkoxon-Mann-Withney
+
+H0: DeltaM_Cont = DeltaM_FT
+H1: DeltaM_Cont < DeltaM_FT
+
+Seuil alpha 5%
+
+```{r}
+wilcox.test(DeltaM ~ Treat, data = anorexia2,
+  alternative = "less", conf.level = 0.95)
+```
+
+Utiliser W-M-W ou Student? Etudions la distribution des résidus.
+
+```{r}
+anorexia2 %>% mutate(DeltaM.res = DeltaM - ave(DeltaM, Treat)) -> anorexia2
+car::qqPlot(anorexia2$DeltaM.res, distribution = "norm",
+  envelope = 0.95, col = "Black", ylab = "DeltaM.res")
+```
+

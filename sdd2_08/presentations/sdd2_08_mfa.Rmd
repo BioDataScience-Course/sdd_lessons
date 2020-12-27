@@ -1,0 +1,30 @@
+---
+title: 'Science des données II : module 8'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Analyse Factorielle des Correspondances (AFC)
+author: Philippe Grosjean & Guyliann Engels
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+# Analyse Factorielle Multiple (AFM)
+
+### Démonstration de l'AFM
+
+L'**analyse factorielle multiple** (AFM ou MFA en anglais) permet d'analyser plusieurs sets de variables quantitatives (numériques) ou qualitatives (facteurs) mesurées sur les mêmes individus **en une seule analyse synthétique.**
+
+- Pour les sous-tableaux numériques, c'est une ACP qui est réalisée
+- Pour les sous-tableaux qualitatifs, c'est une ACM (analyse des correspondances multiples) qui est réalisée. Elle est assez proche de l'AFC, mais n'analyse le tableau que dans un sens.
+
+Pour une démonstration de l'AFM, voyez la vidéo ici : https://www.dailymotion.com/video/x13gva9
+
+#### Pour aller plus loin...
+
+Une version plus détaillée de l'AFM est présentée ici : http://www.sthda.com/french/articles/38-methodes-des-composantes-principales-dans-r-guide-pratique/77-afm-analyse-factorielle-multiple-avec-r-l-essentiel/

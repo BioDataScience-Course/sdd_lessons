@@ -1,0 +1,4402 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+% Document Class options:
+% - You can use article(beamer) or presentation(beamer)
+% - In presentation, you can use following options:
+%    'trans' for transparent, 'handout' for printing-friendly version
+%    'notes' also output notes, 'notesonly' only output notes
+% Uncomment the following 3 lines in presentation mode for dual screen
+% use (and specify 'left', 'top', 'right' or 'bottom' for second screen...)
+%\usepackage{pgfpages}
+%\setbeameroption{second mode text on second screen=right}
+%\setbeameroption{show notes on second screen}
+
+% If you have several lectures defined in the same document, uncomment this:
+%\includeonlylecture{cours02}
+
+% UMONS-EcoNum template configuration
+\mode<all>
+{
+  \definecolor{umons-red}{RGB}{168, 0, 57}
+  \definecolor{umons-turquoise}{RGB}{0, 171, 204}
+  \definecolor{umons-gray}{RGB}{150, 150, 150}
+  \definecolor{umons-gray2}{RGB}{110, 110, 110}
+  \usepackage[labelfont=bf, tableposition=top]{caption}
+}
+\mode<article>
+{
+  \usepackage{beamerbasearticle}
+  \usepackage{fullpage}
+  \pdfimageresolution 96
+}
+\mode<beamer>
+{
+  % Customizable items (make sure corresponding pictures are in /figures subdir):
+  % The background image
+  \usebackgroundtemplate{\includegraphics[width=\paperwidth,
+height=\paperheight]{/figures/backgroundTech.pdf}}
+  % The logo picture
+  \logo{\includegraphics[width=2cm]{/figures/UMONS-logo.pdf}}
+}
+\mode<handout>
+{
+  \definecolor{umons-red}{RGB}{84, 84, 84}
+  \definecolor{umons-turquoise}{RGB}{168, 168, 168}
+  \usepackage{pgfpages}
+  \pgfpagesuselayout{2 on 1}[a4paper, border shrink=5mm]
+}
+\mode<presentation>
+{
+  % General theme to use
+  \usetheme{CambridgeUS}
+  %\usetheme{AnnHarbor}
+  %\usetheme{default}
+  %\usetheme{Pittsburgh}
+  %\usetheme{Dresden}
+  %\usetheme{Hannover}
+  % Color theme (but must colors redefined hereunder)
+  \usecolortheme{beaver}
+  % Theme used for bullets
+  \useinnertheme{rectangles}
+  %or \useinnertheme{circles}
+  % This is to get semi-transparent covered items
+  \setbeamercovered{transparent}
+  % Rounded rectangular blocks without shadow
+  \setbeamertemplate{blocks}[rounded][shadow=false]
+  %\usepackage{beamerthemeshadow}  
+
+  \setbeamersize{text margin left=1em,text margin right=1em}
+  \setbeamerfont{title}{size=\huge}
+  \setbeamerfont{institute}{size=\small}
+  \setbeamerfont{date}{size=\small}
+  \setbeamerfont{framesubtitle}{size=\small}
+  % This stands out a little bit more than umons-red!
+  \setbeamercolor{alerted text}{fg=red!80!black}
+  %\setbeamercolor{alerted text}{fg=umons-red}
+  \setbeamercolor*{palette primary}{fg=black, bg=umons-turquoise}
+  \setbeamercolor*{palette secondary}{fg=black, bg=umons-turquoise}
+  \setbeamercolor*{palette tertiary}{fg=umons-gray!30, bg=umons-red!80!black}
+  \setbeamercolor*{palette quaternary}{fg=black, bg=umons-turquoise}
+  \setbeamercolor*{upper separation line head left}{parent=palette tertiary}
+  \setbeamercolor*{upper separation line head right}{parent=palette primary}
+  \setbeamercolor{title}{fg=umons-red}
+  \setbeamercolor*{titlelike}{fg=umons-red}
+  \setbeamercolor{institute}{fg=umons-gray2}
+  \setbeamercolor{date}{fg=umons-gray2}
+  \setbeamercolor{frametitle}{fg=umons-red, bg=white}
+  \setbeamercolor{frametitle right}{bg=white}
+  \setbeamercolor{structure}{fg=umons-turquoise}
+  \setbeamercolor*{separation line}{}
+  \setbeamercolor*{fine separation line}{}
+  \setbeamercolor*{sidebar}{fg=umons-red,bg=white}
+  \setbeamercolor*{sidebar}{fg=umons-red,bg=white}
+  \setbeamercolor*{palette sidebar primary}{fg=umons-turquoise!10!black}
+  \setbeamercolor*{palette sidebar secondary}{fg=umons-red}
+  \setbeamercolor*{palette sidebar tertiary}{fg=umons-red!50!black}
+  \setbeamercolor*{palette sidebar quaternary}{fg=umons-red}
+  \setbeamercolor*{example text}{fg=umons-gray2}
+
+  % Custom Sweave styles
+  \definecolor{SinputColor}{RGB}{25, 25, 125}
+  \definecolor{SoutputColor}{RGB}{110, 110, 110}
+  \DefineVerbatimEnvironment{Sinput}{Verbatim}{fontsize=\small,formatcom=\color{SinputColor}}
+  \DefineVerbatimEnvironment{Soutput}{Verbatim}{fontsize=\small,formatcom=\color{SoutputColor}}
+  \DefineVerbatimEnvironment{Scode}{Verbatim}{fontsize=\small,\color{SinputColor}}
+}
+
+% To get coherent font between text and equations
+\usefonttheme{professionalfonts}
+\usepackage{mathpazo}
+% Useful package in this context
+\usepackage{listings}
+% Command used to place a picture somewhere in the slide (relative to current pos)
+\newcommand{\putat}[3]{\begin{picture}(0,0)(0,0)\put(#1,#2){#3}\end{picture}}
+
+% Idem, but in absolute pos (slide = 128x96mm)
+\usepackage{textpos}
+\newcommand{\putabs}[3]{\begin{textblock*}{10mm}[0,0](#1,#2){#3}\end{textblock*}}
+
+% We do not want to change link colors in infolines
+\addtobeamertemplate{headline}{\hypersetup{allcolors=.}}{}
+\addtobeamertemplate{footline}{\hypersetup{allcolors=.}}{}
+
+% Copyright notices and sources:
+% The background picture: http://www.uberpiglet.com/vectors/20-amazing-vector-backgrounds/
+% UMONS-EcoNum template is partly inspired from a work done by:
+% C. Troestler <Christophe.Troestler@umons.ac.be> licensed under GNU GPL v3 or later.
+\end_preamble
+\options 9pt,xcolor=table
+\use_default_options false
+\begin_modules
+svSweave
+\end_modules
+\maintain_unincluded_children false
+\language french
+\language_package default
+\inputencoding utf8x
+\fontencoding global
+\font_roman "palatino" "default"
+\font_sans "berasans" "default"
+\font_typewriter "beramono" "default"
+\font_math "auto" "auto"
+\font_default_family rmdefault
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 90 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing other 1.2
+\use_hyperref true
+\pdf_title "Biostatistique et probabilité - Cours 06"
+\pdf_author "Philippe Grosjean et Julien Leblud"
+\pdf_subject "Introduction aux statistiques pour les biologistes"
+\pdf_keywords "Intervalle de confiance, test et distribution de Student"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref slide
+\pdf_pdfusetitle true
+\pdf_pagemode FullScreen
+\pdf_quoted_options "linkcolor=umons-red, urlcolor=umons-red, citecolor=umons-red, pagecolor=umons-red"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bullet 0 0 17 -1
+\bullet 1 0 15 -1
+\bullet 2 0 8 -1
+\bullet 3 0 9 -1
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Biostatistique et probabilités
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Biostatistique et probabilités
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Optionel, il ne faut le spécifier que si le titre original est très long.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subtitle
+2
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+ème
+\end_layout
+
+\end_inset
+
+ Bachelier en Biologie
+\end_layout
+
+\begin_layout Author
+Prof.
+ Philippe Grosjean <
+\begin_inset CommandInset href
+LatexCommand href
+target "Philippe.Grosjean@umons.ac.be"
+type "mailto:"
+
+\end_inset
+
+>
+\begin_inset Newline newline
+\end_inset
+
+Assist.
+ Guyliann Engels <
+\begin_inset CommandInset href
+LatexCommand href
+target "Guyliann.Engels@umons.ac.be"
+type "mailto:"
+
+\end_inset
+
+>
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Ba2 Biologie
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Ici, on indique l'année d'étude en bas à gauche des dias à la place de l'auteur!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Institute
+Université de Mons
+\begin_inset Newline newline
+\end_inset
+
+Laboratoire d'Écologie numérique des Milieux aquatiques
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Cours 7
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Ici, on indique la section dans la zone de texte en bas à gauche des dias
+ à la place de l'institution!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+Cours 7
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Ceci est la zone an bas à droite de la dia.
+ On y indique le numéro de cours ou de T.P.
+ et il est suivi du numéro de la dia dans le cours.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout TitleGraphic
+\begin_inset Graphics
+	filename figures/EcoNum-logo.pdf
+	width 2cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Voir les propriétés du document, et vérifier que l'image de fond et les
+ logos sont installés dans le sous-répertoire /figures.
+ Etant donné la quantité de texte potentiellement produite par des sorties
+ de R, seuls les modes les plus petits à 9pt ou 8pt sont réellement utilisables
+ avec Beamer - Sweave (lisible seulement avec un bon projecteur en 1024x768
+ et grande taille de projection!!!).
+ Pour changer ceci, aller dans les propriétés du document -> Document class
+ -> Custom.
+ Avec la police non proportionnelle Bera Mono, on obient 80 caractères sur
+ une ligne de diapositive en mettant la police à l'échelle à 92% en mode
+ 8pt, et à 82% en mode 9pt (mais c'est limite car la taille de police de
+ text versus police des sorties de R devient déjà très différente).
+ Donc, utiliser le mode 8pt si on est certain de la qualité de projection,
+ et n'utiliser le mode 9pt que dans le cas contraire! On configure aussi
+ R pour formatter ses sorties sur 80 caractères.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Toujours faire attention d'utiliser une dia qui commence avec BeginVerbatimFrame
+ ou BeginVerbatimPlainFrame si celle-ci contient un environnement verbatim
+ (y compris du code R qui en génère un ou plusieurs!).
+ Ces dias doivent obligatoirement être terminées par EndVerbatimFrame! Il
+ n'est pas possible actuellement de spécifier d'autres options, tel que
+ [shrink] ou [skeeze] pour ces diapositives verbatim.
+\end_layout
+
+\begin_layout Plain Layout
+Les éléments R-Opts ou R-Chunk qui ne sont pas affichés ou génèrent du code
+ \SpecialChar LaTeX
+ ou une figure sont 
+\begin_inset Quotes fld
+\end_inset
+
+safe
+\begin_inset Quotes frd
+\end_inset
+
+ et peuvent être utilisés dans des diapositives classiques.
+ Les autres génèreront une erreur à la compilation s'ils ne sont pas placés
+ dans une diapositive verbatim obligatoirement!
+\end_layout
+
+\begin_layout Plain Layout
+Pour mettre du code R en évidence, incluez-le dans un block.
+ Une façon d'y arriver est d'inclure un block, et ensuite une boite Box
+ (Minipage) avec ses paramètres par défaut, et d'ensuite y inclure un ou
+ plusieurs éléments R-Chunk.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setkeys{Gin}{width=0.5
+\backslash
+textwidth} % Define the default width of R graphs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout R-Opts
+keep.source = TRUE, pdf = TRUE, eps = FALSE
+\end_layout
+
+\begin_layout R-Chunk
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<<echo = FALSE, results = hide>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+options(presentation = TRUE)
+\end_layout
+
+\begin_layout Plain Layout
+
+options(width = 80, prompt = "R> ", continue = "   ")
+\end_layout
+
+\begin_layout Plain Layout
+
+options(device.ask.default = FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+pdf.options(family = "Palatino", bg = "#ffffffaa", pointsize = 16, encoding
+ = "ISOLatin1")
+\end_layout
+
+\begin_layout Plain Layout
+
+colUMred <- rgb(168, 0, 57, max = 255)
+\end_layout
+
+\begin_layout Plain Layout
+
+colUMturquoise <- rgb(0, 171, 204, max = 255)
+\end_layout
+
+\begin_layout Plain Layout
+
+colUMgray <- rgb(150, 150, 150, max = 255)
+\end_layout
+
+\begin_layout Plain Layout
+
+colUMin <- rgb(25, 25, 125, max = 255)
+\end_layout
+
+\begin_layout Plain Layout
+
+colUMout <- rgb(110, 110, 110, max = 255)
+\end_layout
+
+\begin_layout Plain Layout
+
+palette(c("black", colUMred, colUMturquoise, colUMin,
+\end_layout
+
+\begin_layout Plain Layout
+
+    "green3", "magenta3", "yellow3", colUMgray))
+\end_layout
+
+\begin_layout Plain Layout
+
+library(xtable)  # Pour sortir des tables au format LaTeX
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Pour afficher automatiquement une table des matières en début de chaque
+ section, décommentez ce qui suit:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+AtBeginSubsection[]{
+\end_layout
+
+\begin_layout Plain Layout
+
+%  
+\backslash
+frame<beamer>{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+%    
+\backslash
+frametitle{Contenu du cours}   
+\end_layout
+
+\begin_layout Plain Layout
+
+%    
+\backslash
+tableofcontents[currentsection,currentsubsection]
+\end_layout
+
+\begin_layout Plain Layout
+
+% Vous pouvez, si vous le souhaitez ajouter l'option [pausesections]
+\end_layout
+
+\begin_layout Plain Layout
+
+%  }
+\end_layout
+
+\begin_layout Plain Layout
+
+%}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+If you place several lectures in the same document, use this to place a
+ frame at the beginning of each lecture.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+AtBeginLecture{
+\end_layout
+
+\begin_layout Plain Layout
+
+%  
+\backslash
+frame{
+\backslash
+Large Le cours d'aujourd'hui porte sur : 
+\backslash
+insertlecture}
+\end_layout
+
+\begin_layout Plain Layout
+
+%}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+S'il n'est pas possible de tout placer sur une diapositive, et qu'il n'y
+ a pas moyen de la retravailler pour faire rentrer le contenu, on peut à
+ l'extrême limite utiliser l'option [shrink=xx] dans une zone de code \SpecialChar LaTeX
+ au
+ début du champ beginFrame ou beginPlainFrame.
+ De même, on peut utiliser [squeeze] pour essayer de gagner de la place
+ en hauteur, mais sans changer la taille de police.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Il est possible d'indiquer qu'une section s'affiche en mode article ou presentat
+ion en indiquant <article> ou <presentation> au début de la section.
+ Pour du texte libre, utiliser Insert -> Custom Inserts -> Custom:ArticleMode
+ ou Custom:PresentationMode.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+En mode presentation(beamer).
+ Pour générer les notes introduites avec NoteItem, ajouter 
+\begin_inset Quotes fld
+\end_inset
+
+notesonly
+\begin_inset Quotes frd
+\end_inset
+
+ dans les options du document.
+ Pour mixer dias et notes, ajouter 
+\begin_inset Quotes fld
+\end_inset
+
+notes
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Utiliser 
+\begin_inset Quotes fld
+\end_inset
+
+handout
+\begin_inset Quotes frd
+\end_inset
+
+ ou 
+\begin_inset Quotes fld
+\end_inset
+
+trans
+\begin_inset Quotes frd
+\end_inset
+
+ pour imprimer les dias sous forme de copie de lecture ou de transparents,
+ respectivement (donc, en éliminant les dias d'effets et de transition).
+\end_layout
+
+\begin_layout Plain Layout
+En mode article(beamer), ne pas oublier de modifier options(presentation
+ = FALSE) dans 'R1>' ci-dessus!
+\end_layout
+
+\begin_layout Plain Layout
+Si la compilation prend beaucoup de temps, vous pouvez ajouter 'draft' dans
+ les options du document temporairement.
+ L'essentiel de la présentation sera compilée, mais pas ce qui prend le
+ plus de temps.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Plus loin dans la présentation, il est possible d'ajouter une table des
+ matières indiquant où on se trouve en rajoutant après un ERT avec [currentsecti
+on] ou [currentsubserction].
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Objectifs de ce cours
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex PresentationMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+putat{200}{-30}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/OfficeResources.pdf
+	lyxscale 50
+	width 50mm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Découvrir la distribution d'un échantillon
+\begin_inset Newline newline
+\end_inset
+
+à l'aide de métaexpérience
+\end_layout
+
+\begin_layout Itemize
+Maitriser la distribution de Student et son utilisation
+\end_layout
+
+\begin_layout Itemize
+Calculer un intervalle de confiance autour d'une moyenne
+\end_layout
+
+\begin_layout Itemize
+Découvrir le test d'hypothèse et en particulier, le test de Student
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Distribution d'un échantillon
+\end_layout
+
+\begin_layout Subsection
+Relations entre population et échantillon
+\end_layout
+
+\begin_layout PlainFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Échantillonnage et inférence
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+inférence (inference)
+\end_layout
+
+\end_inset
+
+ est l'estimation des caractéristiques de la population sur base de l'analyse
+ statistique d'un 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+échantillon représentatif
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Un échantillon peut être qualifié de 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+représentatif
+\end_layout
+
+\end_inset
+
+ s'il est issu d'un processus d'échantillonnage 
+\series bold
+correct
+\series default
+ (ex.
+\begin_inset space ~
+\end_inset
+
+: 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+échantillonnage aléatoire
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+L'
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+échantillonnage aléatoire
+\end_layout
+
+\end_inset
+
+ fait intervenir le 
+\series bold
+hasard
+\series default
+ dans la sélection des individus, tel que chaque individu de la population
+ a autant de chance que les autres d'être pris 
+\emph on
+(question
+\begin_inset space ~
+\end_inset
+
+: comment faire en pratique
+\begin_inset space ~
+\end_inset
+
+?)
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/inference.pdf
+	lyxscale 50
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Expérience versus observation
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Expérience, observation et causalité
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Deux façons d’étudier un phénomène biologique : l’
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+expérience (experimentation)
+\end_layout
+
+\end_inset
+
+ ou l’
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+observation (monitoring or survey)
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Les concepts et méthodes de la biostatistique visent à mettre en évidence
+ un signal en présence de bruit, et ce, aussi bien au niveau de la planification
+ d’une 
+\series bold
+expérience
+\series default
+ ou d’une 
+\series bold
+observation
+\series default
+ qu’à l’interprétation des données obtenues.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Corrélation (correlation)
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+: variation proportionnelle ou inversement proportionnelle de deux variables
+ observées.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Relation (relationship)
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+: idem, mais association des deux variables (un mécanisme sous-jacent est
+ rendu implicitement responsable de cette relation).
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Causalité (causality)
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+: la variation de la variable 
+\emph on
+X
+\emph default
+ est la cause de la variation de la variable 
+\emph on
+Y
+\emph default
+.
+ Hypothèse la plus forte, mais difficile à montrer par l’observation ; l’expérim
+entation est nécessaire
+\begin_inset space ~
+\end_inset
+
+!
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+t de Student
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Distribution d'échantillon
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Quelle est la distribution de la moyenne d’un échantillon ?
+\end_layout
+
+\end_inset
+
+ Processus
+\begin_inset space ~
+\end_inset
+
+: métaexpérience / variation d’échantillonnage => de combien 
+\emph on
+
+\begin_inset Formula $\bar{y}$
+\end_inset
+
+
+\emph default
+ peut-il différer de 
+\emph on
+µ
+\emph default
+
+\begin_inset space ~
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Moyenne de la distribution d’échantillonnage
+\end_layout
+
+\end_inset
+
+ : 
+\begin_inset Formula $\mu_{\bar{Y}}=\mu$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Ecart type de la distribution d’échantillonnage
+\end_layout
+
+\end_inset
+
+ : 
+\begin_inset Formula $\sigma_{\bar{Y}}=\frac{\sigma}{\sqrt{n}}$
+\end_inset
+
+= erreur standard de la population initiale.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Théorème central limite
+\end_layout
+
+\end_inset
+
+ : « quelle que soit la distribution de 
+\emph on
+Y
+\emph default
+, la distribution d’échantillons (distribution des moyennes des échantillons)
+ issus de 
+\emph on
+Y
+\emph default
+ est approximativement normale si 
+\emph on
+n
+\emph default
+ est suffisamment grand ».
+ Illustration pratique
+\begin_inset space ~
+\end_inset
+
+: 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://onlinestatbook.com/stat_sim/sampling_dist/index.html"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+
+\emph on
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Donc, si la distribution de population est inconnue, mais que n est grand,
+ la distribution d’échantillon tendra toujours vers une distribution Normale.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Distribution t de Student
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Distribution typique de la moyenne d’échantillons
+\end_layout
+
+\end_inset
+
+ lorsque 
+\emph on
+n
+\emph default
+ est petit et la distribution de la population d’où sont issus ces échantillons
+ est Normale.
+ Elle a 3 paramètres : 
+\emph on
+µ
+\emph default
+, 
+\emph on
+
+\begin_inset Formula $\sigma$
+\end_inset
+
+
+\emph default
+ et 
+\emph on
+ddl
+\emph default
+ (degrés de liberté) = 
+\emph on
+n
+\emph default
+ – 1.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Tend vers une distribution normale lorsque 
+\emph on
+n
+\emph default
+ tend vers l’infini
+\end_layout
+
+\end_inset
+
+ (cf, théorème central limite).
+\end_layout
+
+\begin_layout Itemize
+Comme pour la distribution Normale réduite, on utilise très souvent la 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+distribution t réduite
+\end_layout
+
+\end_inset
+
+, de paramètres 
+\emph on
+µ
+\emph default
+=0, 
+\begin_inset Formula $\sigma$
+\end_inset
+
+=1 et 
+\emph on
+ddl
+\emph default
+ = 
+\emph on
+n
+\emph default
+ -1.
+ Notation : pour indiquer le quantile d’une distribution t réduite de 
+\emph on
+n
+\emph default
+ – 1 
+\emph on
+ddl
+\emph default
+ et correspondant à une aire à droite (probabilité) de 
+\emph on
+p
+\emph default
+, on note
+\begin_inset space ~
+\end_inset
+
+: 
+\begin_inset Formula $t_{p}^{n-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Visualiser et calculer des quantiles/probabilités dans R Studio pour la
+ distribution de Student t.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Intervalle de confiance
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout AlertBlock
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Rappel
+\end_layout
+
+\end_inset
+
+Notation moyenne et écart type de la population ou de l’échantillon ; introducti
+on de l’estimateur de 
+\emph on
+µ
+\emph default
+ ou 
+\emph on
+
+\begin_inset Formula $\sigma$
+\end_inset
+
+ 
+\emph default
+(dit mu chapeau ou sigma chapeau)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Concept d’intervalle de confiance
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+: principe de l’homme invisible qui promène son chien (voir aussi
+\begin_inset space ~
+\end_inset
+
+: 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://onlinestatbook.com/stat_sim/conf_interval/index.html"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+Si la distribution de la moyenne d’échantillonnage est connue, alors, on
+ peut indiquer l’intervalle dans lequel la moyenne de la population se trouve
+ avec une probabilité donnée (notée 1 – 
+\begin_inset Formula $\alpha$
+\end_inset
+
+)
+\begin_inset space ~
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\mathrm{IC}(1-\alpha)=\mu_{\bar{Y}}\pm t_{\alpha/2}^{n-1}\cdot\sigma_{\bar{Y}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cet intervalle, c’est l’
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+intervalle de confiance
+\end_layout
+
+\end_inset
+
+ au seuil 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ En remplaçant par les valeurs connues, on a
+\begin_inset space ~
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\mathrm{IC}(1-\alpha)=\hat{\mu}\pm t_{\alpha/2}^{n-1}\cdot\frac{\hat{\sigma}}{\sqrt{n}}=\bar{Y}\pm t_{\alpha/2}^{n-1}\cdot\frac{s_{Y}}{\sqrt{n}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Conditions de validité
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Échantillonnage aléatoire
+\end_layout
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Observations indépendantes
+\end_layout
+
+\end_inset
+
+ les unes des autres,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Distribution de la population
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Normale => intervalle de confiance utilisant la distribution t de Student
+ est exacte,
+\end_layout
+
+\begin_layout Itemize
+Approximativement normale => cet intervalle de confiance est approximativement
+ exact,
+\end_layout
+
+\begin_layout Itemize
+Non normale => cet intervalle est approximativement exact si 
+\emph on
+n
+\emph default
+ est grand,
+\end_layout
+
+\end_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+En pratique
+\end_layout
+
+\end_inset
+
+Test à l’aide d’un graphique quantile-quantile de comparaison de l’échantillon
+ à une distribution t de Student ou Normale (à condition, bien sûr, que
+ l'échantillon soit suffisamment grand).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Utilisation
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+De même que l’écart type, la variance ou l’erreur standard, l’intervalle
+ de confiance peut servir à représenter la 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+dispersion des moyennes
+\end_layout
+
+\end_inset
+
+ d’un échantillon, soit dans un tableau numérique, soit sur un graphique
+ (barres d’erreurs).
+\end_layout
+
+\begin_layout Itemize
+L’écart type sert à représenter la 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+dispersion des données
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+; l’erreur standard ou l’intervalle de confiance sont plus adaptés pour
+ représenter la 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+dispersion de la moyenne de l’échantillon
+\end_layout
+
+\end_inset
+
+ dans une optique de comparaison de moyennes.
+ De plus, l’I.C.
+ permet de comparer 2 ou plusieurs moyennes (superposition ou non des I.C.,
+ ou de l’I.C.
+ par rapport à une valeur cible).
+ 
+\end_layout
+
+\begin_layout AlertBlock
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Attention
+\end_layout
+
+\end_inset
+
+Graphe avec barres d’erreurs
+\begin_inset space ~
+\end_inset
+
+: il faut toujours préciser ce que sont les barres d’erreur dans la légende
+ du graphe ou de l’axe correspondant
+\begin_inset space ~
+\end_inset
+
+!
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Test d'hypothèse utilisant l'IC
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Représentation d’une question posée par le biologiste sous la forme d’
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+une hypothèse et de son contraire
+\end_layout
+
+\end_inset
+
+ concernant la 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+moyenne
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Exemple
+\end_layout
+
+\end_inset
+
+Est-ce qu'il y a eu croissance massique d'un organisme entre deux mesures
+ => utilisation de la différence de masse entre 
+\emph on
+t0
+\emph default
+ et 
+\emph on
+t1
+\emph default
+ = 
+\emph on
+M
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\emph on
+t1
+\end_layout
+
+\end_inset
+
+- M
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\emph on
+t0
+\end_layout
+
+\end_inset
+
+=
+\emph default
+ 
+\emph on
+
+\begin_inset Formula $\Delta$
+\end_inset
+
+M
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+Observation ou réalisation d’une expérience pour quantifier le problème
+ à travers la mesure d’
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+une variable quantitative
+\end_layout
+
+\end_inset
+
+ pertinente.
+\end_layout
+
+\begin_layout Itemize
+Expression de l’hypothèse et de son contraire sous forme d’une 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+relation mathématique
+\end_layout
+
+\end_inset
+
+, notation :
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Hypothèse de base (pas de croissance) H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+: 
+\emph on
+
+\begin_inset Formula $\Delta$
+\end_inset
+
+M
+\emph default
+ = 0
+\end_layout
+
+\begin_layout Itemize
+Son contraire (il y a eu croissance) H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+ou H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+
+: 
+\emph on
+
+\begin_inset Formula $\Delta$
+\end_inset
+
+M
+\emph default
+ > 0
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Test d'hypothèse utilisant l'IC - Exemple
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout ExampleBlock
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Question
+\end_layout
+
+\end_inset
+
+Dans une étude visant à soigner l'anorexie, est-ce que les patientes qui
+ n'ont pas subi de traitement (contrôle) ont gardé un poids constant
+\begin_inset space ~
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Itemize
+Observation : 72 patientes anorexiques dont 26 ont été placées au hasard
+ dans le groupe contrôle.
+ => mesure de leur masse corporelle au début (
+\emph on
+Prewt
+\emph default
+) et à la fin (
+\emph on
+Postwt
+\emph default
+) en livres.
+ 
+\end_layout
+
+\begin_layout Itemize
+Expression de 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+l’hypothèse de son contraire
+\end_layout
+
+\end_inset
+
+ sous forme d’une relation mathématique
+\begin_inset space ~
+\end_inset
+
+:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Calcul de 
+\emph on
+DeltaM
+\emph default
+ pour l'échantillon = 
+\emph on
+PostWt
+\emph default
+ - 
+\emph on
+Prewt
+\end_layout
+
+\begin_layout Itemize
+Hypothèse de base (pas de changement de masse) : H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Formula $\Delta M=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Son contraire (changement de masse) : H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Formula $\Delta M\neq0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout AlertBlock
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Problème
+\end_layout
+
+\end_inset
+
+Comment discerner les vraies différences des erreurs de mesure, de la présence
+ de quelques cas extrêmes introduits au hasard de l’échantillonnage, etc.
+\begin_inset space ~
+\end_inset
+
+?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Test d'hypothèse utilisant l'IC - Exemple (2)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Cela revient à 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+inférer la valeur de 
+\begin_inset Formula $\Delta$
+\end_inset
+
+
+\emph on
+M
+\end_layout
+
+\end_inset
+
+ pour l'ensemble des jeunes filles anorexiques, dont on a extrait un échantillon
+ aléatoirement.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Qu’est-ce qu’on possède comme outil pour cela ?
+\end_layout
+
+\begin_layout Itemize
+La moyenne de l’échantillon pour la variable 
+\emph on
+DeltaM
+\emph default
+, considérée comme représentative de 
+\begin_inset Formula $\Delta$
+\end_inset
+
+
+\emph on
+M
+\emph default
+ (moyenne pour la population),
+\end_layout
+
+\begin_layout Itemize
+On connaît la distribution statistique de la moyenne de 
+\emph on
+DeltaM
+\begin_inset space ~
+\end_inset
+
+
+\emph default
+: 
+\begin_inset Formula 
+\[
+\bar{DeltaM}\sim t(\Delta M,\sigma/\sqrt{n},n-1)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+On peut donc calculer un intervalle de confiance autour de 
+\begin_inset Formula $\bar{DeltaM}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Raisonnement
+\end_layout
+
+\end_inset
+
+Si 
+\begin_inset Formula $\Delta M=0$
+\end_inset
+
+ (valeur sous H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+) appartient à l’IC, on ne pourra pas rejeter H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ (puisqu’elle fait partie des valeurs possibles).
+ Dans le cas contraire, on pourra la rejeter.
+ La probabilité 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ associée à l’IC indique la possibilité que ce dernier n'inclue pas la vraie
+ moyenne alors que H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ est vraie et quantifie donc le risque de se tromper dans ce cas.
+ Nous avons maintenant construit ce qu'on appelle un 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+test d'hypothèse
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+; ici, c'est le 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+test t de Student univarié
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Test d'hypothèse
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Donc, pour élaborer un test d'hypothèse (cas général), il faut
+\begin_inset space ~
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+Construire un 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+descripteur statistique pertinent
+\end_layout
+
+\end_inset
+
+ dont on peut calculer la 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+probabilité d’occurrence sous H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ (par exemple, parce qu’on connaît sa distribution statistique),
+\end_layout
+
+\begin_layout Itemize
+Si la probabilité d’occurrence sous H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ de la valeur de la statistique est trop faible, on en conclura que H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ a une probabilité trop faible d’être vraie et on la rejettera au bénéfice
+ de H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+La probabilité à la limite de l'acceptation ou du rejet est la 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+valeur 
+\emph on
+p
+\emph default
+ associée au test
+\end_layout
+
+\end_inset
+
+.
+ Si 
+\emph on
+p
+\emph default
+ < 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, on rejette H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+, sinon, on ne rejette pas H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout AlertBlock
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+IC ou valeur 
+\emph on
+p
+\emph default
+
+\begin_inset space ~
+\end_inset
+
+?
+\end_layout
+
+\end_inset
+
+Dans le cas du test de Student, le calcul peut se faire soit par rapport
+ à l'IC, soit en utilisant la valeur 
+\emph on
+p
+\emph default
+.
+ C'est un cas particulier.
+ En général, les tests d'hypothèses ne renvoient que la valeur 
+\emph on
+p
+\emph default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Test d'hypothèse - Important!
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout AlertBlock
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Attention
+\end_layout
+
+\end_inset
+
+Afin de construire un jeu de données propice pour faire de l’inférence,
+ il faut toujours réaliser un 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+échantillonnage aléatoire
+\end_layout
+
+\end_inset
+
+ (ou autre type d’échantillonnage valide, stratifié par exemple) et avoir
+ des 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+observations indépendantes entre elles
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Echantillonnage aléatoire et observations indépendantes sont donc deux contraint
+es de départ 
+\emph on
+indispensables
+\emph default
+ avant de pouvoir réaliser un test d'hypothèse sur les données.
+\end_layout
+
+\begin_layout Itemize
+Autre élément important
+\begin_inset space ~
+\end_inset
+
+: la 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+réplication
+\end_layout
+
+\end_inset
+
+.
+ Plus 
+\emph on
+n
+\emph default
+ est grand, plus on a d'information à disposition, et plus le test est efficace.
+\emph on
+
+\begin_inset Newline newline
+\end_inset
+
+Montrez à l'aide d'un exemple fictif comment l'IC diminue lorsque n augmente.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Interprétation graphique
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Représenter la distribution
+\end_layout
+
+\end_inset
+
+ de la statistique étudiée 
+\emph on
+telle qu’elle se présente si H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+ est vraie
+\emph default
+.
+ Par exemple, H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Formula $\Delta$
+\end_inset
+
+
+\emph on
+M
+\emph default
+ = 0 => la distribution de la moyenne d’échantillon attendue sous H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ est
+\begin_inset space ~
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\bar{DeltaM}\sim t(0,\sigma/\sqrt{n},n-1)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Y reporter le 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+seuil 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+considéré, et préciser la 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+zone de rejet de H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ (quantiles égaux ou plus extrêmes que celui délimitant la zone de rejet
+ par rapport à 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ ) et celle de 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+non rejet de H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ (aire complémentaire).
+\end_layout
+
+\begin_layout Itemize
+Y reporter ensuite le 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+quantile observé
+\end_layout
+
+\end_inset
+
+ de la statistique pour notre échantillon, 
+\begin_inset Formula $\bar{DeltaM}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Est-il situé dans la zone de rejet ou non de H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ ?
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+=> tirer les conclusions correspondantes à propos de la question biologique
+ posée au départ.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Test unilatéral et bilatéral
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Beaucoup de tests d'hypothèses, tel le test de Student, admettent des variantes
+ unilatérales et bilatérales selon la manière dont H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+est posée
+\begin_inset space ~
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Test bilatéral
+\end_layout
+
+\end_inset
+
+ (correspondant à la résolution à l’aide de l’IC)
+\begin_inset space ~
+\end_inset
+
+: l’aire est divisée en deux parties égales réparties à gauche et à droite
+ de la distribution.
+\begin_inset Newline newline
+\end_inset
+
+H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Formula $Y\neq cste$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Test unilatéral à gauche
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+: l’aire de rejet est répartie intégralement à gauche.
+\begin_inset Newline newline
+\end_inset
+
+H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Formula $Y<cste$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Test unilatéral à droite
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+: l’aire de rejet est répartie intégralement à droite.
+\begin_inset Newline newline
+\end_inset
+
+H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Formula $Y>cste$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout AlertBlock
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Importance de la représentation graphique pour s’y retrouver
+\begin_inset space ~
+\end_inset
+
+!
+\end_layout
+
+\end_inset
+
+L’aire de rejet correspondant à 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ est positionnée différemment.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Résolution de l'exemple
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vérification des 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+conditions d’application
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Échantillon aléatoire et observations indépendantes
+\begin_inset space ~
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Itemize
+Distribution normale ou quasi-normale des données et/ou 
+\emph on
+n
+\emph default
+ grand
+\begin_inset space ~
+\end_inset
+
+?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Choix du seuil 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ du test
+\end_layout
+
+\end_inset
+
+ avant de le réaliser ! Valeurs souvent utilisées
+\begin_inset space ~
+\end_inset
+
+: 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ = 5%, 1%, 0.1%, …
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Formulation des hypothèses H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ et H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ (et donc, choix entre un test uni- ou bilatéral).
+\end_layout
+
+\begin_layout Itemize
+Calcul de la 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+statistique 
+\emph on
+t
+\end_layout
+
+\end_inset
+
+ et de la 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+valeur 
+\emph on
+p
+\end_layout
+
+\end_inset
+
+ associée au test.
+ 
+\end_layout
+
+\begin_layout Itemize
+Réalisation du 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+graphique de la zone de rejet et non rejet du test
+\end_layout
+
+\end_inset
+
+ (facultatif, mais utile pour visualiser ce qui est fait).
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Rejet ou non de H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Interprétation biologique
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+: la 
+\emph on
+masse moyenne
+\emph default
+ des sujets anorexiques témoins est-elle restée stable entre le début et
+ la fin de l'expérience
+\begin_inset space ~
+\end_inset
+
+? Il s'agit bien sûr d'une condition nécessaire pour que les autres comparaisons
+ aient un sens.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Présentation des résultats
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Expression du résultat
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+: attention à la formulation adéquate
+\begin_inset space ~
+\end_inset
+
+!
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+« Telle différence ou telle valeur est/n’est pas 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+significative (significant) au seuil 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ de 5%
+\end_layout
+
+\end_inset
+
+ (test 
+\emph on
+t
+\emph default
+ univarié bilatéral, 
+\emph on
+n
+\emph default
+=…, 
+\emph on
+t
+\emph default
+=…, 
+\emph on
+p
+\emph default
+=…) ».
+\end_layout
+
+\begin_layout Itemize
+« Nous pouvons/ne pouvons pas considérer que la valeur observée soit significati
+vement différente de … au seuil 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ de 5% (test 
+\emph on
+t
+\emph default
+ univarié unilatéral à gauche, 
+\emph on
+n
+\emph default
+=…, 
+\emph on
+t
+\emph default
+=…, 
+\emph on
+p
+\emph default
+=…) ».
+\end_layout
+
+\begin_layout Itemize
+«  Nous observons/n’observons pas de 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+différence significative entre … au seuil 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ de 1%
+\end_layout
+
+\end_inset
+
+ (test 
+\emph on
+t
+\emph default
+ univarié unilatéral à droite, 
+\emph on
+n
+\emph default
+=…, 
+\emph on
+t
+\emph default
+=…, 
+\emph on
+p
+\emph default
+=…)
+\begin_inset space ~
+\end_inset
+
+».
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Test complexe, ou beaucoup de résultats
+\begin_inset space ~
+\end_inset
+
+: 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+adjoindre un tableau résumant l’analyse statistique
+\end_layout
+
+\end_inset
+
+, sa probabilité et éventuellement, l’intervalle de confiance correspondant.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Utiliser une représentation à l’aide d’astérisques pour indiquer la 
+\emph on
+significativité
+\emph default
+.
+ Ex.
+\begin_inset space ~
+\end_inset
+
+: * = moyennement significatif (5%), **= significatif (1%), *** = très significa
+tif (0.1%).
+\end_layout
+
+\begin_layout Itemize
+Représentation graphique de la 
+\emph on
+significativité
+\emph default
+ en utilisant le même principe (astérisques reportées sur les graphes en
+ barres verticales ou sur les boites de dispersion parallèles, par exemple).
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exemple de présentation complexe
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/PresentationExample.pdf
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Seuil de probabilité critique
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Le 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+seuil de probabilité critique (ou valeur 
+\emph on
+p
+\emph default
+ associée au test, 
+\emph on
+p
+\emph default
+-value en anglais)
+\end_layout
+
+\end_inset
+
+ définit la probabilité qui se situe à la limite entre acceptation et rejet
+ de H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ (explication sur un graphique).
+\end_layout
+
+\begin_layout Itemize
+La décision du rejet ou de l’acceptation d’un test d’hypothèse sur base
+ du seuil de probabilité critique est simple.
+ Elle suit la règle suivante
+\begin_inset space ~
+\end_inset
+
+:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Si 
+\begin_inset Formula $p\geqslant\alpha$
+\end_inset
+
+, on ne rejette pas H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+(écriture: 
+\begin_inset Formula $\cancel{\mathrm{R}}\mathrm{H}_{0}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $p<\alpha$
+\end_inset
+
+, on rejette H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ (écriture
+\begin_inset space ~
+\end_inset
+
+: 
+\begin_inset Formula $\mathrm{RH_{0}}$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout AlertBlock
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Notez ceci
+\end_layout
+
+\end_inset
+
+Évitez de dire "acceptation de H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+".
+ En effet, comme l’interprétation basée sur les IC le montre clairement,
+ ne pas rejeter H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ n’est pas équivalent à l’accepter.
+ Il se peut toujours que H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ soit quand même fausse, mais que les données soient insuffisantes (par
+ exemple, 
+\emph on
+n
+\emph default
+ trop faible) pour le montrer.
+ Évitez également de dire "acceptation de H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+" pour une raison similaire.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Risque 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ et 
+\begin_inset Formula $\beta$
+\end_inset
+
+, puissance d'un test
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Quatre cas de figure possibles dans l’interprétation d’un test
+\begin_inset space ~
+\end_inset
+
+:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ne pas rejeter H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ lorsque H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ est vraie 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+(correct
+\begin_inset space ~
+\end_inset
+
+!)
+\end_layout
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+Rejeter H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ lorsque H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ est fausse 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+(correct
+\begin_inset space ~
+\end_inset
+
+!)
+\end_layout
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+Rejeter H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ lorsque H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ est vraie 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+(erreur de 1
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+ère
+\end_layout
+
+\end_inset
+
+ espèce)
+\end_layout
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+Ne pas rejeter H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ lorsque H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ est fausse 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+(erreur de 2
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+ème
+\end_layout
+
+\end_inset
+
+ espèce)
+\end_layout
+
+\end_inset
+
+,.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+L’erreur de première espèce est associée au risque 
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, équivalent au seuil 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ (cf.
+ applet simulation sur les IC, étudiée plus haut).
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+L’erreur de seconde espèce est associée au risque 
+\begin_inset Formula $\beta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Plus le risque 
+\begin_inset Formula $\beta$
+\end_inset
+
+ est petit, plus le test est 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+puissant
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Formula $\beta$
+\end_inset
+
+ dépend à la fois du test et de 
+\emph on
+n
+\emph default
+ (
+\begin_inset Formula $\beta$
+\end_inset
+
+ diminue quand 
+\emph on
+n
+\emph default
+ augmente) => puissance d’un test = 
+\begin_inset Formula $1-\beta$
+\end_inset
+
+.
+ Voir
+\begin_inset space ~
+\end_inset
+
+: 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://onlinestatbook.com/stat_sim/robustness/index.html"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Test 
+\emph on
+t
+\emph default
+ de Student pour échantillons appariés
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Reprenons notre exemple de la stabilité massique de sujets anorexiques dans
+ le lot contrôle.
+ 
+\end_layout
+
+\begin_layout Itemize
+Le même problème peut être spécifié sous la forme d’une comparaison de deux
+ populations de mesures
+\begin_inset space ~
+\end_inset
+
+: 
+\emph on
+Prewt
+\emph default
+ et 
+\emph on
+Postwt
+\emph default
+ dont les observations sont appariées (i.e., mesurées sur les mêmes individus).
+\end_layout
+
+\begin_layout Itemize
+Calcul sous forme d’un test
+\emph on
+ t
+\emph default
+ de Student pour deux échantillons appariés (
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+test 
+\emph on
+t
+\emph default
+ apparié
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+Comparaison avec le calcul sur 
+\begin_inset Formula $\Delta$
+\end_inset
+
+
+\emph on
+M
+\emph default
+.
+ Il s’agit bien du même test, mais formulé légèrement différemment.
+\end_layout
+
+\begin_layout Itemize
+Mêmes conditions d’application que le test 
+\emph on
+t
+\emph default
+ de Student univarié.
+ La distribution des données se teste également par un graphe quantile-quantile
+ comparant la différence des observations par rapport à une distribution
+ 
+\emph on
+t
+\emph default
+ de Student.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Test 
+\emph on
+t
+\emph default
+ de Student non apparié
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\emph on
+Peut-on comparer les moyennes d'une même variable mesurées sur des sous-populati
+ons, et donc, des individus, différentes
+\begin_inset space ~
+\end_inset
+
+?
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Exemple
+\end_layout
+
+\end_inset
+
+Peut-on comparer 
+\emph on
+DeltaW
+\emph default
+ entre le contrôle 
+\begin_inset Flex CharStyle:Var
+status open
+
+\begin_layout Plain Layout
+Cont
+\end_layout
+
+\end_inset
+
+ et le groupe traité en famille 
+\begin_inset Flex CharStyle:Var
+status open
+
+\begin_layout Plain Layout
+FT
+\end_layout
+
+\end_inset
+
+ pour le jeu de données 
+\emph on
+anorexia
+\emph default
+
+\begin_inset space ~
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Moyennes des groupes A et B sont-elles égales
+\end_layout
+
+\end_inset
+
+ (H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Formula $\mu_{A}=\mu$
+\end_inset
+
+
+\begin_inset Formula $_{B}$
+\end_inset
+
+)
+\begin_inset space ~
+\end_inset
+
+? Ce qui revient parfois à considérer qu’elles sont issues de la même population.
+\end_layout
+
+\begin_layout Itemize
+H
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+: moyennes différentes (test bilatéral) ou moyenne de A supérieure (ou inférieur
+e) à moyenne de B (test unilatéral).
+\end_layout
+
+\begin_layout Itemize
+Test paramétrique : test 
+\emph on
+t
+\emph default
+ de Student, distribution de même nom pour les moyennes de A et de B.
+\end_layout
+
+\begin_layout Itemize
+Pas d’appariement des données.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+n
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\emph on
+A
+\end_layout
+
+\end_inset
+
+
+\emph default
+ n’est pas nécessairement égal à 
+\emph on
+n
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\emph on
+B
+\end_layout
+
+\end_inset
+
+
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\emph on
+Dans un tel cas, quelle statistique utiliser
+\begin_inset space ~
+\end_inset
+
+? Quelle est sa distribution
+\begin_inset space ~
+\end_inset
+
+? Comment construire un test de comparaison des deux moyennes
+\begin_inset space ~
+\end_inset
+
+?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Comparaison de deux moyennes
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Étude de la distribution de 
+\begin_inset Formula $\mu_{A}-\mu$
+\end_inset
+
+
+\begin_inset Formula $_{B}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, sur base des données de l'échantillon 
+\begin_inset Formula $\bar{Y}_{A}-\bar{Y}_{B}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Calcul de l’intervalle de confiance
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\mathrm{I}\mathrm{C}_{95\%}=(\bar{Y}_{A}-\bar{Y}_{B})\pm t_{0.025}^{\min(n_{A}-1,n_{B}-1)}\cdot\mathbf{S}\mathrm{E}_{(\bar{Y}_{A}-\bar{Y}_{B})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+avec
+\begin_inset Formula 
+\[
+\mathbf{S}\mathrm{E}_{(\bar{Y}_{A}-\bar{Y}_{B})}=\sqrt{\mathrm{S}\mathrm{E}_{A}^{2}+\mathrm{S}\mathrm{E}_{B}^{2}}=\sqrt{\frac{s_{A}^{2}}{n_{A}}+\frac{s_{B}^{2}}{n_{B}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout AlertBlock
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Dans le logiciel
+\end_layout
+
+\end_inset
+
+Une variable facteur à deux niveaux, et une variable quantitative.
+ Il existe deux 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+variantes
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+: variances égales ou différentes, avec calcul légèrement différent (optimisé)
+ dans les deux cas (exemple sur 
+\begin_inset Flex CharStyle:Code
+status open
+
+\begin_layout Plain Layout
+anorexia
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Test 
+\emph on
+t
+\emph default
+ de Student non apparié - hypothèses de base
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Échantillon représentatif
+\end_layout
+
+\end_inset
+
+ (ex.
+\begin_inset space ~
+\end_inset
+
+: échantillonnage aléatoire).
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Observations indépendantes
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+La distribution des 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+écarts aux moyennes respectives (résidus ou residuals en anglais)
+\end_layout
+
+\end_inset
+
+ doit suivre une distribution 
+\emph on
+t
+\emph default
+ de Student.
+ Utilisation de la fonction
+\series bold
+ ave()
+\series default
+ pour calculer ces écarts.
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Note
+\end_layout
+
+\end_inset
+
+Le test 
+\emph on
+t
+\emph default
+ de Student pour échantillons non appariés se dit aussi 
+\emph on
+test de Student pour échantillons 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+indépendants
+\end_layout
+
+\end_inset
+
+
+\emph default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Ceci est nécessaire si les graphiques produits par R contiennent des polices
+ spéciales qui ne sont pas correctement rendues autrement...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout R-Chunk
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<<echo = FALSE, results = hide>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+for (pdfGraph in dir(pattern = "-[0-9]+
+\backslash
+
+\backslash
+.pdf$"))
+\end_layout
+
+\begin_layout Plain Layout
+
+    embedFonts(pdfGraph)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

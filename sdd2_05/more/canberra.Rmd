@@ -1,0 +1,56 @@
+---
+title: "Canberra"
+author: "Philippe Grosjean et Jonathan Richir"
+date: "20 septembre 2016"
+output: html_document
+---
+
+Voici la matrice de départ:
+
+```{r, echo=FALSE}
+ex1 <- data.frame(Sp1 = c(4, 3, 1),
+                  Sp2 = c(0, 0, 8),
+                  Sp3 = c(2, 10, 0))
+rownames(ex1) <- paste0("Sta", 1:3)
+knitr::kable(ex1)
+```
+
+**Question:** 
+
+Calculez la matrice de distances entre stations correspondant à ce jeu de données à l'aide de l'indice de dissimilarité de Canberra (détaillez vos calculs).
+
+La dissimilarité de Canberra se calcule comme suit:
+
+$$\mathrm{D_{Canberra}}_{j,k}=\frac{n}{nz}\sum_{i'=1}^{nz}\frac{\left|y_{i'j}-y_{i'k}\right|}{y_{i'j}+y_{i'k}}$$
+
+où:
+
+- _n_ est le nombre d'observations
+- _nz_ est le nombre d'observations non nulles simultanément dans les deux vecteurs comparés (les doubles zéros ne sont pas pris en compte)
+- _i'_ est l'itérateur sur toutes les valeurs non double zéros
+
+Notons la difference avec la distance de Bray-Curtis:
+
+$$\mathrm{D_{Bray-Curtis}}_{j,k}=\frac{\sum_{i=1}^{n}\left|y_{ij}-y_{ik}\right|}{\sum_{i=1}^{n}y_{ij}+y_{ik}}$$
+
+_Ici, on attend le détail des calculs à la main, dont voici le premier:_
+
+```{r}
+Sta1_2 <- (3/2) * ((abs(4 - 3)) / (4 + 3) + (abs(2 - 10)) / (2 + 10))
+round(Sta1_2, 2)
+
+Sta1_3 <- (3/3) * (abs(4 - 1) / (4 + 1) + abs(0 - 8) / (0 + 8) +
+  abs(2 - 0) / (2 + 0))
+round(Sta1_3, 2)
+
+Sta2_3 <- (3/3) * (abs(3 - 1) / (3 + 1) + abs(0 - 8) / (0 + 8) +
+  abs(10 - 0) / (10 + 0))
+round(Sta2_3, 2)
+```
+
+La matrice finale est la suivante:
+
+```{r, echo=FALSE}
+round(dist(ex1, method = "canberra"), 2)
+```
+

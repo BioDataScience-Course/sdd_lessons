@@ -1,0 +1,91 @@
+---
+title: 'Science des données III : cours 4b'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Séries spatio-temporelles (partie 2)
+author: Philippe Grosjean & Guyliann Engels
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+# Séries spatio-temporelles
+
+# Détection des caractéristiques de la série temporelle
+
+### Objectifs du cours
+
+\putat{200}{-30}{\includegraphics[width=50mm]{../../template/resources.pdf}}
+
+ - Prendre conscience des caractéristiques  
+importantes des séries spatio-temporelles
+ 
+ - Savoir détecter une tendance globale ou locale
+ 
+ - Pouvoir détecter des cycles à l'aide de l'analyse spectrale
+
+
+### Les composantes d'un signal spatio-temporel
+
+- Une série spatio-temporelle peut être considérée comme la \alert{superposition de plusieurs signaux plus simples}\ :
+    * Une ou plusieurs **tendances générales** (augmentation ou diminution progressive sur le long terme),
+    * Des **tendances locales**, responsables de la variation _locale_ de la valeur moyenne des valeurs,
+    * Des **cycles** qui correspondents à des variations périodiques (cycle circadien, effet saisonnier, lunaire ou des marées, ...)
+    * Un **bruit blanc** représenté par une variation purement aléatoire (analogue aux \alert{résidus} d'un modèle linéaire)
+
+- Ces différentes composantes peuvent se combiner de \alert{deux façons différentes}\ :
+   * De manière **additive** (modèle additif)
+   * De manière **multiplicative** (modèle multiplicatif issus d'un effet à caractère exponentiel)
+
+#### Illustration
+
+Présentation au tableau de la façon dont divers signaux peuvent se combiner.
+
+
+### Tendance générale
+
+- La tendance générale s'exprime par, soit une **augmentation**, soit une **diminution** progressive dans le temps (sur le long terme) du signal étudié, à l'exclusion de signaux cycliques.
+
+- Elle est généralement visible, mais _est-elle significative\ ?_
+
+- Un test existe pour déterminer si une tendance générale de forme quelconque est significative\ : le \alert{test de tendance par bootstrap du coefficient de Spearman}
+
+
+#### Concept du test
+
+Il doit exister une correlation significative entre les observations et le temps en présence d'une tendance. Mais comme les données **ne sont pas indépendantes** entre elles, on ne peut pas se référer à une distribution théorique. La distribution de référence est simulée en randomisant un grand nombre de fois les observations dans le temps (= technique du _bootstrap_).
+
+
+### Tendance locale
+
+- La recherche de **tendances locales** vise à détecter les périodes dans le temps où les valeurs moyennes des observations changent
+
+- La meilleure façon de détecter ces changement consiste à transformer le signal en \alert{sommes cumulées}, et d'analyser le signal ainsi tranformé\ :
+
+$$
+S_q = \sum_{i=1}^q{x_i - q . r}
+$$
+ou\ :
+
+- _q_ est le nombre d'observations déjà cumulées à l'observation actuelle _x~i~_
+- _r_ est une constante de référence (généralement, la moyenne de toute la série)
+
+\vfill
+
+- Les sommes cumulées forment alors une **ligne brisée**. Chaque segment représente une période de valeur moyenne constante donnée par la pente du segment additionnée de _r_.
+
+
+### Analyse spectrale
+
+- Analyse de cycles\ : décomposition de la série en une série de signaux sinusoïdaux et cosinusoïdaux de fréquences différences. Détermination des composantes qui sont significatives.
+
+- L'ensemble est représenté sur un graphique appelé **périodogramme**.
+
+- Démonstration du concept à\ :  https://go.sciviews.org/spectral
+
+- Exemple sur `nottem`

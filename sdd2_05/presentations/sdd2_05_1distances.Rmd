@@ -1,0 +1,184 @@
+---
+title: 'Science des données II : cours 5a'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Introduction & matrices de distances
+author: Philippe Grosjean & Guyliann Engels
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+
+# Introduction
+
+### Introduction
+
+Jusqu'ici nous nous sommes concentrés sur l'étude d'un petit nombre de variables à la fois.
+
+Mais que faire lorsque le jeu de données est volumineux et que nous ne savons pas par où commencer\ ?
+
+\hfill
+
+Dans la partie **analyse** de ce cours, nous aborderons l’\alert{analyse exploratoire des données} ou EAD. Elle permet d’**explorer** des gros jeux de données multivariés et d’y découvrir des **structures** ou des **associations** entre individus.
+
+
+### Analyse exploratoire de données
+
+L’\alert{analyse de données} ou \alert{multivariée} se subdivise en deux familles de techniques complémentaires\ :
+
+> - Les méthodes de **classification**. Ces méthodes regroupent les objets en plusieurs sous-ensembles distincts (**groupes**), chaque individu étant plus semblable aux autres au sein de son propre sous-ensemble qu’il ne l’est par rapport aux individus des autres sous-ensembles.
+
+> - Les méthodes d’**ordination** ou de **réduction de dimensionnalité**. Elles représentent les individus sur des graphes bi- ou tridimensionnels (ou dit, une représentation sur des **cartes**, par analogie à la géographie). La distance des individus entre eux est relative à leur degré de ressemblance ou de différence (on dit\ : **similarité** ou **dissimilarité**).
+
+
+### Exemples de jeux de données traités
+
+- Le dénombrement (quasi-)exhaustif des \alert{espèces} rencontrées en différents lieux (\alert{stations}).
+
+- L’\alert{abondance} (nombre d’individus) dans chaque \alert{taxon} en différentes stations échantillonnées.
+
+- Une étude détaillée des \alert{conditions du milieu} (paramètres physico-chimiques, terrain, etc.) où vivent les animaux étudiés en différentes stations.
+
+- Un tableau rassemblant la \alert{biométrie} (taille, poids, poids de certains organes, ...) d’un nombre important d’individus d’une population donnée, mesurés afin de déterminer l’évolution de ces mesures biométriques au cours de la croissance.
+
+- Etc.
+
+
+# Analyse de données
+
+## Matrice de distances
+
+### Matrice de distances
+
+- La \alert{matrice de distances} est le point de départ (première étape explicite ou implicite) de nombreuses analyses multivariées.
+
+- Présentation des individus ou des variables aussi bien en ligne qu’en colonne => **deux points de vue possibles**.
+
+- Les éléments de la matrice correspondent à **toutes les paires possibles, prises deux à deux**; on obtient une **matrice carrée**.
+
+- Exemples de matrices de distances déjà abordées :
+    * Matrice de **variances/covariances** = distances euclidiennes au carré.
+    * Matrice de **corrélation** = distances euclidiennes au carré sur des données standardisées.
+
+
+### Indice de similarité/dissimilarité
+
+- \alert{Un indice de similarité (similarity index)} est une descripteur statistique (nombre unique) de la similitude de deux échantillons ou individus représentés par plusieurs variables (échantillon multivarié).
+
+- Un indice de similarité prend une valeur**comprise entre 0 (différence totale) et 1 ou 100% (similitude totale)**.
+
+- \alert{Un indice de dissimilarité} est le complément d’un indice de similarité (dis = 1 – sim); **sa valeur est comprise entre 100% (différence totale) et 0 (similitude totale). Attention: dans certains cas, un indice de dissimilarité peut varier de 0 à +$\infty$** (lorsqu’il s’agit d’une distance, euclidienne par exemple).
+
+- Tous les indices de similarité / dissimilarité peuvent servir à
+construire des \alert{matrices de distance}.
+
+
+### Indice de dissimilarité : Bray-Curtis
+
+- \alert{= coefficient de Czecanowski}
+
+$$\mathrm{D_{Bray-Curtis}}_{j,k}=\frac{\sum_{i=1}^{n}\left|y_{ij}-y_{ik}\right|}{\sum_{i=1}^{n}(y_{ij}+y_{ik})}$$
+
+- S’utilise pour mesurer la similitude entre échantillon sur base
+du **dénombrement d’espèces**.
+Si le **nombre d’individus est très variable** (espèces dominantes _versus_ espèces rares), penser à transformer (ex: $log(x+1)$, double racine carrée, ...)
+
+
+### Indice de dissimilarité : Canberra
+
+- \alert{Distance similaire à Bray-Curtis mais pondérant les espèces en fonction du nombre d’occurrences.}
+
+$$\mathrm{D_{Canberra}}_{j,k}=\frac{1}{nz}\sum_{i'=1}^{nz}\frac{\left|y_{i'j}-y_{i'k}\right|}{\left|y_{i'j}\right|+\left|y_{i'k}\right|}$$
+
+où \alert{$nz$ est le nombre de valeurs non nulles.}
+
+- Toutes les espèces contribuent de manière égale => possibilité
+de surimportance d’une espèces mesurée une seule fois !
+
+- Toute double absence n’est pas prise en compte => se comporte bien face aux tableaux comportant beaucoup de zéros (idem Bray-Curtis).
+
+
+###  Utilisation d’indices Bray-Curtis et Canberra
+
+\begin{block}{Seuls les indices ne dépendant pas des doubles zéros sont utilisables pour des dénombrements d’espèces ou des présence-absence.}\end{block}
+
+- \alert{Bray-Curtis} => résultat dominé par les espèces les plus abondantes.
+
+- \alert{Canberra} => risque de domination des espèces rares. 
+
+- Bray-Curtis sur données transformées (log(x+1) ou double racine
+carrée) **= souvent bon compromis**.
+
+- Si les volumes échantillonnés entre stations ne sont pas comparables, **il faut standardiser.**
+
+
+### Indice de dissimilarité : distance Euclidienne
+
+- Distance \alert{géométrique} entre les points:
+
+$$\mathrm{D_{Euclidean}}_{j,k}=\sqrt{\sum_{i=1}^{n}(y_{ij}-y_{ik})^2}$$
+
+
+### Indice de dissimilarité : Manhattan
+
+- ou encore \alert{city-block distance}.
+
+$$\mathrm{D_{Manhattan}}_{j,k}=\sum_{i=1}^{n}|y_{ij}-y_{ik}|$$
+
+- Les indices de **dissimilarité** de Bray-Curtis et Camberra sont complémentaires aux indices de similarité correspondants (\alert{dis = 1 – sim}).
+
+
+### Utilisation de ces indices
+
+- Les distances euclidienne ou de Manhattan sont à préférer pour les **mesures environnementales**.
+
+\vfill
+
+- Les distances de Bray-Curtis ou Canberra sont meilleure pour les **dénombrements d’espèces** (nombreux double zéro) !
+
+
+### Indices de (dis)similarité - propriétés
+
+- Les indices varient en 0 et 1 (0 et 100%), mais les distances sont utilisées aussi comme indices de dissimilarité et varient entre 0 et $\infty$.
+
+\vfill
+
+- Un indice est dit \alert{métrique} si :
+    * **Minimum 0** :
+    $I_{a,b}=0$ si $a = b$
+
+    * **Positif** :
+    $I_{a,b}>0$ si $a \neq b$
+
+    * **Symétrique** :
+    $I_{a,b}=I_{b,a}$
+
+    * **Inégalité triangulaire** :
+    $I_{a,b} + I_{b,c} >= I_{a,c}$
+
+\vfill
+
+- Un indice est \alert{semimétrique} s’il répond à toutes les conditions sauf la quatrième.
+
+\vfill
+
+- Un indice est dit \alert{non métrique} dans les autres cas.
+
+
+### Indice de (dis)similarité - métrique
+
+| **Distance**           | **Type**
+|------------------------|---------------
+| Bray-Curtis            | semimétrique
+| Canberra               | métrique
+| Euclidienne            | métrique
+| Manhattan              | métrique
+| Chi carré              | métrique
+| (correlation)          | (non métrique)
+| (variance/covariance)  | (non métrique)

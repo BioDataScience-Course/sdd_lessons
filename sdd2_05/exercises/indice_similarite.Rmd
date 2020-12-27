@@ -1,0 +1,118 @@
+---
+title: "Les indices de distances"
+author: "Guyliann Engels & Philippe Grosjean"
+subtitle: Exercices supplémentaires
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+```{r setup, echo=FALSE, results=FALSE, warning=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, results = "hide")
+library(knitr)
+library(pastecs)
+library(vegan)
+```
+
+
+# Exercice 1 
+
+
+Calculez les matrices de dissimilarité entre les lignes `X` suivantes avec la distance euclidienne
+
+```{r, results='markup'}
+exo <- data.frame(y_1 = c(0, 1, 0),
+                        y_2 = c(1, 0, 4),
+                        y_3 = c(1, 0, 4),
+                        row.names =  paste0("x_", 1:3))
+kable(exo)
+```
+
+```{r}
+#X1-X1
+sqrt((0-0)^2 + (1-1)^2 + (1-1)^2)
+#X1-X2
+sqrt((0-1)^2 + (1-0)^2 + (1-0)^2)
+#X1-X3
+sqrt((0-0)^2 + (1-4)^2 + (1-4)^2)
+#...
+```
+
+```{r}
+round(vegdist(exo, method = "euclidian"), 2)
+```
+
+Calculez les matrices de dissimilarité entre les lignes `X`  avec l'indice de dissimilarité Bray-Curtis
+
+```{r}
+round(vegdist(exo, method = "bray"), 2)
+```
+
+# Exercice 2
+
+```{r, results='markup'}
+exo <- data.frame(espece_1 = c(5, 2, 0, 0, 8),
+                        espece_2 = c(0, 2, 0, 3, 1),
+                        espece_3 = c(0, 3, 1, 4, 8),
+                        espece_4 = c(2, 0, 10, 3, 5), row.names =  paste0("station_", 1:5))
+kable (exo)
+```
+
+
+Calculez les matrices de dissimilarité entre les stations suivantes avec la distance euclidienne
+
+```{r}
+round(vegdist(exo, method = "euclidian"), 2)
+```
+
+Calculez les matrices de dissimilarité entre les stations suivantes avec l'indice de dissimilarité de  Bray-curtis
+
+
+```{r}
+round(vegdist(exo, method = "bray"), 2)
+```
+
+Calculez les matrices de dissimilarité entre les espèces suivantes avec l'indice de dissimilarité de  Bray-curtis. Et avec la distance Euclidienne.
+
+```{r}
+round(vegdist(t(exo), method = "euclidian"), 2)
+
+round(vegdist(t(exo), method = "bray"), 2)
+```
+
+# Exercice 3 
+
+Calculez les matrices de dissimilarité entre les stations : avec l'indice de dissimilarité de  Bray-curtis
+
+```{r, results='markup'}
+exo <- data.frame(espece_1 = sample(x = 1:20, size = 4),
+                  espece_2 = sample(x = 1:20, size = 4),
+                  espece_3 = sample(x = 1:20, size = 4),
+                  espece_4 = sample(x = 1:20, size = 4),
+                  row.names =  paste0("station_", 1:4))
+kable (exo)
+```
+
+- avec l'indice de dissimilarité : Bray-Curtis
+
+```{r}
+round(vegdist(exo, method = "bray"), 2)
+```
+
+- avec l'indice de dissimilarité :  Canberra
+
+```{r}
+round(vegdist(exo, method = "canberra"), 2)
+```
+
+- avec l'indice de dissimilarité :  distance euclidienne
+
+```{r}
+round(vegdist(exo, method = "euclidean"), 2)
+```
+
+- avec l'indice de dissimilarité :  Manhattan
+
+```{r}
+round(vegdist(exo, method = "manhattan"), 2)
+```

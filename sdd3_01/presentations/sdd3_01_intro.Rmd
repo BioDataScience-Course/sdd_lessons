@@ -1,0 +1,78 @@
+---
+title: 'Science des données III : cours 1'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Introduction & logiciels
+author: Philippe Grosjean & Guyliann Engels
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+# Introduction
+
+## Que va-t-on faire dans ce cours SDD III ?
+
+### Introduction
+
+- Au cours de **biostatistique et probabilités de Ba2**, nous avons abordé :
+    * Les \alert{statistiques descriptives}, qui résument à l’aide de descripteurs ou présentent de manière visuelle (graphique) le contenu de jeux de données,
+    * Les \alert{statistiques inférentielles}, basées sur les tests d’hypothèse pour répondre à des questions « binaires » (est-ce ceci --H~0~--, ou son contraire --H~1~-- ?)
+
+> - Au cours de **Science des Données II Ba3**, nous avons étudié diverses \alert{techniques multivariées} : exploratoires (clusters et ordination) et confirmatoires (ANOVA, régression linéaire, modèle linéaire, modèle non linéaire).
+
+\hfill
+
+> - Dans ce cours, nous aborderons diverses \alert{techniques statistiques complémentaires}\ : la **classification supervisée** et l'analyse de **séries spatio-temporelles**.
+
+
+### Références
+
+\alert{Syllabus} : la matière étant plus complexe que pour les 2 cours précédent, un syllabus est disponible sous forme PDF (ancienne version).
+
+\hfill
+
+Autre références utiles :
+
+- **R for Data Science** : disponible en ligne à http://r4ds.had.co.nz
+
+\hfill
+
+- **Venables W.N. & B.D. Ripley, 2002**. Modern applied statistics with S-PLUS (4th ed.). Springer, New York, 495 pp.
+
+
+# Logiciels
+
+## Les outils logiciels que nous utiliserons
+
+### R, R Studio & SciViews Box 2019
+
+Comme pour les années précédentes, nous utiliserons un **système complètement configuré**, la \alert{SciViews Box}. La version 2019 avec des logiciels réactualisés est disponible. Elle contient, entre autres :
+
+- **R** 3.5.3, ainsi que plus de 1400 packages R additionnels préinstallés (snapshot de CRAN en date du 08/04/2019)
+
+- **R Studio server** 1.2.1335 préinstallé complètement, y compris les outils additionnels requis pour compiler les fichiers R Markdown. Une grande nouveauté par rapport à la version précédente : des packages facilitant la lecture des données (`data.io`), le "workflow" (`flow`) et les graphiques (`chart`), ainsi qu'un outil de configuration simplifié de la SciViews Box. Snippets de SciViews.
+
+- **Python 3.6.7 Scientific** préinstallé avec plus de 250 packages supplémentaires. **Julia version 1.0.3** avec plus de 200 packages installés. **Jupyter** et **JupyterLab** avec des notebooks Python, Julia et R.
+
+- Une série de logiciels complémentaires tels **R Commander**, **Adminer**, **Meld**, ...
+
+
+### Installation et utilisation
+
+- **Installation facilitée sous Windows** et **MacOS** (et bientôt sous Linux également)
+
+- **Version 64 bit conseillée** (mais nécessite d'activer les options de virtualisation du processeur dans le BIOS)
+
+- **Version 32 bit compatible** avec tous les PC récents et à privilégier pour les machines moins puissantes (Intel Core i3 ou Pentium, par exemple)
+
+- Nécessite tout de même un **PC suffisamment puissant** : Core i5 haut de gamme, équivalent ou mieux, 4Go de RAM au moins (8Go ou plus conseillé), une carte graphique accélérée, un disque dur rapide avec une vingtaine de Go libres (un disque SSD est un must), et un accès administrateur pour l'installation.
+
+#### Prise en main
+
+Vous allez maintenant configurer et découvrir les nouveautés de la machine virtuelle 2019...

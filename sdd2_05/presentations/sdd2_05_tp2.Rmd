@@ -1,0 +1,156 @@
+---
+title: 'Science des données II : tp5b'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Classification hiérarchique
+author: Guyliann Engels & Philippe Grosjean
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+SciViews::R
+```
+
+### Classification hiérarchique
+
+En partant d'une matrice de (dis)similarité, la classification hiérarchique permet de réaliser des regroupements. Ex: considérant 6 stations parmi les 68 que comporte le jeu de données `marphy`, pouvons-nous réaliser des regroupements selon les conditions physico-chimiques de l'eau. 
+
+Dans le cadre de ce TP, les méthodes agglomératives sont employées via : 
+
+* Liens simples
+* Liens complets
+* Liens moyens
+* Ward
+
+___
+
+Sélection de 6 stations du jeu de données marphy.
+
+
+```{r}
+marphy <- read("marphy", package = "pastecs")
+marphy_sub <- marphy[c(1,2,36,51,67,68), ]
+marphy_sub <- data.frame(marphy_sub, row.names = c("A", "B", "C", "D", "E", "F"))
+knitr::kable(marphy_sub)
+```
+
+___
+
+Matrice de distance réalisée avec la distance euclidienne :
+
+```{r}
+marphy_sub %>.%
+  scale(.) %>.%
+  vegan::vegdist(., method = "euclidean") -> marphy_dist
+knitr::kable(as.matrix(marphy_dist), digits = 2)
+```
+
+___
+
+```{r}
+marphy_single <- hclust(marphy_dist, method = "single")
+plot(marphy_single, ylab = "Distance", main = "Dendrogramme")
+abline(h = 2, col = "red")
+```
+
+
+### Transect : marphy & marbio
+
+\columnsbegin
+\columnsmall
+
+**Transect entre Nice et Calvi** 
+
+\vfill
+\vfill
+
+ - Employez la fonction **`hclust()`** pour réaliser votre classification
+ 
+ - Employez la fonction **`plot()`** pour afficher votre classification
+
+
+\columnlarge
+
+```{r, out.width='95%', fig.align='center'}
+library(cowplot)
+fr <- map_data("france")
+ggplot(fr, aes(long, lat, group = group)) +
+  geom_polygon(fill = "white", color = "black") +
+  geom_segment(aes(y = 43.7 , x = 7.25, yend = 42.56, xend = 8.75, color = "red"),
+    size = 1, show.legend = FALSE) +
+  theme(axis.line = element_blank(), axis.title = element_blank(),
+    axis.text = element_blank(), axis.ticks = element_blank()) +
+  coord_quickmap()
+```
+
+\columnsend
+
+___ 
+
+
+\columnsbegin
+\columnsmall
+
+**Consignes**
+
+\vfill
+\vfill
+
+- Employez la distance euclidienne pour réaliser votre matrice.
+
+- Employez la méthode des liens complets.
+
+\columnlarge
+
+```{r}
+marphy <- read("marphy", package = "pastecs")
+marphy_dist <- vegan::vegdist(marphy, method = "euclidian")
+marphy_complete <- hclust(marphy_dist, method = "complete")
+plot(marphy_complete)
+```
+
+\columnsend
+
+___
+
+\columnsbegin
+\columnsmall
+
+**Consignes**
+
+\vfill
+\vfill
+
+- Déterminez vos groupes et indiquez le niveau de coupure en rouge sur votre graphique avec la fonction `abline()`.
+
+- Employez différents indices et différents types de liens pour obtenir la meilleure classification selon vous.
+
+\columnlarge
+
+```{r, echo = TRUE}
+plot(marphy_complete)
+abline(h = 0.48, col = "red", lty = "solid", lwd = 2)
+```
+
+\columnsend
+
+
+### Classification hiérarchique : procédure
+
+Si nous devions résumer la procédure de traitements des données, les étapes sont les suivantes :
+
+* Transformation des données si nécéssaire
+
+* Choix de l'indice pour la matrice de distance
+
+* Choix de la méthode de regroupements pour le dendrogramme
+
+* Choix du nombre de classe ou du niveau de coupure dans le dendrogramme
+
+
+### Marbio
+
+Appliquez la procédure précédente sur le jeu de données `marbio` qui provient du package `pastecs`.

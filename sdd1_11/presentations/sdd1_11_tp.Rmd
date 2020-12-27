@@ -1,0 +1,75 @@
+---
+title: 'Science des données : module 11'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Anova à 2 facteurs 
+author: Guyliann Engels & Philippe Grosjean
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+lang: fr
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+SciViews::R
+```
+
+
+### Croissance des dents de cochons d'Inde
+
+L'étude porte sur la croissance de des dents de 60 cochons d'Inde. L’acide ascorbique (ou vitamine C) est indispensable à la formation et au maintien du collagène dans la dentine, la racine, la gencive, ... Nos chercheurs décident donc d'étudier la différence entre un apport uniquement de vitamine C ou un apport sous forme de jus d'orange.
+
+\columnsbegin
+\columnlarge
+
+```{r}
+tooth <- read("ToothGrowth", package = "datasets", lang = "fr")
+knitr::kable(tooth[ c(1, 11, 21, 31, 41, 51) , ],
+  col.names = c("Longueur", "Supplémentation", "Dose"),
+  align = 'c',
+  caption = "Quelques lignes du tableau de données ToothGrowth")
+```
+
+\columnsmall
+
+Variables\ : 
+
+- **len**\ : longueur des dents (en mm)
+- **supp**\ : variable facteur à 2 niveaux 
+    + OJ\ : supplémentation sous forme de jus d'orange
+    + VC\ : supplémentation en vitamine C seule
+- **dose**\ : variable facteur à 3 niveaux (en mg/J de vit.C)
+    + 0.5\ : dose faible
+    + 1\ : dose moyenne
+    + 2\ : dose élevée
+
+\columnsend
+
+
+### Teneur en vitamine C dans des choux
+
+Le jeu de données portant sur la croissance des choix se nomme `cabbages` dans le package `MASS`
+
+\columnsbegin
+\columnlarge
+
+```{r}
+cabbages <- read("cabbages", package = "MASS", lang = "fr")
+knitr::kable(cabbages[ c(1, 11, 21, 31, 41, 51) , ],
+  col.names = c("Cultivar", "Date", "Masse", "Vitamine C"),
+  align = 'c',
+  caption = "Quelques lignes du tableau de données cabbages")
+
+```
+
+\columnsmall
+
+Variables\ : 
+
+- **Cult**\ : Deux cultivars étudiés 
+- **Date**\ : Différentes dates de plantation investiguées
+- **HeadWt**\ : Mesure de la masse du chou (en kg)
+- **VitC**\ : Mesure de la teneur en vitamine C (unité inconnue) 
+
+\columnsend

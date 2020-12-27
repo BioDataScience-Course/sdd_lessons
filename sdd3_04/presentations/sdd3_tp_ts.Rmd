@@ -1,0 +1,23 @@
+---
+title: 'Science des données III : cours 4b'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Séries spatio-temporelles
+author: Guyliann Engels & Philippe Grosjean
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+### Séries spatio-temporelles : série d'exercices
+
+Vous avez plusieurs rapports à réaliser au sein du dépôt GitHub mis à votre disposition depuis l'assignation ci-dessous: 
+
+<https://classroom.github.com/a/UXLsN5At>
+
+> N'oubliez pas de lire le README
