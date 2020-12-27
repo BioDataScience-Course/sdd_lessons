@@ -1,0 +1,68 @@
+---
+title: 'Science des données II : tp6'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Régression linéaire & regression linéaire multiple
+author: Guyliann Engels & Philippe Grosjean
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+lang: fr
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+SciViews::R
+```
+
+### La Croissance des arbre
+
+L’UR2PI et le CIRAD souhaite trouver un modèle pour estimer la hauteur d’un arbre sur base de sa circonférence à 1 m50 du sol.
+
+\columnsbegin
+\columnlarge
+
+```{r}
+eucalyptus <- read("../data/eucalyptus.rds")
+
+knitr::kable(eucalyptus[ c(1, 110, 210, 610, 1010, 1410), ], col.names = c("Code d'identification", "Hauteur", "Circonférence", "Bloc"),align = 'c', caption = "Quelques lignes du tableau de données eucalyptus")
+```
+
+\columnsmall
+
+Variables : 
+
+- **id** : Code d'identification
+- **height** : Hauteur [m]
+- **circ** : Circomférence à 1.50 m du sol [m]
+- **bloc**: variables facteurs structurant les zones d'échantillonnages
+
+\columnsend
+
+Créez un projet eucalyptus pour répondre à cette analyse.
+
+Employez la relation linéaire et la relation linaire multiple pour proposer un modèle entre la hauteur et la circomférence
+
+### croissance de la coquille d'escargots géants d’Afrique
+
+*Achatina achatina* (Linnaeus, 1758) a été étudié dans le cadre d'une étude tentant de modéliser la croissance des coquilles. Employez la régression linaire afin de modéliser la croissance de la coquille de ces animaux. 
+
+\columnsbegin
+\columnlarge
+
+```{r, echo=FALSE, message=FALSE, results='hide'}
+achatina <- read_csv("../data/achatina.csv")
+achatina$shell <- as.factor(achatina$shell)
+# coils = nombre de tours de coquille (sans unité)
+# radius = rayon de la suture mesuré depuis le point de référence (apex) en mm
+chart(data = achatina, mapping = aes(x = coils, y = radius, color = shell))+ geom_point()
+```
+
+\columnsmall
+
+Variables : 
+
+- coils : nombre de tours de coquille (sans unité)
+- shell : rayon de la suture mesuré depuis le point de référence (apex) en mm
+
+\columnsend

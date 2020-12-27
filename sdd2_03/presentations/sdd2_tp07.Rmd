@@ -1,0 +1,62 @@
+---
+title: 'Science des données II : tp7'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Ancova & Modèle linéaire 
+author: Guyliann Engels & Philippe Grosjean
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+lang: fr
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+SciViews::R
+```
+
+### La Croissance des arbres
+
+L’UR2PI et le CIRAD souhaite trouver un modèle pour estimer la hauteur d’un arbre sur base de sa circonférence à 1 m50 du sol.
+
+\columnsbegin
+\columnlarge
+
+```{r}
+eucalyptus <- read("../data/eucalyptus.rds")
+
+knitr::kable(eucalyptus[ c(1, 110, 210, 610, 1010, 1410), ], col.names = c("Code d'identification", "Hauteur", "Circonférence", "Bloc"),align = 'c', caption = "Quelques lignes du tableau de données eucalyptus")
+```
+
+\columnsmall
+
+Variables : 
+
+- **id** : Code d'identification
+- **height** : Hauteur [m]
+- **circ** : Circomférence à 1.50 m du sol [m]
+- **bloc**: variables facteurs structurant les zones d'échantillonnages
+
+\columnsend
+
+Employez l'ANCOVA et le modèle linéaire afin de mettre en avant si la variable `bloc` influence la croissance des arbres.
+
+### Maturation d'ovocytes
+
+En partant du jeu de données `ovocyte.rds`, réalisez un modèle linéaire généralisé afin d'obtenir le graphique ci-dessous.  
+
+```{r, fig.align='center', out.width='70%'}
+ovo <- read("../data/ovocyte.rds")
+ovo%>.%
+  group_by(., ind, conc) %>%
+  summarise(.,  prop = sum(mat)/length(mat), nombre = length(mat))-> ovo1
+
+ovo_glm <- glm(prop ~ conc, family = binomial(link = "logit"), weights = nombre, data = ovo1)
+#summary(ovo_glm)
+
+ggplot(ovo1, mapping = aes( x = conc, y = prop)) +
+  geom_point() +
+  geom_line(mapping = aes( x =  conc , y = predict(ovo_glm,type="response"))) +
+  labs( y = "Fraction d'ovocyte entrant en maturation", x = "Concentration en hypoxantine")
+```
+

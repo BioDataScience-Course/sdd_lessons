@@ -1,0 +1,520 @@
+---
+title: 'Science des données II : cours 3'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Analyse en Composantes Principales (ACP)
+author: Philippe Grosjean & Guyliann Engels
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+
+# Analyse en Composantes Principales (ACP)
+
+### Analyse en Composantes Principales (ACP)
+
+- C’est la \alert{méthode d’ordination de base} (la plus simple, la plus rapide à calculer). En anglais : **P**rincipal **C**omponents **A**nalysis ou **PCA**.
+
+- Analyse un tableau à \alert{N variables (N > 3)} constitué de **données quantitatives**.
+
+- Des \alert{relations linéaires} sont suspectées entres les variables.
+
+- Ces relations conduisent à une répartition des individus (le nuage de points) qui forme une **structure que l’on cherchera à interpréter**.
+
+- Pour \alert{visualiser} cette structure, les données sont simplifiées (réduites) de \alert{N variables à n (n < N et n = 2 ou 3)}.
+
+- **_Comment réduire le nombre de variables à représenter graphiquement en perdant le moins d’information possible ?_**
+
+
+### Rappel : visualisation de données bivariées
+
+- \alert{Le nuage de points (scatterplot)} est le graphe idéal pour visualiser la distribution des données bivariées.
+
+- Il permet de visualiser également une \alert{association} entre deux variables.
+
+- Il permet aussi de visualiser comment \alert{deux ou plusieurs groupes peuvent être séparés} en fonction de ces deux variables.
+
+#### Exemple
+
+Mesure des pétales de 3 espèces d’iris (jeu de données iris).
+
+
+### Rappel : visualisation de données trivariées
+
+- \alert{Le nuage de points en pseudo-3D} est l’équivalent pour visualiser 3 variables simultanément.
+
+- Il est nécessaire de rendre l’effet de la **troisième dimension** (perspective, variation de taille des objets, ...)
+
+- La possibilité de **faire tourner l’objet 3D virtuel** est indispensable pour concrétiser l’effet 3D et pour le visionner sous différents angles
+
+_=> notre esprit est alors capable de reconstituer la disposition spatiale 3D de l’ensemble._
+
+#### Exemple
+
+Mesure des pétales + longueur des sépales de 3 espèces d’iris (jeu de données iris).
+
+
+### Visualisation de données multivariées : N > 3
+
+- Comment se représenter graphiquement un tableau de données aussi complexe ?
+
+- La \alert{matrice de nuages de points} peut servir ici, mais dans certaines limites (tous les angles de vue ne sont pas accessibles).
+
+#### Exemple
+
+Les quatre variables d’iris.
+
+#### Autre solution
+
+L’**ACP** qui va réduire le nombre de dimensions à 2 ou 3 (donc facilement représentable graphiquement), tout en conservant un maximum de l’information contenue dans le tableau de départ.
+
+
+### ACP : mécanisme (1)
+
+**Exemple simple :** comment réduire un \alert{tableau bivarié} en une représentation des individus en une \alert{seule dimension} (classement sur une droite) ?
+
+```{r echo=FALSE, fig.width=9, fig.height=5, message=FALSE}
+dat <- data.frame(Station = 1:9,
+  Var1 = c(6, 1, 5, 7, 11, 10, 15, 18, 14),
+  Var2 = c(4, 2, 10, 9, 8, 12, 10, 16, 16))
+library(grid)
+library(gridExtra)
+tbl <- tableGrob(dat, rows = NULL, theme = ttheme_default(base_size = 9))
+plt <- ggplot(dat, aes(x = Var1, y = Var2)) +
+  geom_blank() +
+  theme_void()
+#grid.newpage()
+#grid.draw(tbl)
+marrangeGrob(list(tbl, plt), nrow = 1, ncol = 2, top = NULL)
+```
+
+
+### ACP : mécanisme (2)
+
+Représentation graphique 2D :
+
+```{r echo=FALSE, fig.width=9, fig.height=5}
+# One solution would be to put both plots on one graph
+library(tidyverse)
+plt <- ggplot(dat) +
+  #geom_point(mapping = aes(x = Var1, y = Var2, label = Station)) +
+  theme_bw() +
+  theme(plot.background = element_blank()) +
+  geom_text(aes(x = Var1, y = Var2, label = Station), hjust = 0, vjust = 0)
+marrangeGrob(list(tbl, plt), nrow = 1, ncol = 2, top = NULL)
+```
+
+\putat{130}{100}{\includegraphics[width=7mm]{../images/arrow-right.png}}
+
+
+### ACP : mécanisme (3)
+
+\columnsbegin
+\columnhalf
+
+```{r echo=FALSE, fig.width=4.5, fig.height=5}
+plt <- ggplot(dat) +
+  #geom_point(mapping = aes(x = Var1, y = Var2, label = Station)) +
+  theme_bw() +
+  theme(plot.background = element_blank()) +
+  geom_text(aes(x = Var1, y = Var2, label = Station), hjust = 0, vjust = 0) +
+  geom_hline(yintercept = 0, col = "red", lwd = 1) +
+  geom_segment(aes(x =  Var1, y = Var2, xend = Var1, yend = 0),
+    col = "darkgray", linetype = 2)
+plt
+```
+
+\columnhalf
+
+**Réduire en 1D ?**
+
+\alert{Solution 1 :} laisser tomber une variable\  
+(ex. : `Var2`)
+
+```{r echo=FALSE, fig.width=4.5, fig.height=1}
+plt2 <- ggplot(dat) +
+  theme_bw() +
+  theme(plot.background = element_blank()) +
+  geom_text(aes(x = Var1, y = 1, label = Station), hjust = 0, vjust = 0) +
+  theme(axis.title.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank()) +
+  coord_fixed(ratio = 15)
+plt2
+```
+
+\alert{Mauvaise solution :} trop de perte d'information
+
+(7 & 9 trop près, 7<->9 / 9<->8, 1<->2 / 1<->3, ...)
+
+\columnsend
+
+\putat{160}{110}{\includegraphics[width=7mm]{../images/arrow-right.png}}
+
+
+### ACP : mécanisme (4)
+
+\columnsbegin
+\columnhalf
+
+```{r echo=FALSE, fig.width=4.5, fig.height=5}
+dat$Proj <- (dat$Var1 + dat$Var2) / 2
+plt <- ggplot(dat) +
+  #geom_point(mapping = aes(x = Var1, y = Var2, label = Station)) +
+  theme_bw() +
+  theme(plot.background = element_blank()) +
+  geom_text(aes(x = Var1, y = Var2, label = Station), hjust = 0, vjust = 0) +
+  geom_abline(slope = 1, intercept = 0, col = "red", lwd = 1) +
+  geom_segment(aes(x =  Var1, y = Var2, xend = Proj, yend = Proj),
+    col = "darkgray", linetype = 2)
+plt
+```
+
+\columnhalf
+
+**Réduire en 1D ?**
+
+\alert{Solution 2 :} faire un projection sur la droite de "tendance générale"
+
+```{r echo=FALSE, fig.width=4.5, fig.height=1}
+plt2 <- ggplot(dat) +
+  theme_bw() +
+  theme(plot.background = element_blank()) +
+  geom_text(aes(x = Proj, y = 1, label = Station), hjust = 0, vjust = 0) +
+  theme(axis.title.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank()) +
+  coord_fixed(ratio = 15)
+plt2
+```
+
+\alert{Meilleure solution :} perte minimale d'information
+
+(7 & 9 + éloignés, 7<->9 / 9<->8, 1<->2 / 1<->3, ...)
+
+\columnsend
+
+\putat{160}{110}{\includegraphics[width=7mm]{../images/arrow-right.png}}
+
+
+### ACP : mécanisme (5)
+
+- **L’ACP effectue précisément la projection que nous venons d’imaginer.**
+
+- La droite de projection est appelée \alert{composante principale 1}.
+
+- La composante principale 1 présente \alert{la plus grande variabilité possible sur un seul axe}.
+
+- **Remarque :** on peut calculer la \alert{composante 2} comme étant \alert{perpendiculaire à la 1} et présentant la plus grande variabilité non encore capturée par la composante 1.
+
+- Le mécanisme revient à \alert{projeter les points} sur des axes orientés différemment dans le plan.
+
+- Ce mécanisme se \alert{généralise} facilement à 3, puis à N dimensions.
+
+
+### Préparation des données avant ACP
+
+- \alert{Méthode linéaire} (combinaison linéaire...) => il faut linéariser les données. **Ex :** allométrie, transformation des données en `log(x)` ou `log(x+1)`
+
+- \alert{Centrage :} la position dans l’espace importe peu, on s’intéresse à la forme du nuage de points uniquement
+
+**=> positionnement du zéro au centre de gravité.**
+
+- \alert{Réduction :} problème d’échelle entre variables ayant des unités différentes...
+
+**=> écart type ramené à 1 dans toutes les dimensions.**
+
+#### Remarque
+
+La \alert{standardisation} (données centrées et réduites) est effectuée automatiquement dans l’analyse lorsqu’on décide de calculer les \alert{corrélations}. Dans R, on indique `scale = TRUE`.
+
+
+### Démonstration : ACP sur iris
+
+- ACP dans le logiciel.
+
+- Le \alert{graphe des éboulis} indique la part de variance représenté sur chaque composante principale. Il permet de choisir le nombre de composantes à conserver.
+
+- Générer les \alert{cartes} correspondant à l’ACP.
+
+- Interpréter les résultats obtenus.
+
+
+### ACP - Rappel de calcul matriciel
+
+- Multiplication matricielle: $\begin{pmatrix}
+2 & 3\\
+2 & 1
+\end{pmatrix}
+\times
+\begin{pmatrix}
+1\\
+3
+\end{pmatrix}
+=
+\begin{pmatrix}
+11\\
+5
+\end{pmatrix}$ 
+
+Vecteurs propres et valeurs propres (il en existe autant qu’il y a de colonnes dans la matrice de départ) :
+
+$$
+\begin{pmatrix}
+2 & 3\\
+2 & 1
+\end{pmatrix}
+\times
+\begin{pmatrix}
+3\\
+2
+\end{pmatrix}
+=
+\begin{pmatrix}
+12\\
+8
+\end{pmatrix}
+= 4 \times
+\begin{pmatrix}
+3\\
+2
+\end{pmatrix}
+$$
+
+- La constante (4) est une \alert{valeur propre} et la matrice multipliée (à droite) est la matrice des \alert{vecteurs propres}.
+
+
+### ACP - Rotation d'un système d'axes
+
+\columnsbegin
+\columnsmall
+
+$$
+\begin{pmatrix}
+\cos \alpha & \sin \alpha\\
+-\sin \alpha & \cos \alpha
+\end{pmatrix}
+\times
+\begin{pmatrix}
+x\\
+y
+\end{pmatrix}
+=
+\begin{pmatrix}
+x'\\
+y'
+\end{pmatrix}
+$$
+
+Dans le cas particulier de l’ACP, la matrice de transformation qui effectue la rotation voulue pour obtenir les axes principaux est \alert{la matrice rassemblant tous les vecteurs propres calculés après diagonalisation de la matrice de corrélation ou de variance/covariance} (réduction ou non, respectivement).
+
+\columnlarge
+
+```{r, fig.width=4.5, fig.height=4.5, echo=FALSE, message=FALSE, warning=FALSE}
+# Point
+plot(1, 1, xlab = "", ylab = "", xlim = c(-1.7, 1.7), ylim = c(-1.7, 1.7),
+  xaxt = "n", yaxt = "n", bty = "n")
+text(1.15, 1.15, "p")
+
+# Original coordinates
+arrows(-1.5, 0, 1.5, 0, length = 0.15, col = "darkblue")
+arrows(0, -1.5, 0, 1.5, length = 0.15, col = "darkblue")
+text(1.6, 0, "X", col = "darkblue")
+text(0, 1.65, "Y", col = "darkblue")
+segments(0, 1, 1, 1, lty = 3, col = "darkblue")
+segments(1, 0, 1, 1, lty = 3, col = "darkblue")
+text(1, -0.1, "x", col = "darkblue")
+text(-0.1, 1, "y", col = "darkblue")
+
+# Rotated coordinates
+a <- pi/10
+arrows(-1.5 * cos(a), -1.5 * sin(a), 1.5 * cos(a), 1.5 * sin(a), length = 0.15, col = "red")
+arrows(-1.5 * -sin(a), -1.5 * cos(a), 1.5 * -sin(a), 1.5 * cos(a), length = 0.15, col = "red")
+text(1.6 * cos(a), 1.6 * sin(a), "X", col = "red")
+text(1.65 * -sin(a), 1.65 * cos(a), "Y", col = "red")
+segments(1 * sin(a), -1 * cos(a), 1, 1, lty = 3, col = "red")
+segments(-1 * cos(a), 1 * sin(a), 1, 1, lty = 3, col = "red")
+text(1, -0.1, "x")
+text(-0.1, 1, "y")
+```
+
+
+\columnsend
+
+
+### Exemple numérique simple (1)
+
+ACP sur matrice var/covar sans réduction des données (mais calcul très similaire lorsque les données sont réduites).
+
+\alert{Etape 1 :  centrage des données}
+
+$$
+\mathop{\begin{pmatrix}
+2 & 1 \\
+3 & 4 \\
+5 & 0 \\
+7 & 6 \\
+9 & 2
+\end{pmatrix}}_{\text{Tableau brut}}
+\xrightarrow{\phantom{---}\text{centrage}\phantom{---}}
+\mathop{\begin{pmatrix}
+-3.2 & -1.8 \\
+-2.2 & \phantom{-}1.4 \\
+-0.2 & -2.6 \\
+\phantom{-}1.8 & \phantom{-}3.4 \\
+\phantom{-}3.8 & -0.6
+\end{pmatrix}}_{\text{Tableau centré (X)}}
+$$
+
+
+### Exemple numérique simple (2)
+
+\alert{Etape 2 :  calcul de la matrice de variance/covariance}
+
+$$
+\mathop{\begin{pmatrix}
+-3.2 & -1.8 \\
+-2.2 & \phantom{-}1.4 \\
+-0.2 & -2.6 \\
+\phantom{-}1.8 & \phantom{-}3.4 \\
+\phantom{-}3.8 & -0.6
+\end{pmatrix}}_{\text{Tableau centré (X)}}
+\xrightarrow{\phantom{---}\text{var/covar}\phantom{---}}
+\mathop{\begin{pmatrix}
+8.2 & 1.6 \\
+1.6 & 5.8
+\end{pmatrix}}_{\text{Matrice carrée (A)}}
+$$
+
+
+### Exemple numérique simple (3)
+
+\alert{Etape 3 : diagonalisation de la matrice var/covar}
+
+$$
+\mathop{\begin{pmatrix}
+8.2 & 1.6 \\
+1.6 & 5.8
+\end{pmatrix}}_{\text{Matrice carrée (A)}}
+\xrightarrow{\phantom{---}\text{diagonalisation}\phantom{---}}
+\mathop{\begin{pmatrix}
+9 & 0 \\
+0 & 5
+\end{pmatrix}}_{\text{Matrice diagonalisée (B)}}
+$$
+
+- La **trace** des deux matrices A et B (somme des éléments sur la diagonale) est égale à : 8.2 + 5.8 = 14 = 9 + 5.
+- 8.2 est la **part de variance** exprimée sur le premier axe initial (X)
+- 5.8 est la **part de variance** exprimée sur le second axe initial (Y)
+- 14 est la **variance totale** du jeu de données
+- La matrice diagonale B est la solution exprimant **la plus grande part
+de variance possible sur le premier axe de l’ACP** : 9, soit 64,3% de la
+variance totale.
+- Les éléments sur la diagonale sont les valeurs propres $\lambda_i$ !
+
+
+### Exemple numérique simple (4)
+
+\alert{Etape 4 : calcul de la matrice de rotation des axes (en utilisant la propriété des valeurs propres $\text{A}.\text{U} = \text{B}.\text{U}$}
+
+$$
+\mathop{\begin{pmatrix}
+8.2 & 1.6 \\
+1.6 & 5.8
+\end{pmatrix}}_{\text{Matrice A}}
+\times
+\text{U}
+=
+\mathop{\begin{pmatrix}
+9 & 0 \\
+0 & 5
+\end{pmatrix}}_{\text{Matrice B}}
+\times
+\text{U}
+\rightarrow
+\text{U}
+=
+\mathop{\begin{pmatrix}
+\phantom{-}0.894 & -0.447 \\
+\phantom{-}0.447 & \phantom{-}0.894
+\end{pmatrix}}_{\text{Matrice des vecteur propres (U)}}
+$$
+
+- La **matrice des vecteurs propres (U)** effectue la transformation (**rotation des axes**) pour obtenir les **composantes principales**.
+- L'angle de rotation se déduit en considérant que cette matrice contient des sin et cos :
+
+$$
+\begin{pmatrix}
+\phantom{-}0.894 & -0.447 \\
+\phantom{-}0.447 & \phantom{-}0.894
+\end{pmatrix}
+=
+\begin{pmatrix}
+\phantom{-}\cos(-26.6°) & \phantom{-}\sin(-26.6°) \\
+-\sin(-26.6°) & \phantom{-}\cos(-26.6°)
+\end{pmatrix}
+$$
+
+
+### Exemple numérique simple (5)
+
+\alert{Etape 5 : représentation dans l'espace des variables}
+
+- C'est une représentation dans un cercle de la matrice des vecteurs propres U sous forme de vecteurs :
+
+
+### Exemple numérique simple (6)
+
+\alert{Etape 6 : représentation dans l'espace des individus}
+
+- On recalcule les coordonnées des individus dans le système d'axe après rotation.
+
+$$
+\mathop{\begin{pmatrix}
+-3.2 & -1.8 \\
+-2.2 & \phantom{-}1.4 \\
+-0.2 & -2.6 \\
+\phantom{-}1.8 & \phantom{-}3.4 \\
+\phantom{-}3.8 & -0.6
+\end{pmatrix}}_{\text{Tableau centré (X)}}
+\times
+\mathop{\begin{pmatrix}
+\phantom{-}0.894 & -0.447 \\
+\phantom{-}0.447 & \phantom{-}0.894
+\end{pmatrix}}_{\text{Matrice des vecteur propres (U)}}
+\xrightarrow{\phantom{---}\text{X}.\text{U} = \text{X'}\phantom{---}}
+\mathop{\begin{pmatrix}
+-3.58 & \phantom{-}0.00 \\
+-1.34 & \phantom{-}2.24 \\
+-1.34 & -2.24 \\
+\phantom{-}3.13 & \phantom{-}2.24 \\
+\phantom{-}3.13 & -2.24
+\end{pmatrix}}_{\text{Tableau avec rotation (X')}}
+$$
+
+- Ensuite, on représente ces individus à l'aide d'un graphique en nuage de points.
+
+
+### ACP - application à 3 dimensions
+
+- Les \alert{calculs restent valables} avec 3 variables. Les matrices sont seulement d’autant plus grandes.
+
+- \alert{Présentation visuelle :} graphe 3D de 3 des variables d’iris.
+
+- Représentation des variables = espace des variables. Approche
+intuitive en manipulant le graphe 3D.
+
+- \alert{Biplot : superposition des deux espaces.} Superposition simple des deux = **biplot de distances**. Mise à l’échelle respective (**variables :** lambda^scale^, **observations :** lambda^1–scale^)
+= biplot des corrélations.
+
+- Tout ceci se généralise également à n > 3 dimensions.
+
+#### Exemple
+
+Traitement complet de iris (4 variables)

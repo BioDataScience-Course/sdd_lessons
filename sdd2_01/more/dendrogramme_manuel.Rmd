@@ -1,0 +1,132 @@
+---
+title: "Exemple de dendrogramme manuel"
+author: "Jonathan Richir et Philippe Grosjean"
+date: "27 juillet 2017"
+output: html_document
+---
+
+```{r, include=FALSE}
+library(stats)
+library(car)
+```
+
+&nbsp;
+
+## 1. Calcul d'un dendrogramme
+
+Voici une matrice de distances euclidiennes fictive entre 6 stations:
+
+```{r, echo=FALSE}
+Question1 <- data.frame(Espece1 = c(0, 9, 2, 1, 1, 7),
+                        Espece2 = c(8, 0, 2, 5, 8, 1),
+                        Espece3 = c(1, 5, 1, 5, 1, 0),
+                        Espece4 = c(2, 10, 3, 1, 7, 5)) 
+Station <- c("A", "B", "C", "D", "E", "F")
+rownames(Question1) <- Station 
+dst0 <- round(dist(Question1, method = "euclidian"), 2)
+dst <- as.matrix(dst0)
+dst[!lower.tri(dst)] <- ""
+dst <- dst[-1, -6]
+knitr::kable(dst)
+```
+
+**Question:** 
+
+Effectuez manuellement une classification hiérarchique par liens complets et tracez précisément le dendrogramme correspondant. Détaillez vos calculs et indiquez clairement les niveaux de regroupement sur votre graphique (indication des valeurs le long de l'axe des ordonnées).
+
+_Réponse:_
+
+Ici, on attend le détail du calcul du dendrogramme, comme vu au cours ...
+
+**Etape 1:** A_E = groupe I à la distance 5.1.
+
+* Distance entre B et I = B_A = 15
+* Distance entre C et I = C_E = 7.28
+* Distance entre D et I = D_E = 7.81
+* Distance entre F et I = F_A = 10.39
+
+Matrice de distance recalculée:
+
+```{r}
+dst1 <- data.frame(I = c(15, 7.28, 7.81, 10.39),
+                   B = c("", 10.86, 13.04, 7.42),
+                   C = c("", "", 5.48, 5.57),
+                   D = c("", "", "", 9.64))
+dst1 <- as.matrix(dst1)
+rownames(dst1) <- c("B", "C", "D", "F")
+knitr::kable(dst1)
+```
+
+**Etape 2:** C_D = groupe II à la distance 5.48.
+
+* Distance entre I et II = I_D = 7.81
+* Distance entre B et II = B_D = 13.04
+* Distance entre F et II = F_D = 9.64
+
+Matrice de distance recalculée:
+
+```{r}
+dst2 <- data.frame(I = c(15, 7.81, 10.39),
+                   B = c("", 13.04, 7.42),
+                   II = c("", "", 9.64))
+dst2 <- as.matrix(dst2)
+rownames(dst2) <- c("B", "II", "F")
+knitr::kable(dst2)
+```
+
+**Etape 3:** B_F = groupe III à la distance 7.42
+
+* Distance entre I et III = I_B = 15
+* Distance entre II et III = II_B = 13.04
+
+Matrice de distance recalculée:
+
+```{r}
+dst3 <- data.frame(I = c(15, 7.81),
+                   III = c("", 13.04))
+dst3 <- as.matrix(dst3)
+rownames(dst3) <- c("III", "II")
+knitr::kable(dst3)
+```
+
+**Etape 4:** I_II = groupe IV à la distance 7.81
+
+* Distance entre III et IV = III_I = 15
+
+Matrice de distance recalculée:
+
+```{r}
+dst4 <- data.frame(III = c(15))
+dst4 <- as.matrix(dst4)
+rownames(dst4) <- c("IV")
+knitr::kable(dst4)
+```
+
+**Etape 5:** III - IV = groupe V à la distance 15
+
+**fini!**
+
+Voici le dendrogramme résultant:
+
+```{r, echo=FALSE}
+hclust(dst0, method = "complete") -> complete
+plot(complete, hang = -1)
+#check line ci-dessous
+#abline(h = c(5.1, 5.48, 7.42, 7.81, 15), col = c("red", "red", "red", "red", "red"), )
+abline(h = 7.6, col = "red")
+```
+
+**Sous-question:** 
+
+Nous désirons discriminer 3 groupes de stations dans ce dendrogramme. Lesquels sont-ils?
+
+Tracez la droite horizontale qui coupe le dendrogramme en 3 groupes + indiquez quels sont ces groupes.
+
+_Réponse:_
+
+Les groupes sont:
+
+1. Station B, F
+2. Stations A, E
+3. Station C, D
+

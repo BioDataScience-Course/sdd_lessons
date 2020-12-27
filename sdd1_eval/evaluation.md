@@ -1,0 +1,114 @@
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+Evaluation des rapports de SDD1
+===============================
+
+Engels Guyliann & Grosjean Philippe
+-----------------------------------
+
+Consignes générales
+-------------------
+
+La date de remise des rapports pour ce cours est le **19 décembre 2018 à 23h59**. Les travaux seront téléchargés depuis GitHub. Assurez-vous donc que l'ensemble de vos rapports soit complet et à jour sur vos dépôts distants.
+
+Après la reprise de l'ensemble des travaux, deux travaux seront corrigés parmi les travaux suivants :
+
+-   sdd1\_biometry (travail de groupe)
+-   sdd1\_coral\_growth (travail individuel)
+-   sdd1\_litterature (travail de groupe)
+-   sdd1\_metagenomics (travail de groupe)
+-   sdd1\_urchin\_bio (travail individuel)
+-   sdd1\_zooplankton (travail de groupe)
+
+Chaque projet doit être :
+
+-   organisé : comprendre des dossiers cohérents (R, analysis, data, ...)
+    -   Un script R doit se trouver dans le dossier R
+    -   Un fichier Rmd doit se trouver dans le dossier analysis
+    -   ...
+-   portable : chaque instruction (ligne de code) doit être exécutable depuis une autre machine virtuelle.
+
+Consignes pratiques par projet
+------------------------------
+
+### sdd1\_biometry
+
+Le projet portant sur la biomérie doit contenir un ensemble de fichiers liés à l'analyse de la biométrie humaine (données obtenues via vos mesures personnelles).
+
+-   Un R script pour préparer vos données provenant du Web et les sauvegarder en local.
+-   Un fichier Rmd décrivant votre analyse comprennant
+    -   Introduction : courte explication sur la thématique étudiée
+    -   Matériel et méthodes : explication sur la méthode d'acquisition des données et les outils d'analyses de ces données
+    -   But : formulation de la question de recherche que vous vous posez sur la thématique
+    -   Résultats :
+        -   partie descriptive des données (en lien avec votre question de recherche)
+        -   partie d'analyse des données (utilisation de un ou plusieurs tests statistiques adaptés par rapport à votre question de recherche)
+    -   Discussion & conclusions : Qu'en concluez-vous du point de vue biologique ? Quelles sont les perspectives de ce travail ? Que conseillez-vous pour aller plus loin ?
+-   Un fichier md structuré de maximum 1 page dans le dossier analysis comparant le workflow ‘classique’ en biologie (Microsoft Excel et Word) comparé à R et R Markdown.
+
+### sdd1\_coral\_growth
+
+Le projet portant sur la croissance des coraux doit contenir :
+
+-   Un script R pour préparer vos données provenant du Web et les sauvegarder en local.
+-   Un fichier Rmd décrivant votre analyse comprennant :
+    -   Introduction : explication sur la thématique étudiée (succincte)
+    -   Matériel et méthodes : (succinct)
+    -   But : formulation de la question de recherche que vous vous posez sur la thématique (succincte)
+    -   Résultats :
+        -   partie descriptive des données en tenant compte du remaniement des données demandées dans ce projet (en lien avec votre question de recherche).
+
+### sdd1\_litterature
+
+Le projet portant sur la littérature doit contenir :
+
+-   Un fichier md ou Rmd de maximum 1 page expliquant la manière dont les articles scientifiques reportent les analyses statistiques réalisées dans les différentes sections d'un article scientifique.
+
+### sdd1-metagenomics
+
+le projet portant sur la métagénomique doit contenir :
+
+-   Un fichier Rmd décrivant les données mises à votre disposition :
+    -   Introduction : explication sur la thématique étudiée (succincte)
+    -   Matériel et méthodes : (succinct)
+    -   But : formulation de la question de recherche que vous vous posez sur la thématique (succincte)
+    -   Résultats :
+        -   partie descriptive des données en tenant compte du remaniement des données et des challenges posés dans ce projets (en lien avec votre question de recherche)
+
+### sdd1\_urchin\_bio
+
+Le projet portant sur la biométrie des oursins doit contenir un ensemble de fichiers tels que décrits ci-dessous.
+
+-   Un fichier Rmd décrivant votre analyse et comprenant :
+    -   Introduction : explication sur la thématique étudiée
+    -   Matériel et méthodes : explication de la méthode d'acquisition des données et des outils d'analyses de ces données
+    -   But : formulation de la question de recherche que vous vous posez sur la thématique
+    -   Résultats :
+        -   partie descriptive des données (en lien avec votre question de recherche)
+        -   partie d'analyse des données (utilisation de un ou plusieurs tests statistiques adaptés par rapport à votre question de recherche)
+    -   Discussion & conclusions : interprétation biologique des résultats. Perspectives (que conseillez-vous de faire ensuite) ?
+
+### sdd1\_zooplankton
+
+Le projet portant sur l'analyse du zooplancton doit donc contenir :
+
+-   Un fichier Rmd décrivant votre analyse et comprennant :
+    -   Introduction : présentation succincte de la thématique étudiée
+    -   Matériel et méthodes : explication de la méthode d'acquisition des données et les outils d'analyse de ces données
+    -   But : formulation de la question de recherche que vous vous posez sur la thématique
+    -   Résultats :
+        -   partie descriptive des données (en lien avec votre question de recherche)
+        -   partie d'analyse des données (utilisation de un ou plusieurs tests statistiques adaptés par rapport à votre question de recherche) sur les copépodes
+    -   Discussion & conclusions : interprétation biologique de vos résultats, conclusions et perspectives (que feriez-vous ensuite) ?
+
+Une analyse descriptive sur l'ensemble des données suivie d'une analyse plus précise sur les copépodes constitués des groupes "Poecilostomatoid", "Calanoid", "Cyclopoid" et "Harpacticoid" réunis. Vous pouvez structurer votre analyse en deux fichiers si vous préférez.
+
+Remarques générales
+-------------------
+
+### Choix des graphiques, des tableaux et des test statistiques
+
+L'ensemble des tests statistiques et des graphiques vus dans ce cours de SDD1 ne doivent pas se retrouver systématiquement dans chaque rapport ! Vous devez avoir un regard critique sur vos analyses afin de proposer les graphiques, les tableaux et les analyses les plus pertinents en fonction des questions posées et du type de données analysées.
+
+### Le blog
+
+Le blog est évalué avec l'ensemble des learnr.

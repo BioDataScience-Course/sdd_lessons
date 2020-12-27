@@ -1,0 +1,40 @@
+---
+title: 'Science des données I : module 3'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Gestion de conflit sur github
+author: Guyliann Engels & Philippe Grosjean
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+
+### Gestion de conflit
+
+Afin d'appréhender les conflits sur github, employer le dépot sdd1_zooplankton.
+
+Sauvegardez vos dernières modifications et réalisez un `commit` suivi d'un `push` sur le réseau
+
+Réalisez ensuite un `pull` sur pour chaque membre du groupe. 
+
+Vous devez donc avoir obtenu un dépot en local similaire entre vous 
+
+### Création du conflit 
+
+Dans votre rapport d'analyse, éditez le titre de votre rapport sur chacune de vos versions.
+
+Employez chacun un titre différent dans votre rapport parmi les deux propositions suivantes.
+
+1. "Description des données du jeu de données zooplankton"
+2. "Description des données du jeu de données sur l'analyse d'image du zooplancton provenant de Tuléar (Madagascar)"
+
+Réalisez un `commit` suivi d'un `push` 
+
+
+### Gestion du conflit 

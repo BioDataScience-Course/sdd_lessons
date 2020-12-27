@@ -1,0 +1,53 @@
+---
+title: 'Science des données II : tp1'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Découverte de la SciViews Box 2018
+author: Guyliann Engels & Philippe Grosjean
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+1. Installation de la machine virtuelle
+
+2. Prise en main de la machine virtuelle
+
+3. Rappels des fondamentaux de R Studio
+
+
+### SciViews Box 2018 & ses outils 
+
+Cette année, vous êtes amené à travailler avec la nouvelle SciViews Box 2018. 
+
+- <http://biodatascience-course.sciviews.org/sdd-umons/decouverte-des-outils.html>
+
+ - <http://biodatascience-course.sciviews.org/sdd-umons/svbox.html>
+
+ 
+### De la SciViews Box 2017 à la SciViews Box 2018
+
+- Installez la SciViews Box 2018.
+
+- Transférez vos données provenant de la SciViews Box 2017 vers la SciViews Box 2018. 
+
+- Supprimer la SciViews Box 2017.
+
+
+### RStudio
+
+Cette année, vous êtes amené à travailler à nouveau avec
+
+- [RStudio](http://biodatascience-course.sciviews.org/sdd-umons/rs.html)
+
+- R Notebook
+
+- Projet dans RStudio
+
+- Chemin relatif 

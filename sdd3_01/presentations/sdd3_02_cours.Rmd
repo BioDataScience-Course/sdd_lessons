@@ -1,0 +1,65 @@
+---
+title: 'Science des données III : cours 2'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Séries spatio-temporelles (partie 1)
+author: Philippe Grosjean & Guyliann Engels
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+# Séries spatio-temporelles
+
+## Que sont les séries spatio-temporelles ?
+
+### Objectifs du cours
+
+\putat{200}{-30}{\includegraphics[width=50mm]{../../template/resources.pdf}}
+
+ - Découvrir ce qu'est une série spatio-temporelle
+ 
+ - Comprendre l'autocorrelation
+ 
+ - Savoir décrire et représenter graphiquement une série spatio-temporelle
+
+
+### Qu'est-ce qu'une série spatio-temporelle ?
+
+> - Données **dépendantes** les unes des autres le long d’un axe linéaire (temps ou radiale dans l’espace, ou une combinaison des deux)
+
+\vfill
+
+> - A cause de la dépendance des observations, les analyses statistiques classiques sont inutilisables
+
+\vfill
+
+> - La caractérisation de la dépendance est un aspect clé ici
+
+
+### Séries régulières dans R
+
+- Une **série régulière** est constituée d’observations équidistante le long du temps Les algorithmes de calcul sont facilités (exemple : décalage de la série suivie de
+calcul de la corrélation).
+
+- Object `ts` et `mts` dans R, avec attribut `tsp`.
+
+- Graphique (*les points sont connectés pour représenter la continuité dans le temps*), utilisation de `cycle()` et de `split()`
+
+- **Statistiques glissantes**
+
+
+### Autocorrélation
+
+- Principe et calcul de l’autocorrélation
+
+- **Fonction d’autocorrélation**
+
+- Graphique
+
+- Interprétation

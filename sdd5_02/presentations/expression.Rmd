@@ -1,0 +1,81 @@
+---
+title: "Les expressions régulières"
+output: html_notebook
+---
+
+Les expressions régulières permettent de traiter facilement du texte. On utilise des chaines de caractères dans : 
+
+- ADN/ARN
+- facteur-niveaux
+- analyse de texte
+- analyse de date 
+- coordonnées
+- nom de fichier
+- ...
+
+
+Au sein d'un chaine de caractères, on peut rechercher le mot "chien" 
+
+- qui débute par chien : "^chien"
+- qui termine par chien : "chien$"
+- qui cherche chien et le mot chat  : "(chien/chat)"
+- qui se répète plusieurs fois : 
+      + ? de 0 à 1 fois
+      + + 1 ou plusieurs
+      + * 0 ou plusieurs
+      + -{2,6}répétitions comprise entre 2 et 6 fois
+- ., n'importe quels caractères
+- .*, n'importe quels caractère après
+- [0-9] un chiffre de 0 à 9 on peut également utiliser \\ d (double backslah du à R)
+- [a-z]
+– [A-Z]
+- [^0-9] je veux tous les caractères sauf un chiffre
+Si je veux rechercher un point je dois écrire \\. 
+
+Si l'on veut remplacer parmi une chaine de caractères chien par chat,
+
+- sub("chien", "chat", txt) permet de faire le premier remplacement de chien par chat
+gsub("chien", "chat", txt) permet de remplacer tous les chiens par chats
+
+partons de l'exemple suivant 
+
+```{r}
+txt <- "manip_xx_version2_YYYY-MM-JJ"
+manip <- sub("^([a-zA-Z\\-]+)_.+_version([0-9]+).*$", "\\1-\\2",txt)
+```
+
+Utilisons un site dédié aux expressions régulières : regexone.com
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+Avec l'addins rexexplain_addin()
+
+```{r}
+txt <-"Thisis an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed."
+pattern <- "\\*([a-zA-Z ]+)\\*" # perl=TRUE
+replacement <- "**\\1**"
+(txt2 <- gsub(pattern, replacement, txt))
+(txt3 <- gsub(pattern, replacement, txt2))
+```
+
+```{r}
+strsplit(txt,"*", fixed = TRUE)
+strsplit(txt2,"*", fixed = TRUE)
+```
+
+En partant de txt2, on va tenter de remplacer les une seule * par 2.
+
+```{r}
+(txt4 <- gsub("\\*", "**", gsub("(\\*\\*)", "§§", txt2)))
+gsub("§§", "**", txt4)
+```
+

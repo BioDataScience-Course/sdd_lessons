@@ -1,0 +1,68 @@
+---
+title: 'Science des données II : tp5'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Anova à 2 facteurs 
+author: Guyliann Engels & Philippe Grosjean
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+lang: fr
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+SciViews::R
+```
+
+### La croissance des dents de Cochons d'Inde
+
+L'étude porte sur la croissance de des dents de 60 cochons d'Inde. L’acide ascorbique (ou vitamine C) est indispensable à la formation et au maintien du collagène dans la dentine, la racine, la gencive, ... Il décidnet donc d'étudier la différence entre un apport uniquement de vitamine C ou un apport en jus d'orange
+
+\columnsbegin
+\columnlarge
+
+```{r}
+tooth <- read("ToothGrowth", package = "datasets", lang ="fr")
+knitr::kable(tooth[ c(1, 11, 21, 31, 41, 51) , ], col.names = c("Longueur", "Supplémentation", "Dose"),align = 'c', caption = "Quelques lignes du tableau de données ToothGrowth")
+```
+
+\columnsmall
+
+Variables : 
+
+- **len** : longueur des dents
+- **supp** : variable facteur à 2 niveaux 
+    + OJ : jus d'orange
+    + VC : vitamine C
+- **dose** : variable facteur à 3 niveaux
+    + 0.5 : dose faible
+    + 1 : dose moyenne
+    + 2 : dose élevée
+
+\columnsend
+
+### Croissance des choux
+
+Le jeu de données portant sur la croissance des choix se nomme `cabbages dans le package `MASS`
+
+\columnsbegin
+\columnlarge
+
+```{r}
+cabbages <- read("cabbages", package = "MASS", lang = "fr")
+
+knitr::kable(cabbages[ c(1, 11, 21, 31, 41, 51) , ], col.names = c("Culture", "Date", "Masse", "Taux de Vitamine C"),align = 'c', caption = "Quelques lignes du tableau de données cabbages")
+
+```
+
+\columnsmall
+
+Variables : 
+
+- **Cult** : 2 cultures étudiées 
+- **Date** : Différentes dates de plantation investiguées
+- **HeadWt** : Mesure de la masse en kilos
+- **VitC** : Mesure du taux d’acide ascorbique 
+
+\columnsend

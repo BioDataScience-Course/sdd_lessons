@@ -1,0 +1,47 @@
+---
+title: 'Science des données I : module 6'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Echantillonnage
+author: Philippe Grosjean & Guyliann Engels 
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+
+# Démarche
+
+## Pourquoi faut-il analyser des données ?
+
+### Dualité monde réel - monde numérique
+
+#### Exemple 1
+
+Expérience de Pasteur sur le vaccination de moutons contre la maladie du charbon
+
+----
+
+```{r, echo=FALSE}
+charbon <- tribble(
+  ~Réponse, ~Vaccinés, ~Témoins,
+   "malade",      0,     24,
+   "sain",       24,      0,
+   "% survie", "100%",   "0%")
+knitr::kable(charbon, align = "c")
+```
+
+- Ici, la réponse est claire => pas besoin des statistiques ! 
+
+- **C'est rarement le cas en biologie !**
+
+
+### Dualité monde réel - monde numérique
+
+...
+

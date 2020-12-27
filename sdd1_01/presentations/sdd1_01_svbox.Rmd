@@ -1,0 +1,59 @@
+---
+title: 'Science des données I : module 1'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Découverte de la SciViews Box 2018
+author: Guyliann Engels & Philippe Grosjean
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+
+### Découverte dde la SciViews Box 2018
+
+![](../images/desktop.png)
+
+___
+
+- Trouvez une application permettant d'écrire des équations mathématiques. Ensuite, entrez-y l'équation chimique suivante :
+
+$$2H_2 + O_2 \xrightarrow{n,m}2H_2O$$
+
+___
+
+- Trouvez une application permettant de visualiser et récupérer des caractères spéciaux.
+
+___
+
+- Trouvez une application permettant de visualiser l'occupation de l'espace sur le disque.
+    + Quel dossier occupe le plus de place sur le disque `box2018a` ? 
+    + Au sein de ce dossier, quel sous-dossier occupe le plus de place ?
+    + Au sein de ce second dossier, quel sous-dossier occupe le plus de place ? 
+    
+___
+
+- Employez l'application `Mousepad` pour écrire la phrase suivante :
+
+> **Je découvre les applications présentes dans la SciViews Box 2018.**
+
+- Sauvegardez votre fichier dans le dossier `~/Documents` avec le nom suivant `test.txt`
+
+___
+
+- Recherchez votre fichier `test.txt` dans votre ordinateur hôte (Windows, MacOS, ...) et notez la position du fichier.
+
+___
+
+- Déplacez le fichier `test.txt` sur le bureau de la machine virtuelle.
+
+- Déplacez à nouveau ce fichier, cette fois-ci dans le sous-dossier `projects` du dossier `shared`. Qu'observez vous ? 
+
+___
+
+- Recherchez à nouveau votre fichier `test.txt` à partir de votre ordinateur hôte et notez la position du fichier.

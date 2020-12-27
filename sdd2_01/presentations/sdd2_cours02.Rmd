@@ -1,0 +1,70 @@
+---
+title: 'Science des données II : cours 2'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Classification hiérarchique
+author: Philippe Grosjean & Guyliann Engels
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{http://biodatascience-course.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+
+# Classification hiérarchique
+
+### Classification hiérarchique
+
+- En anglais : \alert{hierarchical clustering}
+
+- Permet de faire des \alert{groupes} à partir d’une matrice de
+(dis)similarité.
+
+- En taxonomie : **espèces ou sous-espèces** et **arbres phylogénétiques**.
+
+- En écologie, on a plus souvent des continuums, des gradients, mais cette méthode peut servir à détecter des **changements plus brutaux dans les écosystèmes**.
+
+- Analyses souvent **complémentaires** aux méthodes d’ordination (présentation des individus sur des « cartes » que nous verrons plus loin)
+
+
+### Classification hiérarchique - Principe
+
+- Il existe des méthodes divisives, et des méthodes **agglomératives**. Nous traiterons de ces dernières.
+
+- Il existe plusieurs moyens d’agglomérer les données :
+    * \alert{Liens simples} (single linkages) : plus proches voisins,
+    * \alert{Liens complets} (complete linkages) : plus lointains voisins,
+    * \alert{Liens moyens} (group-average) : liens entre moyennes,
+    * (liens \alert{médians}, \alert{centroïdes}, ..., mais attention aux _inversions_)
+    * \alert{Ward} : ANOVA à chaque niveau => minimise la variance intergroupes. Calcul complexe (non vu au cours). Tend à faire des groupes plus homogènes en nombres d’individus.
+
+- Résultats **très différents** selon le choix de la méthode de liaison (simple => chaînages, complets => petits groupes bien séparés).
+
+
+### Le dendrogramme
+
+- Graphique associé à la classification hiérarchique. En anglais :
+\alert{dendrogram}. **[Illustration sur un exemple simple : marphy pour les stations 1, 20, 35, 50, 65]**.
+
+- **Arbre** représentant les rassemblements successifs des groupes à des niveaux déterminés.
+
+- Le dendrogramme est comme un **mobile** : la position des individus par rapport aux autres sur l’axe horizontal n’est pas figée.
+
+- On peut décider de **couper à un certain niveau** (ligne horizontale) => détermine des _groupes distincts_.
+
+- On peut aussi **combiner classification hiérarchique et ordination** en présentant différentes couleurs pour les groupes dans l’ordination.
+
+
+### Classification hiérarchiue - Exemple
+
+- Classification des **iris**. Retrouve-t-on les différentes espèces ?
+
+- Matrice de **distances euclidienne** sur données standardisées.
+
+- Classification hiérarchique à **liens complets**.
+
+- **Comparaison** des groupes obtenus avec les espèces.
