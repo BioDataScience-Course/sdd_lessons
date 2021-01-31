@@ -14,15 +14,15 @@ relatif à la biométrie humaine.
 
 # Tâches
 
-Chaque binome doit compléter son rapport (`biometry2019.Rmd`) relatif à
+Chaque binôme doit compléter son rapport (`biometry2019.Rmd`) relatif à
 la biométrie humaine :
 
   - Calculer au moins 3 indices différents (voir bibliographie)
 
   - Etudier les données (graphiques, tableaux résumés, analyses
-    utilisant le terst Chi<sup>2</sup>) en regard de ces indices
+    utilisant le test Chi<sup>2</sup>) en regard de ces indices
 
-  - Repérer et consigner les avantages et inconvéniants de chaque indice
+  - Repérer et consigner les avantages et inconvénients de chaque indice
     que vous utilisez. Mettez en évidence les différences entre vos
     résultats et les informations que vous trouvez dans les différents
     articles. Toutes les informations que vous consignez vous seront
