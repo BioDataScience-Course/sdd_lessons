@@ -1,0 +1,136 @@
+---
+title: 'Science des données I : module 7'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Approche pédagogique du cours de science des données
+author: Philippe Grosjean & Guyliann Engels 
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{https://wp.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+### De quoi allons-nous discuter ?
+
+Suite à l'analyse des avis pédagogiques de l'an dernier, nous nous rendons compte que l'approche en classe inversée n'est pas toujours bien comprise
+
+\vfill
+
+- Explication de notre approche pédagogique
+
+- Debriefing de vos résultats Q1
+
+- Retour et propositions de votre part
+
+### C'est quoi la classe inversée ?
+
+**Vidéo expliquant ce qu'est la classe inversée\ :** https://www.youtube.com/watch?v=uLKmLDrGyjw
+
+\vfill
+
+Notre approche\ : **pédagogie active en classes inversées** (vous apprenez *d'abord* à la maison, nous appliquons *ensuite* en présentiel).
+
+### C'est quoi la pédagogie active ?
+
+> I **hear** and I forget.
+
+> I **see** and I remember.
+
+> I **do** and I understand.
+
+> — Confucius
+
+\vfill
+
+**Vidéo expliquant la pédagogie active\ :** https://www.youtube.com/watch?v=ygjSle9Pkg4
+
+### Et moi, je fais quoi dant tout cela ?
+
+Vous êtes **acteur de votre apprentissage**, les enseignants sont des **facilitateurs** (plus en retrait par rapport à l'approche classique)
+
+Plus de séparation entre **cours théorique** et **exercices**\ ; le professeur et le ou les assistants se répartissent le travail de manière plus uniforme
+
+
+### ECTS
+
+**European Credits Transfer System**, créé en 1988 de manière standardisée par la Commission Européenne comme correspondant à une **charge de travail totale** pour l'étudiant de **25 à 30 heures de travail**.
+
+![](figures/ects.jpg)
+
+### Optimisation du temps de travail
+
+\center
+
+**Comment voulez-vous passer vos 25-30h/ECTS\ ?**
+
+### Optimisation du temps de travail à l'Université
+
+**Cours classique *ex cathedra* + séance d'exercices**
+
+![](figures/organisation1.png)
+
+- Le réel apprentissage se déroule **après** les séances de cours et d'exercices, lorsque vous "potassez" la matière
+
+- Un examen est nécessaire pour vérifier que vous avez bien assimilé la matière
+
+### Optimisation du temps de travail... comparé à la classe inversée
+
+**Cours classique *ex cathedra* + séance d'exercices**
+
+![](figures/organisation1.png)
+
+**Approche en classe inversée**
+
+![](figures/organisation2.png)
+
+- *Aucune* séance en présentiel ne se fait sans préparation
+
+- Chaque heure de travail est pleinement consacrée à l'apprentissage et/ou à la compréhension
+
+- Vous êtes actifs **tout le temps** et vous gérez votre apprentissage à votre rythme
+
+- La matière est *comprise* et *assimilée* à la fin du processus\ : **pas besoin d'un examen à la fin** pour le vérifier. Votre activité certifie de votre progression.
+
+### Le professeur est un coach et un facilitateur
+
+- Le professeur (et l'assistant) ne mettent **pas** leur savoir en avant. C'est vous qui construisez votre propre savoir.
+
+- Les enseignants **ne répondent pas _directement_ à vos questions**\ : ils vous mettent sur une piste et vous font réfléchir pour trouver la réponse *par vous-même*
+
+- Les enseignants se mettent en retrait, mais sont *disponibles* pour vous aider (Discord, forum Moodle, mail, etc.)
+
+**Tout cela est normal en classe inversé, mais déroutant\ : le professeur n'apparaît plus comme l'omniscient qui transmet de manière unilatérale son savoir\ !**
+
+Que pensez-vous de tout ceci\ ?
+
+### Debriefing des notes du Q1
+
+- 9 étudiants sur 10 ont fait à peu près tous les exercices
+
+- Ceux qui ont fait tous les exercices ont une note bonne à excellent
+
+- Travail important, matière complexe et dense... mais **vous avez très bien travaillé dans l'ensemble**
+
+### Erreurs récurrentes à améliorer
+
+- Répartissez mieux votre travail\ : les applications dans les **assignations GitHub** sont les plus importantes
+
+- La **compréhension** et l'**interprétation** sont fondamentales et doivent encore être affinées
+
+- Entre-aidez-vous, nous l'encourageons, mais **citez vos sources**. Si un résultat provient d'un collègue, vous l'indiquez\ ! Vous pouvez citer comme ceci [Untel, comm. pers.]
+
+- L'étudiant qui aide reçoit des points. Cela qui sait intégrer judiceusement les bonnes idées et qui cite ses sources reçoit aussi des points\ !
+
+- Par contre, le plagiat doit être fortement sanctionné (pas fait en Q1, mais nous serons plus sévères en Q2)
+
+### Vous avez la parole !
+
+- Exprimez-vous, suggérez\ : **votre avis compte énormément...**
+
+\vfill
+
+- Indiquez **deux points positifs et deux points négatifs** du cours et de la matière dans le formulaire
