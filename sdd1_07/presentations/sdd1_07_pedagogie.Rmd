@@ -16,9 +16,11 @@ SciViews::R
 
 ### De quoi allons-nous discuter ?
 
-Suite à l'analyse des avis pédagogiques de l'an dernier, nous nous rendons compte que l'approche en classe inversée n'est pas toujours bien comprise
+Analyse des **avis pédagogiques** de l'an dernier => approche en classe inversée pas toujours bien comprise.
 
-\vfill
+\center
+
+![](figures/puzzled_student.jpg){width=270}
 
 - Explication de notre approche pédagogique
 
@@ -28,13 +30,14 @@ Suite à l'analyse des avis pédagogiques de l'an dernier, nous nous rendons com
 
 ### C'est quoi la classe inversée ?
 
-**Vidéo expliquant ce qu'est la classe inversée\ :** https://www.youtube.com/watch?v=uLKmLDrGyjw
+![](figures/classe inversee.png)
+[(lien vers la vidéo)](https://www.youtube.com/watch?v=uLKmLDrGyjw)
+
+### Classe inversée et pédagogie active
+
+Notre approche\ : **pédagogie active en classe inversée** (vous apprenez *d'abord* à la maison, nous appliquons *ensuite* en présentiel -quand on n'est pas confinés-).
 
 \vfill
-
-Notre approche\ : **pédagogie active en classes inversées** (vous apprenez *d'abord* à la maison, nous appliquons *ensuite* en présentiel).
-
-### C'est quoi la pédagogie active ?
 
 > I **hear** and I forget.
 
@@ -44,20 +47,30 @@ Notre approche\ : **pédagogie active en classes inversées** (vous apprenez *d'
 
 > — Confucius
 
-\vfill
+### C'est quoi la pédagogie active ?
 
-**Vidéo expliquant la pédagogie active\ :** https://www.youtube.com/watch?v=ygjSle9Pkg4
+![](figures/pédagogies actives.png)
+[(lien vers la vidéo)](https://www.youtube.com/watch?v=ygjSle9Pkg4)
 
-### Et moi, je fais quoi dant tout cela ?
+### Et moi, je fais quoi dans tout cela ?
 
-Vous êtes **acteur de votre apprentissage**, les enseignants sont des **facilitateurs** (plus en retrait par rapport à l'approche classique)
+*Lisez ceci... et réagissez\ !*
 
-Plus de séparation entre **cours théorique** et **exercices**\ ; le professeur et le ou les assistants se répartissent le travail de manière plus uniforme
+\center
 
+![](figures/lisez.jpg){width=200}
+
+- Vous êtes **acteur de votre apprentissage**, les enseignants sont des **facilitateurs** (plus en retrait par rapport à l'approche classique).
+
+- Plus de séparation entre **cours théorique** et **exercices**\ ; vos échanges avec le professeur et le ou les assistants sont similaires.
+
+- Les **élèves-assistants** sont coachés tout autant que vous pour vous faciliter l'apprentissage de manière active.
+
+- **Vous** posez les questions, et vos enseignants vous répondent **individuellement**.
 
 ### ECTS
 
-**European Credits Transfer System**, créé en 1988 de manière standardisée par la Commission Européenne comme correspondant à une **charge de travail totale** pour l'étudiant de **25 à 30 heures de travail**.
+**European Credits Transfer System**, créé en 1988 de manière standardisée par la Commission Européenne comme correspondant à une **charge de travail totale** pour l'étudiant de **25 à 30 heures**.
 
 ![](figures/ects.jpg)
 
@@ -67,19 +80,23 @@ Plus de séparation entre **cours théorique** et **exercices**\ ; le professeur
 
 **Comment voulez-vous passer vos 25-30h/ECTS\ ?**
 
+\vfill
+
+Note\ : 12 modules pour 6 ECTS dans notre cours, donc 1/2 ECTS par module.
+
 ### Optimisation du temps de travail à l'Université
 
-**Cours classique *ex cathedra* + séance d'exercices**
+**Cours classique *ex cathedra* + séances d'exercices**
 
 ![](figures/organisation1.png)
 
-- Le réel apprentissage se déroule **après** les séances de cours et d'exercices, lorsque vous "potassez" la matière
+- Le réel apprentissage se déroule **après** les séances de cours et d'exercices
 
-- Un examen est nécessaire pour vérifier que vous avez bien assimilé la matière
+- Un examen est nécessaire pour vérifier vos acquis
 
 ### Optimisation du temps de travail... comparé à la classe inversée
 
-**Cours classique *ex cathedra* + séance d'exercices**
+**Cours classique *ex cathedra* + séances d'exercices**
 
 ![](figures/organisation1.png)
 
@@ -87,49 +104,87 @@ Plus de séparation entre **cours théorique** et **exercices**\ ; le professeur
 
 ![](figures/organisation2.png)
 
-- *Aucune* séance en présentiel ne se fait sans préparation
+- *Aucune* séance en présentiel sans préparation
 
-- Chaque heure de travail est pleinement consacrée à l'apprentissage et/ou à la compréhension
+- Chaque heure de travail pleinement consacrée à l'apprentissage
 
-- Vous êtes actifs **tout le temps** et vous gérez votre apprentissage à votre rythme
+- Vous êtes actifs **tout le temps** et vous gérez **à votre rythme**
 
-- La matière est *comprise* et *assimilée* à la fin du processus\ : **pas besoin d'un examen à la fin** pour le vérifier. Votre activité certifie de votre progression.
+- **Pas besoin d'un examen à la fin**\ : votre activité atteste votre progression
 
 ### Le professeur est un coach et un facilitateur
 
-- Le professeur (et l'assistant) ne mettent **pas** leur savoir en avant. C'est vous qui construisez votre propre savoir.
+*Mais que font les enseignants alors\ ? Lisez et réagissez.*
 
-- Les enseignants **ne répondent pas _directement_ à vos questions**\ : ils vous mettent sur une piste et vous font réfléchir pour trouver la réponse *par vous-même*
+\center
 
-- Les enseignants se mettent en retrait, mais sont *disponibles* pour vous aider (Discord, forum Moodle, mail, etc.)
+![](figures/teacher.jpg){width=200}
 
-**Tout cela est normal en classe inversé, mais déroutant\ : le professeur n'apparaît plus comme l'omniscient qui transmet de manière unilatérale son savoir\ !**
+- Le professeur (et l'assistant) ne mettent **pas** leur savoir en avant. C'est vous qui construisez votre *propre* savoir.
 
-Que pensez-vous de tout ceci\ ?
+- Ils **ne répondent pas _directement_ à vos questions**\ : ils vous mettent sur une piste et vous font réfléchir pour trouver la réponse *par vous-même*.
+
+- Ils se mettent en retrait, mais sont **disponibles pour vous aider** (Discord, mail, etc.)
+
+**C'est déroutant car le professeur n'apparaît plus comme l'omniscient qui transmet de manière unilatérale son savoir aux étudiants\ !**
+
+### Objectifs pour l'acquisition de compétences
+
+![](figures/bloom1.png)
+Taxonomie de Bloom modifiée par Krathwohl & Anderson.
+
+### Objectifs pour l'acquisition de compétences
+
+![](figures/bloom2.png)
+Taxonomie de Bloom modifiée par Krathwohl & Anderson.
 
 ### Debriefing des notes du Q1
 
-- 9 étudiants sur 10 ont fait à peu près tous les exercices
+**Bravo, vous avez bien travaillé\ !**
 
-- Ceux qui ont fait tous les exercices ont une note bonne à excellent
+\center
 
-- Travail important, matière complexe et dense... mais **vous avez très bien travaillé dans l'ensemble**
+![](figures/winner.jpg){width=250}
 
-### Erreurs récurrentes à améliorer
+- 9 étudiants sur 10 ont fait quasiment tous les exercices
 
-- Répartissez mieux votre travail\ : les applications dans les **assignations GitHub** sont les plus importantes
+- Ceux qui ont fait tous les exercices ont une note bonne à excellente
 
-- La **compréhension** et l'**interprétation** sont fondamentales et doivent encore être affinées
+- Travail important pour y arriver... on en est conscients\ !
 
-- Entre-aidez-vous, nous l'encourageons, mais **citez vos sources**. Si un résultat provient d'un collègue, vous l'indiquez\ ! Vous pouvez citer comme ceci [Untel, comm. pers.]
+### Erreurs récurrentes : entre-aide et citation des sources
 
-- L'étudiant qui aide reçoit des points. Cela qui sait intégrer judicieusement les bonnes idées et qui cite ses sources reçoit aussi des points\ !
+Entre-aidez-vous, nous l'encourageons, mais **citez vos sources**.
 
-- Par contre, le plagiat doit être fortement sanctionné (pas fait en Q1, mais nous serons plus sévères en Q2)
+\center
 
-### Répartitions du travail
+![](figures/entraide.jpg){width=250}
 
-GitHub propose des outils pour visualiser l'activité d'un dépôt (Insight -> Contributors)
+**Cas 1\ :**
+
+- **Josua** découvre une analyse intéressante.
+- Il l'explique à **Roxane**, la même analyse se retrouve dans deux rapports.
+- **Roxane** cite ses sources **[Josua, comm. pers.]**.
+- Josua a des points pour avoir aidé Roxane.
+- Roxane a des points pour avoir correctement cité ses sources.
+
+### Erreurs récurrentes : entre-aide et citation des sources
+
+Entre-aidez-vous, nous l'encourageons, mais **citez vos sources**.
+
+\center
+
+![](figures/stop.jpg){width=250}
+
+**Cas 2\ :**
+
+- **Peter** partage son code R avec **Déborah**, la même analyse se retrouve dans deux rapports.
+- Personne ne cite ses sources.
+- Cela apparaît comme du **plagiat** (ne sera plus pardonné au Q2\ !)
+
+### Erreurs récurrentes : répartitions du travail
+
+GitHub propose des outils pour visualiser l'activité d'un dépôt (`Insight` -> `Contributors`).
 
 ![ [Contribution au projet BioDataScience1](https://github.com/BioDataScience-Course/BioDataScience1/graphs/contributors) ](figures/github_activite.png)
 
@@ -137,13 +192,15 @@ L'activité globale peut être **divisée par collaborateur**.
 
 ___
 
-L'activité de chaque membre est **disponible**
+L'activité de chaque membre est **disponible**.
 
 ![](figures/github_collaborators.png){width='80%'}
 
-> Vérifiez dans vos projets que votre activité est prise en compte.
+> Vérifiez dans vos projets que votre activité est bien prise en compte.
 
-### Compréhension et interprétation : connaissance générale
+### Erreurs récurrentes : ne pas vérifier ce qu'on fait
+
+Partant des données suivantes\ :
 
 ```{r}
 pop2020 <- tibble(
@@ -156,7 +213,7 @@ knitr::kable(pop2020, col.names = c("Groupe d'age", "Nombre de personnes"),
 
 ___
 
-Quel est le graphique le plus pertinent ?  
+Quel est le graphique correct\ ? Pourquoi l'autre est-il faux\ ?
 
 ```{r, echo=FALSE}
 a <- chart(data = pop2020, ~ factor(0) %fill=% age) +
@@ -175,7 +232,7 @@ combine_charts(list(a,b), common.legend = TRUE)
 ```
 
 
-### Compréhension et interprétation : les axes
+### Erreurs récurrentes : axes des graphiques
 
 ```{r, echo=FALSE}
 pop <- tibble(
@@ -210,7 +267,7 @@ chart(pop, density_error2 ~ year) +
 ```
 
 
-### Compréhension et interprétation : les graphiques mutliples
+### Erreurs récurrentes : graphiques multiples inopportuns
 
 Variation de l'indice de masse corporelle en fonction du genre et du groupe d'âges.
 
@@ -222,8 +279,8 @@ biometry %>.%
          group_age = factor(case_when(
            age < 25 ~ "jeune",
            age >= 25 & age < 60 ~ "adulte",
-          age >= 60 ~ "seniors"),
-          levels = c("jeune", "adulte", "seniors"))) -> biometry
+          age >= 60 ~ "senior"),
+          levels = c("jeune", "adulte", "senior"))) -> biometry
 
 biometry <- labelise(biometry, 
   label = list(bmi = "IMC", group_age = "Groupes d'age"),
@@ -254,16 +311,16 @@ combine_charts(list(a,b,c,d))
 
 ___ 
 
-- Ce graphique propose la même information que le graphique multiple précédent.
+Ce graphique présente la même information que le graphique multiple précédent.
 
 ```{r, echo=FALSE, fig.width= 6, fig.height= 3.5}
 chart(biometry, bmi ~ gender %fill=% group_age) +
   geom_boxplot()
 ```
 
-> Un graphique multiple ne doit être utilisé que si les graphiques associés sont indissociables. 
+> Un graphique multiple ne doit pas être utilisé sur des données indissociables.
 
-### Compréhension et interprétation : les valeurs manquantes.
+### Erreurs récurrentes : valeurs manquantes
 
 ```{r}
 drop <- tibble(
@@ -274,7 +331,7 @@ drop <- tibble(
 knitr::kable(drop[1:3,])
 ```
 
-Elimination naïve des données manquantes.
+Élimination naïve des données manquantes.
 
 ```{r}
 drop1 <- drop_na(drop)
@@ -285,7 +342,7 @@ ___
 \columnsbegin
 \columnhalf
 
-Utilisation du tableau drop
+Utilisation du tableau `drop`
 
 ```{r}
 chart(drop, x ~ y) +
@@ -293,7 +350,7 @@ chart(drop, x ~ y) +
 ```
 \columnhalf
 
-Utilisation du tableau drop1
+Utilisation du tableau `drop1`
 
 ```{r}
 chart(drop1, x ~ y) +
@@ -302,12 +359,14 @@ chart(drop1, x ~ y) +
 
 \columnsend
 
-> Soyez très vigilant avec les NA. Les variables x et Y ne contenaient pas de valeurs manquantes.
+> Soyez très vigilant avec les NA. Les variables `x` et `y` ne contenaient pas de valeurs manquantes au départ ici\ !
 
 ### Vous avez la parole !
 
-- Exprimez-vous, suggérez\ : **votre avis compte énormément...**
+\center
 
-\vfill
+![](figures/expression.jpg){width=250}
+
+- Exprimez-vous, suggérez\ : **votre avis compte énormément** ...
 
 - Indiquez **deux points positifs et deux points négatifs** du cours et de la matière dans le formulaire
