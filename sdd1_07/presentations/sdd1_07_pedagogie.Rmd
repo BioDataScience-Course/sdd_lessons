@@ -146,7 +146,7 @@ Taxonomie de Bloom modifiée par Krathwohl & Anderson.
 
 ![](figures/winner.jpg){width=250}
 
-- 9 étudiants sur 10 ont fait quasiment tous les exercices
+- 9 étudiants sur 10 ont fait (quasiment) tous les exercices
 
 - Ceux qui ont fait tous les exercices ont une note bonne à excellente
 
