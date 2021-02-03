@@ -54,7 +54,7 @@ Notre approche\ : **pédagogie active en classe inversée** (vous apprenez *d'ab
 
 ### Et moi, je fais quoi dans tout cela ?
 
-*Lisez ceci... et réagissez\ !*
+*Lisez ceci... et réagissez (question Wooclap juste après)\ !*
 
 \center
 
@@ -66,7 +66,7 @@ Notre approche\ : **pédagogie active en classe inversée** (vous apprenez *d'ab
 
 - Les **élèves-assistants** sont coachés tout autant que vous pour vous faciliter l'apprentissage de manière active.
 
-- **Vous** posez les questions, et vos enseignants vous répondent **individuellement**.
+- **Vous posez les questions**, et vos enseignants vous répondent **individuellement**.
 
 ### ECTS
 
@@ -110,11 +110,11 @@ Note\ : 12 modules pour 6 ECTS dans notre cours, donc 1/2 ECTS par module.
 
 - Vous êtes actifs **tout le temps** et vous gérez **à votre rythme**
 
-- **Pas besoin d'un examen à la fin**\ : votre activité atteste votre progression
+- **Pas besoin d'un examen à la fin**\ : travail évalué dans sa globalité
 
 ### Le professeur est un coach et un facilitateur
 
-*Mais que font les enseignants alors\ ? Lisez et réagissez.*
+*Mais que font les enseignants alors\ ? Lisez et réagissez (question Wooclap après).*
 
 \center
 
@@ -137,6 +137,39 @@ Taxonomie de Bloom modifiée par Krathwohl & Anderson.
 
 ![](figures/bloom2.png)
 Taxonomie de Bloom modifiée par Krathwohl & Anderson.
+
+### Objectifs pour l'acquisition de compétences
+
+![](figures/bloom3.png)
+Taxonomie de Bloom modifiée par Krathwohl & Anderson.
+
+### Objectifs pour l'acquisition de compétences
+
+![](figures/bloom4.png)
+Taxonomie de Bloom modifiée par Krathwohl & Anderson.
+
+### Objectifs pour l'acquisition de compétences
+
+![](figures/bloom5.png)
+Taxonomie de Bloom modifiée par Krathwohl & Anderson.
+
+### Objectifs pour l'acquisition de compétences
+
+![](figures/bloom6.png)
+Taxonomie de Bloom modifiée par Krathwohl & Anderson.
+
+### Objectifs pour l'acquisition de compétences
+
+![](figures/bloom7.png)
+Taxonomie de Bloom modifiée par Krathwohl & Anderson.
+
+### Vous avez la parole !
+
+\center
+
+![](figures/expression.jpg){width=250}
+
+- Répondez aux questions (pages Wooclap suivantes), levez la main pour prendre la parole. La discussion est ouverte.
 
 ### Debriefing des notes du Q1
 
@@ -230,7 +263,6 @@ b <- chart(data = pop2020, population ~ factor(0) %fill=% age) +
 
 combine_charts(list(a,b), common.legend = TRUE)
 ```
-
 
 ### Erreurs récurrentes : axes des graphiques
 
@@ -361,22 +393,23 @@ chart(drop1, x ~ y) +
 
 > Soyez très vigilant avec les NA. Les variables `x` et `y` ne contenaient pas de valeurs manquantes au départ ici\ !
 
-### Erreurs récurrentes : Les interprétations simplistes
+### Erreurs récurrentes : interprétation simpliste
 
-L'interprétation d'un graphique est importante. Elle met en avant votre compréhension de la situation. Une bonne interprétation est généralement liée à un graphique de qualité. 
+L'interprétation d'un graphique est importante. Elle met en avant votre compréhension de la situation.
 
 ```{r, fig.width= 6, fig.height= 2.5, echo=FALSE}
 urchins <- read("urchin_bio", package = "data.io", lang = "FR")
 chart(urchins, height ~ weight %col=% origin) +
   geom_point()
 ```
-Description/interprétation simpliste : Les oursins proviennent du milieu naturel et d'élevage.
+
+**Description/interprétation simpliste : "les oursins proviennent du milieu naturel et d'élevage."**
 
 ### Attentes au Q2
 
-- On ne réalise plus toutes les erreurs citées précédemment.
+- **Corriger et ne plus commettre** toutes ces erreurs.
 
-- La **réalisation technique** d'un graphique ou d'une analyse ne sera plus suffisante (Taxonomie de Bloom révisée: Appliquer) => Vous devez à présent être capable d' **analyser** vos résultats.
+- La **réalisation technique** d'un graphique ou d'une analyse ne sera plus suffisante (taxonomie de Bloom\ : **appliquer**). Vous allez maintenant vous focaliser sur votre capacité à **analyser** vos résultats.
 
 \center
 
@@ -388,6 +421,4 @@ Description/interprétation simpliste : Les oursins proviennent du milieu nature
 
 ![](figures/expression.jpg){width=250}
 
-- Exprimez-vous, suggérez\ : **votre avis compte énormément** ...
-
-- Indiquez **deux points positifs et deux points négatifs** du cours et de la matière dans le formulaire
+- Répondez aux questions (page Wooclap suivante), levez la main pour prendre la parole.
