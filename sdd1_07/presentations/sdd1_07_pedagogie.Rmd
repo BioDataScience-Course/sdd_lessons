@@ -361,6 +361,27 @@ chart(drop1, x ~ y) +
 
 > Soyez très vigilant avec les NA. Les variables `x` et `y` ne contenaient pas de valeurs manquantes au départ ici\ !
 
+### Erreurs récurrentes : Les interprétations simplistes
+
+L'interprétation d'un graphique est importante. Elle met en avant votre compréhension de la situation. Une bonne interprétation est généralement liée à un graphique de qualité. 
+
+```{r, fig.width= 6, fig.height= 2.5, echo=FALSE}
+urchins <- read("urchin_bio", package = "data.io", lang = "FR")
+chart(urchins, height ~ weight %col=% origin) +
+  geom_point()
+```
+Description/interprétation simpliste : Les oursins proviennent du milieu naturel et d'élevage.
+
+### Attentes au Q2
+
+- On ne réalise plus toutes les erreurs citées précédemment.
+
+- La **réalisation technique** d'un graphique ou d'une analyse ne sera plus suffisante (Taxonomie de Bloom révisée: Appliquer) => Vous devez à présent être capable d' **analyser** vos résultats.
+
+\center
+
+![](figures/analysis.jpg){width='60%'}
+
 ### Vous avez la parole !
 
 \center
