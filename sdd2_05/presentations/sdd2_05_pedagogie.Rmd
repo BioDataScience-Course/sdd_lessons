@@ -231,127 +231,6 @@ L'activité de chaque membre est **disponible**.
 
 > Vérifiez dans vos projets que votre activité est bien prise en compte.
 
-### Erreurs récurrentes : ne pas vérifier ce qu'on fait
-
-Partant des données suivantes\ :
-
-```{r}
-pop2020 <- tibble(
-  age = factor(c("Moins de 18 ans", "18 à 64 ans", "65 ans et plus"),
-               levels = c("Moins de 18 ans", "18 à 64 ans", "65 ans et plus")),
-  population = c(2312040, 6976123, 2204478))
-knitr::kable(pop2020, col.names = c("Groupe d'age", "Nombre de personnes"), 
-             caption = "Population au premier septembre 2020 en Belgique")
-```
-
-___
-
-Quel est le graphique correct\ ? Pourquoi l'autre est-il faux\ ?
-
-```{r, echo=FALSE}
-a <- chart(data = pop2020, ~ factor(0) %fill=% age) +
-  geom_bar(width = 1) + 
-  coord_polar("y", start = 0) +
-  theme_void() +
-  scale_fill_viridis_d()
-
-b <- chart(data = pop2020, population ~ factor(0) %fill=% age) +
-  geom_col(width = 1) + 
-  coord_polar("y") +
-  theme_void() +
-  scale_fill_viridis_d()
-
-combine_charts(list(a,b), common.legend = TRUE)
-```
-
-### Erreurs récurrentes : axes des graphiques
-
-```{r, echo=FALSE}
-pop <- tibble(
-  year = 2010:2020,
-  density = c(10839905, 10951266, 11035948, 11099554, 11150516, 
-              11209044, 11267910, 11322088, 11376070, 11431406,
-              11492641),
-  density_error1 = c(1083990.5, 1095126.6, 1103594.8, 11099554, 11150516, 
-              11209044, 11267910, 11322088, 11376070, 11431406,
-              11492641),
-  density_error2 = density*100)
-
-```
-
-```{r, fig.width= 6, fig.height= 2.5}
-
-chart(pop, density ~ year) +
-  geom_point() +
-  geom_line() +
-  labs(y = "Population en Belgique", x= "Année")
-```
-
-___
-
-Repérez l'erreur sur le graphique ci-dessous.
-
-```{r, echo=FALSE, fig.width= 6, fig.height= 3}
-chart(pop, density_error2 ~ year) +
-  geom_point() +
-  geom_line() +
-  labs(y = "Population en Belgique", x= "Année")
-```
-
-
-### Erreurs récurrentes : graphiques multiples inopportuns
-
-Variation de l'indice de masse corporelle en fonction du genre et du groupe d'âges.
-
-```{r, echo = FALSE, warning=FALSE, message=FALSE, , fig.width= 6, fig.height= 3}
-biometry <- read("biometry", package = "BioDataScience", lang = "FR")
-biometry %>.%
-  mutate(., 
-         bmi = weight/(height/100)^2,
-         group_age = factor(case_when(
-           age < 25 ~ "jeune",
-           age >= 25 & age < 60 ~ "adulte",
-          age >= 60 ~ "senior"),
-          levels = c("jeune", "adulte", "senior"))) -> biometry
-
-biometry <- labelise(biometry, 
-  label = list(bmi = "IMC", group_age = "Groupes d'age"),
-  units = list(bmi = "", group_age = "")
-  )
-
-a <- chart(biometry, bmi ~ gender) +
-  geom_boxplot()
-
-filter(biometry, group_age == "jeune") %>.%
-  chart(biometry, bmi ~ gender) +
-  geom_boxplot() +
-  scale_y_continuous(limits = c(0,50)) -> b
-
-
-filter(biometry, group_age == "adulte") %>.%
-  chart(biometry, bmi ~ gender) +
-  geom_boxplot() +
-  scale_y_continuous(limits = c(13,41)) -> c
-
-filter(biometry, group_age == "seniors") %>.%
-  chart(biometry, bmi ~ gender) +
-  geom_boxplot() -> d
-combine_charts(list(a,b,c,d))
-```
-
-> Ce graphique multiple n'est pas interprétable.
-
-___ 
-
-Ce graphique présente la même information que le graphique multiple précédent.
-
-```{r, echo=FALSE, fig.width= 6, fig.height= 3.5}
-chart(biometry, bmi ~ gender %fill=% group_age) +
-  geom_boxplot()
-```
-
-> Un graphique multiple ne doit pas être utilisé sur des données indissociables.
-
 ### Erreurs récurrentes : valeurs manquantes
 
 ```{r}
@@ -393,6 +272,28 @@ chart(drop1, x ~ y) +
 
 > Soyez très vigilant avec les NA. Les variables `x` et `y` ne contenaient pas de valeurs manquantes au départ ici\ !
 
+
+### Erreurs récurrentes : copier-coller
+
+Il ne faut pas reprendre le code du cours sans le comprendre et sans l'adapter.
+
+```{r, echo=FALSE, fig.height= 3}
+micmen_data <- tibble(
+  conc = seq(0, 10, by = 0.1),
+  v = SSmicmen(conc, Vm = 5, K = 2)
+)
+chart(data = micmen_data, v ~ conc) +
+  geom_line() +
+  xlab("Concentration [mol/L]") +
+  ylab("Vitesse [mol/min]") +
+  geom_vline(xintercept = 0, col = "darkgray") +
+  geom_hline(yintercept = c(0.5, 1), col = "gray", linetype = "dashed") +
+  geom_vline(xintercept = 0.4, col = "gray", linetype = "dashed") +
+  annotate("text", label = "Vm", x = -0.4, y = 1) +
+  annotate("text", label = "Vm/2", x = -0.5, y = 0.5) +
+  annotate("text", label = "K", x = 0.5, y = 0.03)
+```
+
 ### Erreurs récurrentes : interprétation simpliste
 
 L'interprétation d'un graphique est importante. Elle met en avant votre compréhension de la situation.
@@ -405,11 +306,52 @@ chart(urchins, height ~ weight %col=% origin) +
 
 **Description/interprétation simpliste : "les oursins proviennent du milieu naturel et d'élevage."**
 
+### Erreurs récurrentes : loterie des variables
+
+\center
+**La loterie de la modélisation VS La modélisation réfléchie**
+
+\vfill
+
+\columnsbegin
+\columnhalf
+
+\center
+
+**Sélection aléatoire des variables :**
+
+\vfill
+
+![](figures/lotto.png){width='40%'}
+
+\columnhalf
+
+\center
+
+**Logique souhaitée :**
+
+\vfill
+
+- On visualise les données
+
+- On décide des variables à modéliser
+
+- On réalise le premier modèle 
+
+- On optimise le modèle
+
+- On valide le modèle (analyse des résidus,...)
+
+- On paramétrise l'équation du modèle
+
+\columnsend
+
+
 ### Attentes au Q2
 
-- **Corriger et ne plus commettre** toutes ces erreurs.
+- **Posez vos questions** pour vous assurer de bien comprendre la matière
 
-- La **réalisation technique** d'un graphique ou d'une analyse ne sera plus suffisante (taxonomie de Bloom\ : **appliquer**). Vous allez maintenant vous focaliser sur votre capacité à **analyser** vos résultats.
+- La **réalisation technique d'une analyse** ne sera plus suffisante. Vous allez maintenant devoir appliquer vos analyses avec votre oeil du biologiste. 
 
 \center
 
