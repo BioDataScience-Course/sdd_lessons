@@ -1,0 +1,47 @@
+---
+title: 'Science des données II : module 5'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Analyse des données
+author: Philippe Grosjean & Guyliann Engels 
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{https://wp.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+### Reprise...
+
+C'est la reprise... au programme, l'AA consacrée à l'**analyse des données**.
+
+\center
+
+![](figures/start.jpg){width='60%'}
+
+- Informations sur les mises-à-jour logicielles et matérielles
+
+- Réinstallation de l'application **BioDataScience** indispensable\ !
+
+- Annotations dans le cours
+
+- Déroulement de la semaine
+
+### Analyse des données
+
+L'analyse des données concerne l'exploration de gros jeux de données multivariés. L'information est trop volumineuse pour être digérée telle quelle. L'analyse des données vise à **synthétiser** cette information et en **extraire les caractéristiques intéressantes.**
+
+- Les techniques de **regroupement** ou de **classification** remplacent un grand nombre d'individus par des groupes ou classes,
+
+- Les techniques d'**ordination** et de **réduction des dimensions** synthétisent les variables en un plus petit nombre et représentent les données sur des graphiques (cartes) plus lisibles.
+
+- Ces techniques sont **exploratoires**. Elles sont utilisées très tôt dans l'analyse, juste après, voir pendant la phase de description des données.
+
+- Elles sont généralement suivies par de l'inférence (SDD I, partie 2) ou de la modélisation (SDD II, partie 1)
+
+Cette semaine\ : module 5, classification non supervisée avec la CAH
+
+
