@@ -1,0 +1,160 @@
+---
+title: 'Science des données I : module 78'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Reprise et calculs probabilités - quantiles
+author: Philippe Grosjean & Guyliann Engels 
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{https://wp.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+### L'inférence
+
+\center
+
+![](figures/inference.png){width='70%'}
+
+### Le test d'hypothèse
+
+Le test d’hypothèse est l’outil le plus simple pour répondre à une question via l’inférence.
+
+Il faut déterminer 
+
+- $H_0$, l'hypothèse nulle =>  l'affirmation à réfuter
+- $H_1$, l'hypothèse alternative
+
+### Distribution du chi^2^
+
+Cette distribution admet un paramètre qui sont les degrés de liberté (valeur de 3 pour la distribution ci-dessous)
+
+```{r, echo = FALSE, fig.height= 2.5}
+.df <- 3 # Degree of freedom .df
+.col <- 1; .add <- FALSE # Plot parameters
+.x <- seq(0, qchisq(0.999, df = .df), l = 1000)  # Quantiles
+.d <- function(x) dchisq(x, df = .df)           # Distribution function
+.q <- function(p) qchisq(p, df = .df)           # Quantile for lower-tail prob
+.label <- bquote(paste(chi^2,(.(.df))))          # Curve parameters
+#curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
+#  add = .add, xlab = "Quantiles", ylab = "Probability density") # Curve
+#abline(h = 0, col = "gray") # Baseline
+
+q_ref <- qchisq(0.05, df = 3, lower.tail = FALSE)
+.x2 <- .x
+.x2[.x2 < q_ref] <- NA
+
+chart(data = tibble(Quantiles = .x, Prob = .d(.x)), Prob ~ Quantiles) +
+  geom_hline(yintercept = 0, col = "gray") +
+  geom_ribbon(aes(x = .x, ymin = 0, ymax = .d(.x)), fill = "gray", alpha = 0.2) +
+  #geom_ribbon(aes(x = .x2, ymin = 0, ymax = .d(.x2)), fill = "red", alpha = 0.2) +
+  geom_line() +
+  xlab("Quantile") +
+  ylab("Densité de probabilité") +
+  ylim(0, 0.3) 
+```
+
+### Zone de rejet
+
+Cette zone de rejet est déterminée par une probabilité nommé le seuil $\alpha$ déterminé avant de réaliser un test d'hypothèse.
+
+Nous fixons le seuil alpha à 5% 
+
+```{r}
+qchisq(0.05, 3, lower.tail = FALSE)
+```
+
+
+___
+
+
+```{r, echo = FALSE, , fig.height= 3.5}
+.df <- 3 # Degree of freedom .df
+.col <- 1; .add <- FALSE # Plot parameters
+.x <- seq(0, qchisq(0.999, df = .df), l = 1000)  # Quantiles
+.d <- function(x) dchisq(x, df = .df)           # Distribution function
+.q <- function(p) qchisq(p, df = .df)           # Quantile for lower-tail prob
+.label <- bquote(paste(chi^2,(.(.df))))          # Curve parameters
+#curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
+#  add = .add, xlab = "Quantiles", ylab = "Probability density") # Curve
+#abline(h = 0, col = "gray") # Baseline
+
+q_ref <- qchisq(0.05, df = 3, lower.tail = FALSE)
+.x2 <- .x
+.x2[.x2 < q_ref] <- NA
+
+chart(data = tibble(Quantiles = .x, Prob = .d(.x)), Prob ~ Quantiles) +
+  geom_hline(yintercept = 0, col = "gray") +
+  geom_ribbon(aes(x = .x, ymin = 0, ymax = .d(.x)), fill = "gray", alpha = 0.2) +
+  geom_ribbon(aes(x = .x2, ymin = 0, ymax = .d(.x2)), fill = "red", alpha = 0.2) +
+  geom_line() +
+  xlab("Quantile") +
+  ylab("Densité de probabilité") +
+  ylim(0, 0.3) +
+  #geom_vline(xintercept = 5.61, col = "red") +
+  annotate("text", x = 3, y = 0.04, label = "Zone de non rejet", col = "black") +
+  annotate("text", x = 11.5, y = 0.05, label = "plain(Zone ~ de ~ rejet) == plain(seuil) ~ alpha", parse = TRUE, col = "red") +
+  annotate("segment", x = 8.8, y = 0.045, xend = 8.2, yend = 0.01,
+    size = 0.5, col = "red", arrow = arrow(length = unit(0.2, "cm")))  #+
+  # annotate("text", x = 6.5, y = 0.25, label = "chi[obs]^2 == 5.61", parse = TRUE,
+  #   col = "red", fontface = "bold.italic") +
+  # annotate("text", x = 7.4, y = 0.2, label = "(aire à droite = valeur P)",
+  #   col = "red", fontface = "bold.italic")
+```
+
+### Situation fictive
+
+Notre hypothèse de départ est  
+
+$H_0$ : il est équiprobable d'être du groupe A, B, C ou D
+
+Nos observations  :
+
+```{r}
+(tab1 <- as.table(c(A = 5, B = 10, C = 20, D = 10)))
+```
+
+```{r}
+chisq.test(tab1, p = c(1/4, 1/4, 1/4, 1/4))
+```
+
+
+___
+
+```{r, echo = FALSE, , fig.height= 3.5}
+.df <- 3 # Degree of freedom .df
+.col <- 1; .add <- FALSE # Plot parameters
+.x <- seq(0, qchisq(0.999, df = .df), l = 1000)  # Quantiles
+.d <- function(x) dchisq(x, df = .df)           # Distribution function
+.q <- function(p) qchisq(p, df = .df)           # Quantile for lower-tail prob
+.label <- bquote(paste(chi^2,(.(.df))))          # Curve parameters
+#curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
+#  add = .add, xlab = "Quantiles", ylab = "Probability density") # Curve
+#abline(h = 0, col = "gray") # Baseline
+
+q_ref <- qchisq(0.05, df = 3, lower.tail = FALSE)
+.x2 <- .x
+.x2[.x2 < q_ref] <- NA
+
+chart(data = tibble(Quantiles = .x, Prob = .d(.x)), Prob ~ Quantiles) +
+  geom_hline(yintercept = 0, col = "gray") +
+  geom_ribbon(aes(x = .x, ymin = 0, ymax = .d(.x)), fill = "gray", alpha = 0.2) +
+  geom_ribbon(aes(x = .x2, ymin = 0, ymax = .d(.x2)), fill = "red", alpha = 0.2) +
+  geom_line() +
+  xlab("Quantile") +
+  ylab("Densité de probabilité") +
+  ylim(0, 0.3) +
+  geom_vline(xintercept = 10.556, col = "red") +
+  annotate("text", x = 3, y = 0.04, label = "Zone de non rejet", col = "black") +
+  annotate("text", x = 8.5, y = 0.07, label = "plain(Zone ~ de ~ rejet)", parse = TRUE, col = "red") +
+  annotate("segment", x = 8.8, y = 0.045, xend = 8.2, yend = 0.01,
+    size = 0.5, col = "red", arrow = arrow(length = unit(0.2, "cm")))  +
+   annotate("text", x = 13.5, y = 0.15, label = "chi[obs]^2 == 10.556", parse = TRUE,
+     col = "red", fontface = "bold.italic") 
+```
+
+
