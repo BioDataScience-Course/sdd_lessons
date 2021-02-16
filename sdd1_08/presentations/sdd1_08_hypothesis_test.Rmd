@@ -115,13 +115,12 @@ $H_0$ : il est équiprobable d'être du groupe A, B, C ou D
 Nos observations  :
 
 ```{r}
-(tab1 <- as.table(c(A = 5, B = 10, C = 20, D = 10)))
+(tab <- as.table(c(A = 5, B = 10, C = 20, D = 10)))
 ```
 
 ```{r}
-chisq.test(tab1, p = c(1/4, 1/4, 1/4, 1/4))
+chisq.test(tab, p = c(1/4, 1/4, 1/4, 1/4))
 ```
-
 
 ___
 
@@ -157,4 +156,10 @@ chart(data = tibble(Quantiles = .x, Prob = .d(.x)), Prob ~ Quantiles) +
      col = "red", fontface = "bold.italic") 
 ```
 
+### Les conditions d'application
 
+Assurez vous que les conditions d'application soient respectées
+
+- échantillonnage aléatoire et observations indépendantes,
+- aucun effectif théorique (ou probabilité) sous $H_0$ nul,
+- aucun effectif observé, si possible, inférieur à 5 (ceci n'est **pas** une condition stricte\ ; le test sera "approximativement" bon dans le cas contraire).
