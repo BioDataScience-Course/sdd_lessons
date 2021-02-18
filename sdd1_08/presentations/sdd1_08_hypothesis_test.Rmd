@@ -122,7 +122,7 @@ La **valeur _p_** correspond à l'aire (à droite ici) plus extrême que la vale
 
 ___
 
-```{r, echo = FALSE, , fig.height= 3.5}
+```{r, echo = FALSE, fig.height= 3.5}
 .df <- 3 # Degree of freedom .df
 .col <- 1; .add <- FALSE # Plot parameters
 .x <- seq(0, qchisq(0.999, df = .df), l = 1000)  # Quantiles
