@@ -1,7 +1,7 @@
 ---
 title: 'Science des données I : module 8'
 subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
-  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Test d'hypothèse du Chi^2^
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Formulation et interprétation d'un test Chi^2^
 author: Philippe Grosjean & Guyliann Engels 
 institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{https://wp.sciviews.org} \break \url{sdd@sciviews.org}
 date: ''
@@ -14,18 +14,19 @@ knitr::opts_chunk$set(echo = TRUE)
 SciViews::R
 ```
 
-### Le test de chi^2
+### Le test de Chi^2^
 
-Cette présentation se divisera en 2 situations 
+Nous traiterons de deux situations concrètes très différentes pour illustrer l'utilisation du test d'hypothèse du $\chi^2$ en insistant particulièrement sur trois points\ :
 
-- Le test chi^2^ univarié : les albinos 
-- Le test chi^2^ d'indépendance : Les maladies cardiovasculaires
+1. **Formulation des hypothèses** à partir de la question biologique posée
 
-### Test chi^2^ univarié 
+2. Interprétation valeur $\chi^2_{obs}$ *versus* valeur *P*
 
-Des souris hétérozygotes pour l'allèle concernant le couleur du pelages sont croisée. Toutes les souris croisées sont donc colorées. Les chercheurs émettent l'hypothèse que ce croisement respectent les lois de Mendel.
+3. Façon d'**exprimer le résultat** du test en français
 
-D'après les de Mendel, nous devrions obtenir 3/4 de souris colorées et 1/4 de souris albinos.
+### Cas 1 : albinisme 
+
+Des souris hétérozygotes Cc pour l'allèle concernant le couleur du pelages sont croisée. D'après les lois de Mendel, et en faisant l'hypothèse que le gène de l'albinisme est **récessif**, nous devrions obtenir 3/4 de souriceaux colorés et 1/4 de souriceaux albinos. **Ces observations issues de nos connaissances *a priori* du phénomène biologique étudié** nous guident dans la formulation des hypothèses du test.
 
 |   | C  | c  |
 |---|----|----|
@@ -34,7 +35,7 @@ D'après les de Mendel, nous devrions obtenir 3/4 de souris colorées et 1/4 de 
 
 ___
 
-Les scientifiques dénombrent les jeunes souris et obtiennent 34 souris colorées et 7 souris blanches.
+Les scientifiques dénombrent les souriceaux obtenus et comptent 34 animaux colorés et 7 blancs au total.
 
 \center 
 
@@ -42,13 +43,13 @@ Les scientifiques dénombrent les jeunes souris et obtiennent 34 souris colorée
 
 ___
 
-Question biologique : Est ce que la coloration de pelage suit la règle de la génétique mendélienne.
+**Question biologique\ :** est-ce que la coloration de pelage suit la règle de la génétique mendélienne pour un gène récessif \ ?
 
-Le test de chi^2^ univarié est un bon outil pour comparer des proportions attendues à des proportions observées.
+Le **test de $\chi^2$ univarié** est un bon outil pour comparer des effectifs observés à des effectifs (ou des probabilités) attendus.
 
-Notre seuil $\alpha$ : $5 \%$
+Notre seuil $\alpha$\ : 5% (bien penser à le spécifier *avant* de faire le test, c'est très important\ !)
 
-Nos hypothèses sont :
+Nos **hypothèses** sont\ :
 
 - $H_0: \mathrm{P}(colorés) = \frac{3}{4}\ \mathrm{et}\ \mathrm{P}(albinos) = \frac{1}{4}$
 
@@ -60,17 +61,12 @@ ___
 chisq.test(as.table(c(colore = 34, albinos = 7)), 
   p = c(colore = 3/4, albinos = 1/4), rescale.p = FALSE)
 ```
-Faut il rejeter $H_0$ ?
 
-```{r}
-pchisq(1.374, df = 1, lower.tail = FALSE)
-qchisq(0.2411, df = 1, lower.tail = FALSE)
-```
-
+Faut-il rejeter $H_0$\ ? Notez que nous obtenons ici un $\chi^2_{obs}$ = 1.37 et une valeur *P* = 0.24.
 
 ___
 
-Faut il rejeter $H_0$ : Analyse sur bases des quantiles
+Faut-il rejeter $H_0$\ ? **Analyse sur base du quantile** $\chi^2_{obs}$ = 1.37.
 
 ```{r}
 qchisq(0.05, df = 1, lower.tail = FALSE)
@@ -101,24 +97,28 @@ chart(data = tibble(Quantiles = .x, Prob = .d(.x)), Prob ~ Quantiles) +
 
 ___
 
-Faut il rejeter $H_0$ ? : Analyse sur bases des probabilités
+Faut-il rejeter $H_0$\ ? **Analyse sur base de la valeur _P_** = 0.24 (plus simple)
 
 - valeur *P* < seuil $\alpha$, on rejette $H_0$,
 - valeur *P* ≥ seuil $\alpha$, on ne rejette pas $H_0$
+
+**Ici, on ne rejette pas $H_0$**
 
 \vfill
 
 **Interprétation**
 
-Nos observations respectent les lois proposées par Mendel au seuil $\alpha$ de 5% ($\chi^2$ univarié = 1.374, ddl = 1, valeur P = 0.2411). 
+Nous n'observons pas d'écart significatif au seuil $\alpha$ de 5% par rapport aux lois de Mendel pour un gène récessif (test $\chi^2$ univarié = 1.37, ddl = 1, valeur *P* = 0.24).
 
-### Test Chi^2^ d'indépendance
+*Notez qu'on utilise ici une **négation** pour exprimer qu'on ne rejette pas $H_0$ (si la phrase était affirmative, cela insinuerait qu'on l'accepte\ !)*
 
-```{r, echo = FALSE}
+### Cas 2: maladie cardio-vasculaire
+
+```{r, echo=FALSE}
 cardio <- read("data/cardio.rds")
 ```
 
-Situation biologique : Des patients ont été suivi afin d'étudier la présence de maladies cardio-vasculaires dans la population. Ces patients ont réalisé plusieurs test médicaux, ont eu un entretient avec un cardiologie et ont du compléter un questionnaire. 
+Un large échantillon de patients est suivi afin d'étudier la prévalence de maladies cardio-vasculaires dans la population. Ces patients ont réalisé plusieurs test médicaux, ont eu un entretien avec un cardiologie et ont dû compléter un questionnaire. 
 
 \center 
 
@@ -130,11 +130,11 @@ ___
 knitr::kable(head(select(cardio, cardio, cholesterol, height, age = age2)))
 ```
 
-Il s'agit d'un échantillon du jeu de données[ Cardiovascular Disease dataset](https://www.kaggle.com/sulianova/cardiovascular-disease-dataset). Nous allons nous intéresser uniquement aux femmes, ce qui représente `r nrow(cardio)` patientes.
+Il s'agit d'un échantillon du jeu de données [Cardiovascular Disease Dataset](https://www.kaggle.com/sulianova/cardiovascular-disease-dataset). Nous allons nous intéresser uniquement aux femmes, ce qui représente `r nrow(cardio)` patientes.
 
 ___ 
 
-Question biologique : Y a t'il un lien entre la présence de maladie cardio vasculaire et la présence d'un excès de cholesterol. 
+**Question biologique\ :** Existe-t-il un lien entre le développement d'une maladie cardio-vasculaire et un excès de "mauvais" cholestérol dans le sang (que nous exprimons à l'aide d'une variable qualitative à 3 niveaux -normal, trop et beaucoup trop-)\ ?
 
 
 ```{r}
@@ -143,15 +143,15 @@ Question biologique : Y a t'il un lien entre la présence de maladie cardio vasc
 
 ___
 
-Nous pouvons utiliser un test du chi^2^ d'indépendance pour traiter cette problématique.
+Nous pouvons utiliser un **test $\chi^2$ d'indépendance** pour traiter cette question. L'idée ici est que, si un lien entre les deux variables qualitatives `cardio` et `cholesterol` existe, les effectifs observés quand ces variables sont croisées ne se répartissent pas au hasard\ : on a **dépendance** entre les deux variables.
 
-Notre seuil $\alpha$ : $5 \%$
+Notre seuil $\alpha$\ : 1%
 
-Nos hypothèses sont :
+Nos **hypothèses** sont\ :
 
-- $H_0$ : Indépendance entre la variable cardio et la variable cholesterol
+- $H_0$\ : indépendance entre `cardio` et `cholesterol`
 
-- $H_1$ : Dépendance entre la variable cardio et la variable cholesterol.
+- $H_1$\ : dépendance entre la `cardio` et `cholesterol`
 
 ___
 
@@ -160,14 +160,22 @@ ___
 cat("Expected frequencies:\n"); chi2.[["expected"]]
 ```
 
+**Ici, on rejette $H_0$** car la valeur *P* < $\alpha$ (notez que l'interprétation sur base de la valeur *P* suffit en pratique\ ; l'explication concernant le $\chi^2_{obs}$ était présentée pour comprendre la logique du test). Un lien entre les deux variables est démontré de manière significative au seuil de 1%.
+
 ---
+
+Nous comparons les effectifs observés et attendus pour déterminer dans quel sens se fait le lien.
 
 ```{r}
 cardio_tab
 ```
 
 ```{r}
-cat("Expected frequencies:\n"); chi2.[["expected"]]
+cat("Expected frequencies:"); chi2.[["expected"]]
 ```
 
-La présence d'un excès de cholestérol a un effet positif significatif au seuil $\alpha$ de 5% sur les maladies cardiovasculaires ($\chi^2$ d’indépendance = 2388.6, ddl = 2, valeur P = < 2.2e^-16^)
+\vfill
+
+**Interprétation**
+
+La présence d'une maladie cardio-vasculaire est liée de manière significative au seuil $\alpha$ de 1% à un excès de cholestérol dans le sang (test $\chi^2$ d’indépendance = 2389, ddl = 2, valeur *P* = < 2.2e^-16^).
