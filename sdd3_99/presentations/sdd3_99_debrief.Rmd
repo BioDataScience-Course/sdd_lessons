@@ -24,7 +24,7 @@ Avec les cours de SDD I + II + III, vous être préparés pour l'analyse de vos 
 
 - **Bonus** : maîtrise des **logiciels** (R, RStudio, Git, M Markdown)
 
-- **Bonuss** : bonnes pratiques en **Open Science et Open Data**
+- **Bonus** : bonnes pratiques en **Open Science et Open Data**
 
 - **Bonus** : organisation pour une **recherche reproductible**
 
@@ -49,9 +49,25 @@ Avec les cours de SDD I + II + III, vous être préparés pour l'analyse de vos 
 
 - **Important**\ : faites-nous signe lorsque ce qu'on vous a enseigné vous est utile\ ! 
 
-### Erreurs récurrentes encore rencontrée
+### Erreurs récurrentes : carnet de notes
 
-... Guylian ...
+Le carnet de notes est souvent associé au carnet de laboratoire que vous allez découvrir/utilisez très prochainement.
+
+\center
+
+![](figures/research.jpg){width='60%'}
+
+**Vous devez tout consigner clairement dans ce carnet**
+
+### Erreurs récurrentes : rapport de synthèse
+
+Un rapport de synthèse s'appuie sur un carnet de notes.
+
+\center
+
+![](figures/reporting.jpg){width='60%'}
+
+Ce rapport doit être  **auto-suffisant**
 
 ### Vous avez la parole !
 
