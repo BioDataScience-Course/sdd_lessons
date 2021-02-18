@@ -1,0 +1,64 @@
+---
+title: 'Science des données III : débriefing'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill SDD I, II & III... et après ?
+author: Philippe Grosjean & Guyliann Engels 
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{https://wp.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+### Bilan
+
+Avec les cours de SDD I + II + III, vous être préparés pour l'analyse de vos données.
+
+- Matière classique en **biostatistiques**
+
+- **Bonus** : techniques plus **avancées** (machine learning, modèles (non)linéaires, séries temporelles, ...)
+
+- **Bonus** : maîtrise des **logiciels** (R, RStudio, Git, M Markdown)
+
+- **Bonuss** : bonnes pratiques en **Open Science et Open Data**
+
+- **Bonus** : organisation pour une **recherche reproductible**
+
+
+\center
+
+![](figures/winner.jpg){width=270}
+
+### Que faire ensuite ?
+
+- Utiliser, valoriser (stages, mémoire, carrière, doctorat)
+
+- Être conscient de ses points forts et rédiger son CV en fonction
+
+- Mettre en évidence des travaux qui peuvent certifier de vos compétences au delà de l'habituel en biologie : rendre vos meilleurs dépôts GitHub publics (et les forker dans son espace personnel)
+
+### Face à un problème inconnu
+
+- Vous avez aussi appris à réfléchir par vous-même. Lisez la littérature scientifique, recherchez (Google, Stackoveflow, ...), lisez les pages d'aides et les tutoriels
+
+- Nous n'avons pas vu toutes les techniques stats ... mais vous êtes prêts pour comprendre plus facilement les autres par vous-même ou avec un minimum d'aide !
+
+- **Important**\ : faites-nous signe lorsque ce qu'on vous a enseigné vous est utile\ ! 
+
+### Erreurs récurrentes encore rencontrée
+
+... Guylian ...
+
+### Vous avez la parole !
+
+**Votre retour est très important pour améliorer nos cours de Science des Données.**
+
+\center
+
+![](figures/expression.jpg){width=250}
+
+- Répondez aux questions (page Wooclap suivante), levez la main pour prendre la parole.
