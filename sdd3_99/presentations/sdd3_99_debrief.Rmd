@@ -22,7 +22,7 @@ Avec les cours de SDD I + II + III, vous être préparés pour l'analyse de vos 
 
 - **Bonus** : techniques plus **avancées** (remainement complexe des données, machine learning, modèles (non)linéaires, séries temporelles, ...)
 
-- **Bonus** : maîtrise des **logiciels** (R, RStudio, Git, R Markdown)
+- **Bonus** : maîtrise des **logiciels** (R, RStudio, Git/GitHub, R Markdown)
 
 - **Bonus** : bonnes pratiques en **Open Science** et **Open Data** (l'avenir\ !)
 
@@ -49,14 +49,6 @@ Avec les cours de SDD I + II + III, vous être préparés pour l'analyse de vos 
 \center
 
 ![](figures/jordan_github.png){width=270}
-
-### Face à un problème inconnu
-
-- Vous avez aussi appris à réfléchir par vous-même. Lisez la littérature scientifique, recherchez (Google, Stackoveflow, ...), lisez les pages d'aides et les tutoriels
-
-- Nous n'avons pas vu toutes les techniques stats ... mais vous êtes prêts pour comprendre plus facilement les autres par vous-même ou avec un minimum d'aide !
-
-- **Important**\ : faites-nous signe lorsque ce qu'on vous a enseigné vous est utile\ ! 
 
 ### Erreurs récurrentes : carnet de notes
 
@@ -87,3 +79,13 @@ Ce rapport doit être  **auto-suffisant**
 ![](figures/expression.jpg){width=250}
 
 - Répondez aux questions (page Wooclap suivante), levez la main pour prendre la parole.
+
+### On reste en contact...
+
+Ce qu'on vous a enseigné en science des données vous est utile plus tard\ ? **Faites-le nous savoir\ ! Nous serons heureux d'avoir de vos nouvelles et de constater que notre travail est _utile_.**
+
+Et n'oubliez pas SDD IV & V en Master 2... pour vous perfectionner.
+
+\center
+
+![](figures/happy.jpg){width=250}
