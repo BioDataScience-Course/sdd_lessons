@@ -1,0 +1,86 @@
+---
+title: 'Science des données I : module 8'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Test d'hypothèse du Chi^2^
+author: Philippe Grosjean & Guyliann Engels 
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{https://wp.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+### Le test de chi^2
+
+Cette présentation se divisera en 2 situations 
+
+- Le test chi^2^ univarié : les albinos 
+- Le test chi^2^ d'indépendance : Les maladies cardiovasculaires
+
+### Test chi^2^ univarié 
+
+... blablabla...
+
+
+### Test Chi^2^ d'indépendance
+
+```{r, echo = FALSE}
+cardio <- read("data/cardio.rds")
+```
+
+Situation biologique : Des patients ont été suivi afin d'étudier la présence de maladies cardio-vasculaires dans la population. Ces patients ont réalisé plusieurs test médicaux, ont eu un entretient avec un cardiologie et ont du compléter un questionnaire. 
+
+\center 
+
+![](figures/stethoscope.jpg){height='60%'}
+
+___
+
+```{r, echo = FALSE}
+knitr::kable(head(select(cardio, cardio, cholesterol, height, age = age2)))
+```
+
+Il s'agit d'un échantillon du jeu de données[ Cardiovascular Disease dataset](https://www.kaggle.com/sulianova/cardiovascular-disease-dataset). Nous allons nous intéresser uniquement aux femmes, ce qui représente `r nrow(cardio)` patientes.
+
+___ 
+
+Question biologique : Y a t'il un lien entre la présence de maladie cardio vasculaire et la présence d'un excès de cholesterol. 
+
+
+```{r}
+(cardio_tab <- table(cardio$cardio, cardio$cholesterol))
+```
+
+___
+
+Nous pouvons utiliser un test du chi^2^ d'indépendance pour traiter cette problématique.
+
+Notre seuil $\alpha$ : $5 \%$
+Nos hypothèses sont :
+
+- $H_0$ : Indépendance entre la variable cardio et la variable cholesterol
+
+- $H_1$ : Dépendance entre la variable cardio et la variable cholesterol.
+
+___
+
+```{r}
+(chi2. <- chisq.test(cardio_tab)); 
+cat("Expected frequencies:\n"); chi2.[["expected"]]
+```
+
+---
+
+```{r}
+cardio_tab
+```
+
+```{r}
+cat("Expected frequencies:\n"); chi2.[["expected"]]
+```
+
+La présence d'un excès de cholestérol a un effet positif significatif au seuil $\alpha$ de 5% sur les maladies cardiovasculaires ($\chi^2$ d’indépendance = 2388.6, ddl = 2, valeur P = < 2.2e^-16^)
