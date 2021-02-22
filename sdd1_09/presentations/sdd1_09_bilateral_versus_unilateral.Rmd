@@ -62,7 +62,7 @@ $$H_1: \overline{x_{p1}} - \overline{x_{p2}} < cste$$
 
 - **Test unilatéral à droite\ :** l'hypothèse alternative est uniquement > *cste*
 
-$$H_1: \overline{x_{p1}} - \overline{x_{p2}} < cste$$
+$$H_1: \overline{x_{p1}} - \overline{x_{p2}} > cste$$
 
 ### Aires de rejet et non rejet en bilatéral
 
