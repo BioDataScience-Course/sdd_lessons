@@ -40,7 +40,7 @@ ___
 
 Laure Moulin a réalisé sa thèse de doctorat entre l'ULB et l'UMONS sur la résilience d'oursins tropicaux *Echinometra mathaei* à l'acidification des océans.
 
-Dans une de ses publications (Moulin et al,  2014), elle doit déterminer si ses spécimens en expérience ont grandi ou pas.
+Dans une de ses publications (Moulin et al,  2014), elle doit déterminer si ses spécimens en expérience ont grandi ou pas. [voir dépôt institutionnel UMONS  : https://di.umons.ac.be/details.aspx?pub=7bf638f3-74e8-49d8-b063-396f378413d7]
 
 ![](figures/echino_title.png)
 <!--
