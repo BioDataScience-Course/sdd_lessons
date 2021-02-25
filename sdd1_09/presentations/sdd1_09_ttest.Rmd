@@ -22,9 +22,9 @@ Nous traiterons de deux situations concrètes pour illustrer l'utilisation du te
 
 2. Interprétation des résultats du test t de Student *versus* valeur *P*.
 
-3. Façon d'**exprimer le résultat** du test en français
+3. Façon d'**exprimer le résultat** du test en français ou en anglais
 
-### Cas 1 : Canal du sable de *Holothuria scabra*
+### Cas 1 : canal du sable de *Holothuria scabra*
 
 Loïc Calcagno a présenté son mémoire portant sur l'analyse morpho-fonctionnelle du canal du sable atypique de l’holothurie tropicale *Holothuria scabra* Jaeger, 1833 (Echinodermata, Holothuroidea).
 
@@ -35,4 +35,68 @@ Loïc Calcagno a présenté son mémoire portant sur l'analyse morpho-fonctionne
 Loïc Calcagno a suivi le cours de `Science des données IV : pratique`.
 
 ___
+
+### Cas 2 : régulation acide-base chez *Echinometra mathaei*
+
+Laure Moulin a réalisé sa thèse de doctorat entre l'ULB et l'UMONS sur la résilience d'oursins tropicaux *Echinometra mathaei* à l'acidification des océans.
+
+Dans une de ses publications (Moulin et al,  2014), elle doit déterminer si ses spécimens en expérience ont grandi ou pas.
+
+![](figures/echino_title.png)
+<!--
+##### Référence
+
+Moulin, L., Ph. Grosjean, J. Leblud, A. Batigny & Ph. Dubois, 2014. Impact of elevated *p*CO~2~ on acid–base regulation of the sea urchin *Echinometra mathaei* and its relation to resistance to ocean acidification: A study in mesocosms. *J. Exp. Mar. Biol. Ecol., **457**:97-104.
+-->
+
+---
+
+**Question biologique\ :** durant l'expérience, les oursins ont-ils grandi \ ? Afin de pouvoir préciser les hypothèses, il est noté qu'une croissance *négative* a déjà été observée chez cette espèce dans des conditions défavorables, et ici, les conditions d'acidification sont potentiellement stressantes.
+
+ \vfill
+**Choix des mesures\ :**
+
+- Pour plus d'efficacité, un design apparié est choisi. Les oursins sont marqués et mesurés au début et à la fin de l'expérience,
+
+- La masse de squelette est déterminée indirectement (mesure de la masse immergée) comme mesure la plus précise possible.
+
+\vfill
+
+**Hypothèses\ :**
+
+$H_0: \overline{M_{squel1} - M_{squel0}} = 0$
+
+$H_1: \overline{M_{squel1} - M_{squel0}} \neq 0$ (test bilatéral)
+
+---
+
+**Taille de l'échantillon\ :** important pour s'assurer de la *puissance* du test. Utilisation de tous les oursins (*n* = 44, jugé amplement suffisant). [p.s.\ : on peut aussi jouer sur la durée de l'intervalle entre les deux mesures.]
+
+\vfill
+
+**Vérification des conditions d'application\ :** Test de Normalité de d'homoscédasticité réalisés (Q-Q plot et test de Bartlett).
+
+Extrait du matériel & méthodes de la publication Moulin et al, 2014.
+
+![](figures/echino_matmet1.png)
+
+\vfill
+
+**Fixation de $\alpha$ à 5%** *avant* de faire le test.
+
+---
+
+**Présentation des résultats\ :**
+
+Extrait du matériel & méthodes de la publication Moulin et al, 2014 qui présente le résultat du test de Student.
+
+![](figures/echino_results.png)
+
+___
+
+**Matériel & méthodes\ :**
+
+Section du matériel & méthodes de la publication Moulin et al, 2014 qui introduit le test de Student. [p.s.\: la correction de Welch n'apporte rien en appairé, c'est en fait le même test que le Student classique.]
+
+![](figures/echino_matmet2.png)
 
