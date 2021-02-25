@@ -20,7 +20,7 @@ Nous traiterons de deux situations concrètes pour illustrer l'utilisation du te
 
 1. **Formulation des hypothèses** à partir de la question biologique posée
 
-2. Interprétation des résultats du test t de Student *versus* valeur *P*.
+2. Choix de la **meilleure variante** du test t de Student en fonction du contexte.
 
 3. Façon d'**exprimer le résultat** du test en français ou en anglais
 
@@ -30,13 +30,15 @@ Loïc Calcagno a présenté son mémoire portant sur l'analyse morpho-fonctionne
 
 \center 
 
-![](figures/scabra.jpg){width='60%'}
+![](figures/scabra.jpg){width='55%'}
+
+*H. scabra*, photo de L. Calcagno.
 
 Loïc Calcagno a suivi le cours de `Science des données IV : pratique`.
 
 ___
 
-Le système ambulacraire des échinodermes à plusieurs fonctions : locomotion des individus, prise de nourriture, zones d'échanges gazeux,...
+Le système ambulacraire des échinodermes a plusieurs fonctions\ : locomotion des individus, prise de nourriture, échanges gazeux,... (schéma issu de Ruppert & Barnes, 1991)
 
 \center 
 
@@ -44,34 +46,34 @@ Le système ambulacraire des échinodermes à plusieurs fonctions : locomotion d
 
 ___
 
-Chez les Holothuroidea, la plaque madréporique est interne. La terminologie « Canal du sable » désigne le pédoncule suivi du corps madréporaire
+Chez les *Holothuroidea*, la plaque madréporique est interne. La terminologie « canal du sable » désigne le pédoncule suivi du corps madréporaire.
 
 \center 
 
-![](figures/mission2018.png){width='60%'}
+![](figures/mission2018.jpg){width='55%'}
 
-Les différents organes prélevés chez un juvénile d’Holothuria scabra avec la vésicule de poli (VdP), les ampoules tentaculaires (AT) et le canal du sable (CS). Légende : CC – Canal circulaire ; CM – Corps madréporaire ; CS – Canal du sable ; P - Pédoncule.
+Les différents organes prélevés chez un juvénile d’*Holothuria scabra* avec la vésicule de poli (VdP), les ampoules tentaculaires (AT) et le canal du sable (CS). Légende : CC – Canal circulaire ; CM – Corps madréporaire ; CS – Canal du sable ; P - Pédoncule. Photo: L. Calcagno.
 
 ___
 
-**La question biologique :** Est ce que le rapport du corps madréporaire sur le canal du sable reste constant chez *H. scabra* entre le stade juvénile et le stade adulte.
+**Question biologique :** est-ce que le rapport de taille du corps madréporaire sur le canal du sable reste constant chez *H. scabra* entre le stade juvénile et le stade adulte ("rapport" est une variable calculée et sans unités).
+
+\vfill
+
+**Traduction de la question biologique en hypothèse nulle et hypothèse alternative\:**
+
+$H_0: \overline{rapport_{juvenile}} - \overline{rapport_{adulte}} = 0$
+
+$H_1: \overline{rapport_{juvenile}} - \overline{rapport_{adulte}} \neq 0$
 
 \vfill
 
 
-**Traduction de la question biologique en hypothèse nulle et hypothèse alternative:**
-
-- $H_0: \overline{rapport\ juvénile} = \overline{rapport \ adulte}$
-- $H_1: \overline{rapport\ juvénile} \neq \overline{rapport \ adulte}$
-
-\vfill
-
-
-**Définition du seuil alpha à 5%**
+**Fixation du seuil alpha à 5%** *avant* l'analyse.
 
 ___
 
-Variation du rapport du corps madréporaire sur le canal du sable en fonction du stade de croissance de *H. scabra*. (sJ = *H. scabra* juvénile (n=6), sA = *H. scabra* adulte (n=6))
+Rapport = variation du rapport du corps madréporaire sur le canal du sable en fonction du stade de croissance de *H. scabra*. (sJ = *H. scabra* juvénile (n=6), sA = *H. scabra* adulte (n=6))
 
 ```{r, echo = FALSE, , results='hide', message=FALSE, warning=FALSE, fig.height = 3}
 stone_canal <- read("data/size_stonecanal.xlsx")
@@ -80,28 +82,26 @@ stone_canal %>.%
   filter(., sp != "fA") %>.%
   pivot_wider(., names_from = organe, values_from = longueur) %>.%
   rename(., cs = 'canal du sable', p = `pédoncule`, cm = 'corps madréporaire') %>.%
-  mutate(., ratio_cm = cm/cs, sp = factor(sp, levels = c("sJ", "sA")))-> stone_canal_6
+  mutate(., rapport = cm/cs, sp = factor(sp, levels = c("sJ", "sA")))-> stone_canal_6
 
-chart(data = stone_canal_6, ratio_cm ~ sp) +
+chart(data = stone_canal_6, rapport ~ sp) +
   geom_jitter(alpha = 0.4, width = 0.2) +
   stat_summary(geom = "point", fun = "mean") +
   stat_summary(geom = "errorbar", width = 0.1,
      fun.data = "mean_sdl", fun.args = list(mult = 1)) + 
-  labs(y = "Corps madréporaire/canal du sable", x = "Stade de croissance", col = "Organes")
+  labs(y = "Rapport", x = "Stade de croissance", col = "Organes")
 ```
 
 ___
 
-Le choix d'un  test de t de Student indépendant bilatéral est un bonne idée pour comparer une variable numérique en fonction d'une variable facteur à 2 niveaux. 
-
-Les conditions d'application ont été vérifié au préalable. 
+Le choix d'un test de t de Student indépendant bilatéral se justifie ici. Les conditions d'application ont été vérifiées au préalable.
 
 ```{r}
-t.test(data = stone_canal_6, ratio_cm ~ sp,
+t.test(data = stone_canal_6, rapport ~ sp,
   alternative = "two.sided", conf.level = 0.95, var.equal = TRUE)
 ```
 
-**Interprétation biologique :** Le rapport du corps madréporaire sur le canal du sable est significativement plus élevé chez *H. scabra* adulte au seuil $\alpha$ de 5% (test t indépendant bilatéral = -16, df = 10, valeur de p = 1.83 e^-8^). 
+**Interprétation biologique :** Le rapport de taille du corps madréporaire sur le canal du sable est significativement plus élevé chez l'adulte au seuil $\alpha$ de 5% (test t indépendant bilatéral, t = -16, ddl = 10, valeur P = 1.8•10^-8^). 
 
 ### Cas 2 : régulation acide-base chez *Echinometra mathaei*
 
