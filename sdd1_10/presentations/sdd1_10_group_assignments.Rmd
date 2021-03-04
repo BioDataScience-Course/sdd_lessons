@@ -1,7 +1,7 @@
 ---
 title: 'Science des données I : module 10'
 subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
-  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Travaux de groupes
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Travaux de groupe
 author: Philippe Grosjean & Guyliann Engels 
 institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{https://wp.sciviews.org} \break \url{sdd@sciviews.org}
 date: ''
@@ -16,7 +16,7 @@ SciViews::R
 
 ### De quoi allons-nous parler ?
 
-Lors de cours de *Science des données I: inférence*, vous avez actuellement 2 travaux de groupes à réaliser :
+Dans le cadre du cours de *Science des données I: inférence*, vous avez actuellement 2 travaux de groupes à réaliser :
 
 \vfill
 
@@ -33,14 +33,14 @@ Lors du cours de *Science des données I: visualisation*, vous avez débuté un 
 
 Ce travail se poursuit durant le cours de *Science des données I: inférence*
 
-- tenir compte des remarques du Q1 et améliorer le projet => A03Gb_20M_nomdugroupe_note.csv
+- Tenir compte des remarques du Q1 et améliorer le projet => A03Gb_20M_nomdugroupe_note.csv
 
 - Réaliser des tests d'hypothèse afin de compléter votre projet => README.md
 
 
 ### Biométrie humaine
 
-Il s'agit du projet principal de cours de *Science des données I: inférence*. Ce travail par 4 est décomposé en plusieurs phases afin de vous aider à vous organiser.
+Il s'agit du projet principal de cours de *Science des données I: inférence*. Ce travail par 4 est décomposé en 3 phases afin de vous aider à vous organiser.
 
 - Phase d'exploration/de découverte
 
@@ -78,7 +78,7 @@ Vous avez à votre disposition un thème *la santé humaine* et un tableau de do
 
 \columnhalf
 
-- biometry.R : Préparer d'un tableau de données avec les labels et les unités associés à chaque variable.
+- biometry.R : Préparer un tableau de données avec les labels et les unités associés à chaque variable.
 
 - metrics.Rmd : Calculer des indices pertinents sur base de la littérature et de votre connaissance des données.
 
