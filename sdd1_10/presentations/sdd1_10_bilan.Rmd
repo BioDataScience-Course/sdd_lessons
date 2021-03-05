@@ -1,0 +1,43 @@
+---
+title: 'Science des données I : module 10'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Bilan & diagramme décisionnel
+author: Philippe Grosjean & Guyliann Engels 
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{https://wp.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+### Bilan
+
+- Nous sommes à la moitié de cette AA consacrée à l'inférence statistique
+
+- Petite remarque sur la progression générale et le timing du travail en distanciel
+
+- Exprimez-vous sur le timing et sur le travail en distanciel
+
+### Diagramme décisionnel
+
+- Le choix du meilleur outil en statistique n'est pas toujours facile
+
+- Certaines techniques nécessitent plusieurs étapes (choix, vérification des conditions d'application, spécification des hypothèses, test, interprétation, test post-hoc, ...)
+
+- Un **diagramme décisionnel**, façon carte mentale ("mindmap") est bien utile dans ce contexte.
+
+- Carte mentale des cours SDD I et SDD II\ : https://coggle.it/diagram/XmZC8uMesCWdXGt6/t/science-des-donn%C3%A9es-biologiques/70b78931eae4a12991c10df0f7f2f49f498e58ad68cc66e3f82da43b57951f3e
+
+___
+
+- L'exercice se fera en groupes\ : mêmes groupes que pour l'assignation "biométrie humaine"
+
+- Créer un compte gratuit sur **coggle.it**. Créer un nouveau diagramme et le partager avec les autres membres du groupe et le rendre public
+
+- Éditer le document pour créer un **diagramme décisionnel** reprenant le choix du test et les différentes étapes à réaliser pour faire l'analyse autour de ce test
+
+- Inclure le diagramme dans un document R Markdown (soit le lien pour du pdf ou html, soit l'iframe pour du html uniquement)
