@@ -1,0 +1,73 @@
+---
+title: 'Science des données I : module 11'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Perception du cours
+author: Philippe Grosjean & Guyliann Engels 
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{https://wp.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+### Bilan
+
+\center 
+
+![](figures/analyst.jpg){width='50%'}
+
+- Nous arrivons à la fin de cette AA consacrée à l'inférence statistique (avec le module 12 qui reste encore à réaliser concernant la corrélation)
+
+- Progression générale et timing du travail en distanciel\ : l'ensemble de votre travail est à finir pour le **14 mai**
+
+- Nous ne pourrons pas répondre à vos questions durant les 2 semaines de Pâques
+
+\vfill
+
+- Besoin d'une séance en présentiel avant la fin (si possible)\ ?
+
+
+### À ne pas oublier...
+
+\center 
+
+![](figures/selfie.jpg){width='30%'}
+
+- Le travail de groupe concernant `urchins`
+
+- Le travail de groupes concernant la biométrie humaine
+
+\vfill
+
+- Le **diagramme décisionnel**, façon carte mentale (mêmes groupes que pour l'assignation "biométrie humaine") avec https://coggle.it.
+
+
+### À vous la parole !
+
+\center 
+
+![](figures/bulle.png){width='30%'}
+
+Nous continuons notre processus participatif des étudiants pour améliorer *votre* cours de Science des Données. Vous allez maintenant pouvoir vous exprimer concernant\ :
+
+\vfill
+
+- Une question relevant de *vos émotions*
+
+- Un formulaire relatif à *votre perception* de l'ensemble R + RStudio + R Markdown.
+
+
+### Tutoriels Learnrs
+
+\center 
+
+![](figures/UniversityHat.pdf){width='50%'}
+
+Les tutoriels learnrs proposent des exercices auto-évaluatifs dans le contexte d'une analyse de données réelles. **Ils sont conçus pour vous permettre une transition en douceur entre théorie et pratique.**
+
+- Vous avez maintenant la possibilité de noter *votre perception de cet outil* dans ce contexte.
+
