@@ -97,6 +97,24 @@ Le magazine "Men’s Health" a publié des statistiques qui décrivent l’"homm
 
 **_Sachant que toutes les distributions sont unimodales, donc que les valeurs moyennes correspondent toutes à des observations effectivement mesurées en grand nombres (identiques ou très proches) sur des hommes réels, ce portrait robot de l’"homme moyen" décrit-il effectivement un grand nombre d’individus réellement existants ? Justifiez. Qu’en serait-il de l’"homme médian" ?_**
 
+### Critique statistique (3) - Explications
+
+Considérer un individu **moyen** est un aberration lorsque des mesures de dimensions différentes sont combinées. Pour démontrer cela simplifions à l'extrême.
+
+- Soit une population de cubes ayant tous une masse volumique invariable et strictement égale à 1 kg/dm^3^.
+
+- Prenons 3 cubes de largeurs respectives 1, 2 & 3 dm.
+
+- largeur moyenne : (1 + 2 + 3) / 3 = 2 dm
+
+- masse des 3 cubes : 1^3^ * 1 = 1 kg, 2^3^ * 1 = 8 kg, 3^3^ * 1= 27 kg
+
+- masse moyenne : (1 + 8 + 27) / 3 = 12 kg
+
+- **le cube moyen a donc une largeur de 2 dm et une masse de 12 kg**, soit une masse volumique de 12 / 2^3^ = 12/8 = 1,5 kg/dm^3^, ce qui ne correspond à aucun cube de la population !
+
+- Par contre, le **cube médian** a un sens : il mesure 2 dm et sa masse est 8 kg, avec une masse volumique de 1 kg/dm^3^
+
 ### Critique statistiques (4)
 
 L'espérance de vie est une donnée statistique qui permet de connaître la durée de vie moyenne qu'on peut espérer atteindre à un moment donné pour une nation donnée. Cette statistique est calculée et publiée par de nombreux organismes, incluant l'OMS. Les statistiques indiquent que l’espérance de vie des hommes dans nos pays est de 75,5 ans, et des femmes de 83,5 ans.
@@ -128,6 +146,27 @@ Un chercheur dans une industrie chimique s’intéresse à l’effet d’un nouv
 \hfill
 
 **_Que pensez-vous de la façon dont cette expérience a été menée et de ses conclusion ?_**
+
+### Critique statistique (7) - Explications
+
+Attention à ne pas confondre :
+
+- Évolution **linéaire** (diminution de la même **valeur** à chaque pas de temps)
+
+- Évolution **exponentielle** (diminution de la même **proportion** à chaque pas de temps)
+
+- 10%/jour = diminution exponentielle, et ne signifie pas atteindre 0 en 10 jours
+
+- Partons de 100 mouches
+    * Jour 1 : 10% mortes = 10 => reste 90
+    * Jour 2 : 10% mortes des 90 = 9 => reste 81
+    * Jour 3 : 10% mortes des 81 = environ 8 => reste 73
+    * Jour 4 : 10% mortes des 73 = environ 7 => reste 66
+    * etc.
+
+$$N_t = N_0 \cdot  (1 - a)^t$$
+
+Ce qui donne après 10 jours pour 100 mouches au départ : 100 * (1 - 0.1)^10 = 35. Cela signifie que l'insecticide tue 65% des mouches en 10 jour, soit **moins bien** que le produit concurrent qui en tue 80% !
 
 ### Critique statistique (8)
 
