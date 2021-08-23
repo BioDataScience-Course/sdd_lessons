@@ -130,13 +130,13 @@ La biologie n'échappe pas au besoin d'analyser des (gros) jeux de données :
 
 ### Objectifs
 
-Notre objectif durant votre formation en "science des données biologiques" est de :
+Nos objectifs principaux durant votre formation en `science des données biologiques` est de vous former afin d'être capanle de :
 
 - réaliser des analyses biologiques usuelles,
 
 - présenter clairement ces résultats de manière reproductible avec des outils informatiques et statistiques professionnels
 
-- Développer votre esprit critique
+- développer votre esprit critique
 
 **Vous pouvez retrouver via la fiche du cours le détails de tous les objectifs <http://applications.umons.ac.be/web/fr/pde/2021-2022/ue/US-B2-SCBIOL-006-M.htm>**
 
