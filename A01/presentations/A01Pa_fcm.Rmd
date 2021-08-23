@@ -15,6 +15,63 @@ SciViews::R
 ```
 
 
+## Qui sommes nous ?
+
+### Prof. Philippe Grosjean
+
+\putat{190}{-115}{\includegraphics[width=50mm]{figures/urchin-growth.pdf}}
+
+\putat{245}{-115}{\includegraphics[width=40mm]{figures/urchins.png}}
+
+```{r out.width="50%", echo=FALSE}
+knitr::include_graphics("figures/phil-dive.png")
+```
+
+- **Bioingénieur** + thèse de doctorat en biologie marine (croissance d'oursins)
+
+- Capacités supplémentaires développées en **science des données** durant des post-docs et via de la consultance pendant 4 ans partout en Europe
+
+- **Laboratoire EcoNum** créé en 2004 à l'Université de Mons
+
+- Intéressé par des travaux **interdisciplinaires** : biologie, chimie, \
+modélisation, statistiques, informatique
+
+- **Écrit des logiciels** pour l'écologie en R, Python, ...
+
+
+### Guyliann Engels
+
+\columnsbegin
+\columnlarge
+
+- **Master** en Biologie des Organismes et Écologie à l'UMONS.
+
+- **Mémoire** effectué dans le laboratoire d'Écologie numérique des Milieux aquatiques sur l'écophysiologie et l'écotoxicologie de la posidonie (*Posidonia oceanica*, une plante marine) en Méditerranée.
+
+- **Thèse de doctorat** en cours sur le plancton dans le même laboratoire.
+
+- **Assistant** en biologie à l'UMONS depuis septembre 2017.
+
+\columnsmall
+
+![](figures/guyliann.jpg)
+
+\columnsend
+
+### Identification automatisée du plancton
+
+Le plancton (constitué des organismes aquatiques qui dérivent en pleine eau) forme des communautés très diversifiées. Un litre d'eau de mer contient typiquement des milliers d'espèces de plancton.
+
+*Au laboratoire EcoNum, nous développons des outils pour énumérer automatiquement plancton via l'analyse d'image combinée à la classification supervisée (une technique statistique que nous étudierons en Master 1).*
+
+```{r out.width="80%", echo=FALSE}
+knitr::include_graphics("figures/zooimage.png")
+```
+
+\putat{260}{120}{\includegraphics[width=30mm]{figures/copepod.jpg}}
+
+## Science des données
+
 ### Science des données : une approche pragmatique
 
 ![](figures/data-scientist-useful.jpg)
@@ -33,7 +90,6 @@ SciViews::R
 
 - \alert{Il faut maîtriser simultanément les 3 domaines pour être un scientifique des données.}
 
-*C'est notre objectif durant votre formation "science des données biologiques" qui s'étalera sur 4 année.*
 
 \columnhalf
 
@@ -71,6 +127,26 @@ La biologie n'échappe pas au besoin d'analyser des (gros) jeux de données :
 ![](figures/data-genomic.jpg)
 
 \columnsend
+
+### Objectifs
+
+Notre objectif durant votre formation en "science des données biologiques" est de :
+
+- réaliser des analyses biologiques usuelles,
+
+- présenter clairement ces résultats de manière reproductible avec des outils informatiques et statistiques professionnels
+
+- Développer votre esprit critique
+
+**Vous pouvez retrouver via la fiche du cours le détails de tous les objectifs <http://applications.umons.ac.be/web/fr/pde/2021-2022/ue/US-B2-SCBIOL-006-M.htm>**
+
+## Approche pédagogique
+
+### Apprentissage en continu
+
+L'apprentissage est réparti sur 4 années pour un total de 16 crédits (200h en présentiel). 
+
+![](figures/processus.png)
 
 ### C'est quoi la classe inversée ?
 
@@ -111,6 +187,8 @@ Notre approche\ : **pédagogie active en classe inversée** (vous apprenez *d'ab
 - Les **élèves-assistants** sont coachés tout autant que vous pour vous faciliter l'apprentissage de manière active.
 
 - **Vous posez les questions**, et vos enseignants vous répondent **individuellement**.
+
+## Organisation du cours
 
 ### ECTS
 
@@ -172,12 +250,69 @@ Note\ : 12 modules pour 6 ECTS dans notre cours, donc 1/2 ECTS par module.
 
 **C'est déroutant car le professeur n'apparaît plus comme l'omniscient qui transmet de manière unilatérale son savoir aux étudiants\ !**
 
+## Apprentissage en 4 niveaux
 
 ### Niveaux d'exercice = Apprendre, niveaux 1 à 4
 
 ![](figures/apprendre.png){width='80%'}
 
-
 ### Quatre niveaux d'exercices
 
 ![](figures/apprendre2.png){width='80%'}
+
+### Construction de la note
+
+![](figures/grade_sdd1.png){height='80%'}
+
+- Vous pouvez suivre votre progression sur moodle ou en fin du module de cours
+
+## Amélioration continue du cours
+
+### Analyse de l'apprentissage
+
+\begin{center}
+\emph{Learning Analytics (LA) : can be defined as the measurement, collection, analysis, and reporting of data about learners and their contexts, for purposes of understanding and optimizing learning and the environments in which it occurs (Lang, Siemens, Wise, \& Gasevic, 2017)}
+\end{center}
+
+\vfill
+
+![](figures/la.png)
+
+### Exemple 1 : suppression des examens
+
+![](figures/fig_exams_projects-1.pdf)
+
+### Exemple 2 : analyse de la charge de travail
+
+![](figures/git_changes1.png)
+
+### Etre acteur de l'amélioration
+
+Tout au long de ce cours, nous vous demanderons votre avis ou votre ressenti sur une exercice, sur un chapitre ou encore sur une presentation
+
+**Soyez honnête et constructif**
+
+### Perception générale (roue des émotions de Genève)
+
+![](figures/roue des émotions.png)
+
+### Perception générale - résultats
+
+![](figures/emotions.png)
+
+___
+
+\begin{center}
+\textbf{Avez-vous des questions ?}
+\end{center}
+
+\centering
+
+![](figures/monkey2.jpg){width='30%'}
+
+\vfill
+
+**Ressources utiles**
+
+- Site web du cours \: <https://wp.sciviews.org/>
+- Cette présentation\ : <https://github.com/BioDataScience-Course/sdd_lessons/tree/2021-2022/A01/presentations>
