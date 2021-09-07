@@ -17,7 +17,7 @@ Ce premier cours s'inscrit dans une formation continue sur 3 années successives
 
 Le cours de [Science des données I : visualisation et inférence](http://applications.umons.ac.be/web/fr/pde/2021-2022/ue/US-B2-SCBIOL-006-M.htm) est une unité d'enseignement de 6 crédits est divisée en deux activités d'apprentissages de 3 crédits chacune [Science des données I : visualisation](http://applications.umons.ac.be/web/fr/pde/2021-2022/aa/S-BIOG-006.htm) (Q1) et [Science des données I : inférence]() (Q2). Ce cours comprend 12 modules de cours qui requiert une charge moyenne de travail de 180h, dont 70h en présentiel sur l'année (soit 15h dont 6h en présentiel par module). 
 
-Chaque module comprend des heures en présentiel et en distanciel. Vous pouvez retrouver à l'horaire l'ensemble de ces heures. Toutes les heures de cours en présentiel sont assimilées à des heures de travaux pratiques encadrées obligatoires. Chaque absence doit être justifiée. Les heures en distanciel sont données à titre indicatif, l'étudiant peut gérer son temps par lui-même. 
+Chaque module comprend des heures en présentiel et en distanciel. Vous pouvez retrouver à l'horaire les plages en présentiel et le travail à distance est à réaliser entre ces sessions. Toutes les heures de cours en présentiel sont assimilées à des heures de travaux pratiques encadrées obligatoires. Chaque absence doit être justifiée. Les heures en distanciel sont données à titre indicatif, l'étudiant peut gérer son temps par lui-même. 
 
 ## Méthode pédagogique
 
@@ -32,7 +32,7 @@ La plus grande partie de votre temps sera donc consacrée aux exercices de nivea
 
 ## Évaluation
 
-L'approche pédagogique permet une évaluation continue des 4 niveaux d'exercices présentés ci-dessus. Il n'y a donc pas d'examen en session pour ce cours. La pondération entre les AA du Q1 et du Q2 est de 50/50. 
+L'approche pédagogique permet une évaluation continue des 4 niveaux d'exercices présentés ci-dessus. Il n'y a donc pas d'examen en session pour ce cours. La pondération entre les AA du Q1 et du Q2 est de 50/50. Il faut avoir réalisé au minimum 80% des exercices de chaque module et la progression n'est affichée que si tous les modules précédents ont été achevés. 
 
 ## Disponibilités
 
