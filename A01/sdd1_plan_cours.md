@@ -32,7 +32,7 @@ Le plus grande partie de votre temps sera donc consacrée aux exercices de nivea
 
 ## Évaluation
 
-L'approche pédagogique permet une évaluation continue des 4 niveaux d'exercices présentés ci-dessus. Il n'y a donc pas d'examen en session pour ce cours. La pondération entre les AA du Q1 et du Q2 est de 50/50. 
+L'approche pédagogique permet une évaluation continue des 4 niveaux d'exercices présentés ci-dessus. Il n'y a donc pas d'examen en session pour ce cours. La pondération entre les AA du Q1 et du Q2 est de 50/50. Il faut avoir réalisé au minimum 80% des exercices de chaque module et la progression n'est affichée que si tous les modules précédents ont été achevés. 
 
 ## Disponibilités
 
