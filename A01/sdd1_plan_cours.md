@@ -28,7 +28,7 @@ Ce cours est donné en classe **inversée** avec l'ensemble du matériel pédago
 - niveau III :  transférer les notions dans des projets individuels guidés sur des données biologiques
 - niveau IV : Créer/réaliser des analyses sur des projets de groupe libre sur des données biologiques nouvelles grâce aux notions vues
 
-Le plus grande partie de votre temps sera donc consacrée aux exercices de niveau III et IV.
+La plus grande partie de votre temps sera donc consacrée aux exercices de niveau III et IV.
 
 ## Évaluation
 
@@ -40,7 +40,7 @@ Nous utilisons un formulaire spécifique pour poser vos questions en lien avec l
 
 En dehors des heures en présentiel, vous pouvez également nous contacter par mail à l'adresse <sdd@sciviews.org>. Nous sommes aussi disponibles via nos adresses institutionnelles <philippe.grosjean@umons.ac.be>, <guyliann.engels@umons.ac.be> et <maxime.bodson@umons.ac.be>
 
-## Fiche ects
+## Fiche ECTS
 
 La fiche ECTS reprend toutes les informations essentielles sur un cours. Vous pouvez retrouver la fiche du cours via lien suivant <http://applications.umons.ac.be/web/fr/pde/2021-2022/ue/US-B2-SCBIOL-006-M.htm>
 
