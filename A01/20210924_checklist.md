@@ -7,7 +7,7 @@ Pour ce second cours de science des données biologiques, une checklist est mise
 
 Afin de suivre ce cours dans les meilleures conditions, vous devez disposer des éléments suivants
 
-- [ ] un ordinateur (s’il répond aux conditions citées dans le [plan de cours](https://github.com/BioDataScience-Course/BioDataScience-Common/blob/main/docs/plan_de_cours/2021_sdd1_plan_cours.md))
+- [ ] un ordinateur (s’il répond aux conditions citées dans le [plan de cours](https://github.com/BioDataScience-Course/BioDataScience-Common/blob/main/docs/plan_de_cours/sdd1_plan_cours_2021-2022.md)
 - [ ] une paire d'écouteurs
 - [ ] un câble Ethernet (avec adaptateur si nécessaire pour le connecter sur votre ordinateur)
 
