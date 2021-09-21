@@ -19,7 +19,7 @@ Afin d'être un étudiant actif pour ce T.P., je dois préparer/réaliser les é
 - [ ] se connecter au site [wp.sciviews.org](https://wp.sciviews.org/) avec son compte GitHub via le bouton `Login with BioDataScience` 
 - [ ] sélectionner l'onglet Moodle dans la bannière du site
 - [ ] rejoindre le cours *Science des données I : visualisation* (inscrivez vous au cours, si cela est nécessaire)
-- [ ] sélectionner l'onglet `Ressources pédagogiques` dans le cours *Science des données I : visualisation* sur moodle (vous êtes redirigé vers le site [wp.sciviews.org](https://wp.sciviews.org/))
+- [ ] sélectionner l'onglet `cours` dans le cours *Science des données I : visualisation* sur moodle (vous êtes redirigé vers le site [wp.sciviews.org](https://wp.sciviews.org/))
 - [ ] vérifier dans le [préambule](https://wp.sciviews.org/sdd-umons/?iframe=wp.sciviews.org/sdd-umons-2021/) du cours que vous êtes correctement reconnu
    - [ ] login (si vous êtes anonyme, connectez-vous au site [wp.sciviews.org](https://wp.sciviews.org/))
    - [ ] cours (si le cours est indéterminé, rendez-vous sur moodle, puis sélectionner le lien vers le cours)
