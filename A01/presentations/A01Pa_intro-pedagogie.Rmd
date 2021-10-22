@@ -1,0 +1,332 @@
+---
+title: 'Science des données I : module 1'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Introduction et approche pédagogique
+author: Philippe Grosjean, Guyliann Engels, Maxime Bodson & Anne-Charlotte Vranckx
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{https://wp.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+# Présentation
+
+## Qui sommes-nous ?
+
+### Prof. Philippe Grosjean
+
+\putat{190}{-115}{\includegraphics[width=50mm]{figures/urchin-growth.pdf}}
+
+\putat{245}{-115}{\includegraphics[width=40mm]{figures/urchins.png}}
+
+```{r out.width="50%", echo=FALSE}
+knitr::include_graphics("figures/phil-dive.png")
+```
+
+- **Bioingénieur** + thèse de doctorat en biologie marine (croissance d'oursins)
+
+- Capacités supplémentaires développées en **science des données** durant des post-docs et via de la consultance pendant 4 ans partout en Europe
+
+- **Laboratoire EcoNum** créé en 2004 à l'Université de Mons
+
+- Intéressé par des travaux **interdisciplinaires** : biologie, chimie, \
+modélisation, statistiques, informatique
+
+- **Écrit des logiciels** pour l'écologie en R, Python, ...
+
+
+### Guyliann Engels
+
+\columnsbegin
+\columnlarge
+
+- **Master** en Biologie des Organismes et Écologie à l'UMONS.
+
+- **Mémoire** effectué dans le laboratoire d'Écologie numérique des Milieux aquatiques sur l'écophysiologie et l'écotoxicologie de la posidonie (*Posidonia oceanica*, une plante marine) en Méditerranée.
+
+- **Thèse de doctorat** en cours sur le plancton dans le même laboratoire.
+
+- **Assistant** en biologie à l'UMONS depuis septembre 2017.
+
+\columnsmall
+
+![](figures/guyliann.jpg)
+
+\columnsend
+
+### Les "nouveaux"
+
+- Maxime Bodson\ : assistant pédagogique
+
+\vfill
+
+- Anne-Charlotte Vranckx\ : élève assistante actuellement en Bab2 biologie
+
+### Recherche : identification automatisée du plancton
+
+Le plancton (constitué des organismes aquatiques qui dérivent en pleine eau) forme des communautés très diversifiées. Un litre d'eau de mer contient typiquement des milliers d'espèces de plancton.
+
+*Au laboratoire EcoNum, nous développons des outils pour énumérer automatiquement plancton via l'analyse d'image combinée à la classification supervisée (une technique statistique que nous étudierons en Master 1).*
+
+```{r out.width="80%", echo=FALSE}
+knitr::include_graphics("figures/zooimage.png")
+```
+
+\putat{260}{120}{\includegraphics[width=30mm]{figures/copepod.jpg}}
+
+
+# Généralités
+
+## Qu'est-ce que la science des données ?
+
+### Science des données : une approche pragmatique
+
+![](figures/data-scientist-useful.jpg)
+
+### Science des données : à l'interface entre plusieurs disciplines
+
+\columnsbegin
+\columnhalf
+
+- La Science des Données, c'est la discipline qui s'intéresse à l'analyse de données _sous toutes ses formes_
+
+- Très large et **interdisciplinaire** :
+    + **(Bio)statistiques** et visualisation
+    + Utilisation d'**outils informatiques**
+    + Expertise dans le domaine (**biologie**)
+
+- \alert{Il faut maîtriser simultanément les 3 domaines pour être un scientifique des données.}
+
+*C'est notre objectif durant votre formation "science des données biologiques" qui s'étalera sur 4 année.*
+
+\columnhalf
+
+![](figures/data-science-venn.png)
+
+\columnsend
+
+
+### Pourquoi la science des données ?
+
+- Discipline à la fois ancienne et **récente**
+    + Évolution des statistiques, avec ses prémices dans les années 1960 (John Tukey).
+    + Émerge comme science à part : 2001 William S. Cleveland, _"Data Science : An Action Plan for Expanding the Technical Area of field of Statistics"_.
+    + Le terme **Data Scientist** n'est d'usage courant que depuis 2008.
+- Besoin issu de la **quantité de données** disponibles (1 zettabyte = 1 milliard de terabytes = 1 000 000 000 000 000 000 000 octets).
+    ![](figures/data-growth.png)
+
+### La science de données biologiques
+
+\columnsbegin
+\columnhalf
+
+La biologie n'échappe pas au besoin d'analyser des (gros) jeux de données :
+
+- **Génétique**, bases immenses
+- **Biodiversité** animale et végétale
+- **Etudes écologiques** avec images satellites, capteurs haute vitesse
+- **Littérature** scientifique
+- etc.
+
+\alert{Un biologiste analyse des données pratiquement quotidiennement sous une forme ou l'autre !}
+
+\columnhalf
+
+![](figures/data-genomic.jpg)
+
+\columnsend
+
+# Cours
+
+## Approche pédagogique
+
+### Structuration en module
+
+Un module vise au développement spécifique **d'une ou plusieurs compétences**
+
+Le travail du module est concentré sur **une semaine**.
+
+- Six modules au Q1 (**AA visualisation**)
+
+- Six modules au Q2 (**AA inférence**)
+
+\vfill
+
+**Exercices et projets cotés** en évaluation continue, pas d'examen à la fin. **présence aux séances obligatoire.** (voir plan de cours)
+
+### De quoi allons-nous discuter ?
+
+... **de pédagogie**. Comment apprendre\ ?
+
+\center
+
+![](figures/puzzled_student.jpg){width=270}
+
+*À vous la parole, quel est le meilleur moyen d'apprendre\ ?*
+
+### Et la classe inversée ?
+
+![](figures/classe inversee.png)
+[(lien vers la vidéo)](https://www.youtube.com/watch?v=uLKmLDrGyjw)
+
+### Classe inversée et pédagogie active
+
+Notre approche\ : **pédagogie active en classe inversée** (vous apprenez *d'abord* à la maison, nous appliquons *ensuite* en présentiel -quand on n'est pas confinés-).
+
+\vfill
+
+> I **hear** and I forget.
+
+> I **see** and I remember.
+
+> I **do** and I understand.
+
+> — Confucius
+
+### C'est quoi la pédagogie active ?
+
+![](figures/pédagogies actives.png)
+[(lien vers la vidéo)](https://www.youtube.com/watch?v=ygjSle9Pkg4)
+
+### Et moi, je fais quoi dans tout cela ?
+
+*Lisez ceci... et réagissez (question Wooclap juste après)\ !*
+
+\center
+
+![](figures/lisez.jpg){width=200}
+
+- Vous êtes **acteur de votre apprentissage**, les enseignants sont des **facilitateurs** (plus en retrait par rapport à l'approche classique).
+
+- Plus de séparation entre **cours théorique** et **exercices**\ ; vos échanges avec le professeur et le ou les assistants sont similaires.
+
+- Les **élèves-assistants** sont coachés tout autant que vous pour vous faciliter l'apprentissage de manière active.
+
+- **Vous posez les questions**, et vos enseignants vous répondent **individuellement**.
+
+### ECTS
+
+**European Credits Transfer System**, créé en 1988 de manière standardisée par la Commission Européenne comme correspondant à une **charge de travail totale** pour l'étudiant de **25 à 30 heures**.
+
+![](figures/ects.jpg)
+
+### Optimisation du temps de travail
+
+\center
+
+**Comment voulez-vous passer vos 25-30h/ECTS\ ?**
+
+\vfill
+
+Note\ : 12 modules pour 6 ECTS dans notre cours, donc 1/2 ECTS par module.
+
+### Optimisation du temps de travail à l'Université
+
+**Cours classique *ex cathedra* + séances d'exercices**
+
+![](figures/organisation1.png)
+
+- Le réel apprentissage se déroule **après** les séances de cours et d'exercices
+
+- Un examen est nécessaire pour vérifier vos acquis
+
+### Optimisation du temps de travail... comparé à la classe inversée
+
+**Cours classique *ex cathedra* + séances d'exercices**
+
+![](figures/organisation1.png)
+
+**Approche en classe inversée**
+
+![](figures/organisation2.png)
+
+- *Aucune* séance en présentiel sans préparation
+
+- Chaque heure de travail pleinement consacrée à l'apprentissage
+
+- Vous êtes actifs **tout le temps** et vous gérez **à votre rythme**
+
+- **Pas besoin d'un examen à la fin**\ : travail évalué dans sa globalité
+
+### Le professeur est un coach et un facilitateur
+
+*Mais que font les enseignants alors\ ? Lisez et réagissez (question Wooclap après).*
+
+\center
+
+![](figures/teacher.jpg){width=200}
+
+- Le professeur (et l'assistant) ne mettent **pas** leur savoir en avant. C'est vous qui construisez votre *propre* savoir.
+
+- Ils **ne répondent pas _directement_ à vos questions**\ : ils vous mettent sur une piste et vous font réfléchir pour trouver la réponse *par vous-même*.
+
+- Ils se mettent en retrait, mais sont **disponibles pour vous aider** (Discord, mail, etc.)
+
+**C'est déroutant car le professeur n'apparaît plus comme l'omniscient qui transmet de manière unilatérale son savoir aux étudiants\ !**
+
+### Objectifs pour l'acquisition de compétences
+
+![](figures/bloom1.png)
+Taxonomie de Bloom modifiée par Krathwohl & Anderson.
+
+### Objectifs pour l'acquisition de compétences
+
+![](figures/bloom2.png)
+Taxonomie de Bloom modifiée par Krathwohl & Anderson.
+
+### Objectifs pour l'acquisition de compétences
+
+![](figures/bloom3.png)
+Taxonomie de Bloom modifiée par Krathwohl & Anderson.
+
+### Objectifs pour l'acquisition de compétences
+
+![](figures/bloom4.png)
+Taxonomie de Bloom modifiée par Krathwohl & Anderson.
+
+### Objectifs pour l'acquisition de compétences
+
+![](figures/bloom5.png)
+Taxonomie de Bloom modifiée par Krathwohl & Anderson.
+
+### Objectifs pour l'acquisition de compétences
+
+![](figures/bloom6.png)
+Taxonomie de Bloom modifiée par Krathwohl & Anderson.
+
+### Objectifs pour l'acquisition de compétences
+
+![](figures/bloom7.png)
+Taxonomie de Bloom modifiée par Krathwohl & Anderson.
+
+# Module 1
+
+## Au travail\ !
+
+### Objectif du module 1
+
+**Se familiariser avec l'ordinateur et les logiciels que nous utiliserons dans le cadre du cours\ : R, RStudio, Markdown, git & GitHub\ !**
+
+\center
+
+![](figures/svBox2021.png){width=30%}
+
+
+### Préparation
+
+- Préparer son matériel (ordinateur, écouteurs, câble réseau, ...)
+
+- Créer un **compte GitHub**
+
+- **S'enregistrer correctement** dans le site du cours
+
+- Entraidez-vous, si nécessaire\ !
+
+\center
+
+![](figures/entraide.jpg){width=250}
