@@ -1,0 +1,178 @@
+---
+title: 'Science des données I : module 9'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Test bilatéral *versus* unilatéral
+author: Philippe Grosjean & Guyliann Engels 
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{https://wp.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+### De quoi allons-nous parler ?
+
+Le test *t* de Student et son homologue non paramétrique, le test de Wilcoxon-Mann-Whitney proposent plusieurs variantes.
+
+\vfill
+
+Nous nous focalisons sur les variantes bi- et unilatérales\ :
+
+- au niveau de la **définition des hypothèses**
+
+- au niveau du **positionnement des zones de rejet et non rejet** de H~0~
+
+### Le test d'hypothèse *t* de Student
+
+Définition de l'hypothèse nulle\ :
+
+\vfill
+
+- Comparaison des moyennes entre deux **populations distinctes** *p1* et *p2* (test indépendant, différence des moyennes)
+
+$$H_0: \overline{x_{p1}} - \overline{x_{p2}} = cste$$
+
+- Comparaison de la moyenne entre deux mesures *x~a~* et *x~b~* réalisées à chaque fois sur le **même individu** (test apparié, moyenne des différences)
+
+$$H_0: \overline{x_a - x_b} = cste$$
+
+- Comparaison de la moyenne **d'une seule population** à une valeur constante de référence (test univarié)
+
+$$H_0: \overline{x} = cste$$
+
+### Variantes bilatérale et unilatérales
+
+Exemple du test indépendant où la moyenne de la variable *x* est comparée entre deux populations *p1* et *p2*.
+
+- L'hypothèse nulle est **toujours la même**:
+
+$$H_0: \overline{x_{p1}} - \overline{x_{p2}} = cste$$
+
+- **Test bilatéral\ :** l'hypothèse alternative peut être > ou < à *cste*
+
+$$H_1: \overline{x_{p1}} - \overline{x_{p2}} \neq cste$$
+
+- **Test unilatéral à gauche\ :** l'hypothèse alternative est uniquement < *cste*
+
+$$H_1: \overline{x_{p1}} - \overline{x_{p2}} < cste$$
+
+- **Test unilatéral à droite\ :** l'hypothèse alternative est uniquement > *cste*
+
+$$H_1: \overline{x_{p1}} - \overline{x_{p2}} > cste$$
+
+### Aires de rejet et non rejet en bilatéral
+
+Exemple\ : distribution *t* réduite pour *n* = 10 (moyenne = 0, écart type = 1, ddl = 9)
+
+$$H_0: \overline{x_{p1}} - \overline{x_{p2}} = 0$$
+$$H_1: \overline{x_{p1}} - \overline{x_{p2}} \neq 0$$
+On répartit $\alpha$ en **deux moitiés** aux deux extrémités de la distribution.
+
+```{r, echo=FALSE, fig.height=2.8}
+par(mar = c(5.1, 4.1, 0.6, 2.1))
+# Student's t distribution (density probability) with parameters:
+.mu <- 0; .s <- 1; .df <- 9 # .mu, .s (sigma) and .df
+.col <- 1; .add <- FALSE # Plot parameters
+.x <- seq(-4.5*.s+.mu, 4.5*.s+.mu, l = 1000)     # Quantiles
+.d <- function (x) dt((x-.mu)/.s, df = .df)/.s   # Distribution function
+.q <- function (p) qt(p, df = .df) * .s + .mu    # Quantile for lower-tail prob
+.label <- bquote(t(.(.mu), .(.s), .(.df)))       # Parameters
+curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
+  add = .add, xlab = "Quantiles", ylab = "Probability density") # Curve
+abline(h = 0, col = "gray") # Baseline
+
+# Lower-tail probability (left area)
+.p2 <- 0.025; .x2 <- .x[.x <= .q(.p2)]
+polygon(c(.x2, max(.x2), min(.x2)), .d(c(.x2, -Inf, -Inf)),
+  border = .col, col = "salmon")
+
+# Upper-tail probability (right area)
+.p2 <- 0.025; .x2 <- .x[.x >= .q(1 - .p2)]
+polygon(c(.x2, max(.x2), min(.x2)), .d(c(.x2, -Inf, -Inf)),
+  border = .col, col = "salmon")
+
+text(-3, 0.05, expression(alpha/2), col = "red")
+text(3, 0.05, expression(alpha/2), col = "red")
+```
+
+### Aires de rejet et non rejet en unilatéral à gauche
+
+Exemple\ : distribution *t* réduite pour *n* = 10 (moyenne = 0, écart type = 1, ddl = 9)
+
+$$H_0: \overline{x_{p1}} - \overline{x_{p2}} = 0$$
+$$H_1: \overline{x_{p1}} - \overline{x_{p2}} < 0$$
+On répartit $\alpha$ uniquement à la **gauche** de la distribution.
+
+```{r, echo=FALSE, fig.height=2.8}
+par(mar = c(5.1, 4.1, 0.6, 2.1))
+# Student's t distribution (density probability) with parameters:
+.mu <- 0; .s <- 1; .df <- 9 # .mu, .s (sigma) and .df
+.col <- 1; .add <- FALSE # Plot parameters
+.x <- seq(-4.5*.s+.mu, 4.5*.s+.mu, l = 1000)     # Quantiles
+.d <- function (x) dt((x-.mu)/.s, df = .df)/.s   # Distribution function
+.q <- function (p) qt(p, df = .df) * .s + .mu    # Quantile for lower-tail prob
+.label <- bquote(t(.(.mu), .(.s), .(.df)))       # Parameters
+curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
+  add = .add, xlab = "Quantiles", ylab = "Probability density") # Curve
+abline(h = 0, col = "gray") # Baseline
+
+# Lower-tail probability (left area)
+.p2 <- 0.05; .x2 <- .x[.x <= .q(.p2)]
+polygon(c(.x2, max(.x2), min(.x2)), .d(c(.x2, -Inf, -Inf)),
+  border = .col, col = "salmon")
+
+text(-3, 0.05, expression(alpha), col = "red")
+```
+
+### Aires de rejet et non rejet en uniliatéral à droite
+
+Exemple\ : distribution *t* réduite pour *n* = 10 (moyenne = 0, écart type = 1, ddl = 9)
+
+$$H_0: \overline{x_{p1}} - \overline{x_{p2}} = 0$$
+$$H_1: \overline{x_{p1}} - \overline{x_{p2}} > 0$$
+On répartit $\alpha$ uniquement à la **droite** de la distribution.
+
+```{r, echo=FALSE, fig.height=2.8}
+par(mar = c(5.1, 4.1, 0.6, 2.1))
+# Student's t distribution (density probability) with parameters:
+.mu <- 0; .s <- 1; .df <- 9 # .mu, .s (sigma) and .df
+.col <- 1; .add <- FALSE # Plot parameters
+.x <- seq(-4.5*.s+.mu, 4.5*.s+.mu, l = 1000)     # Quantiles
+.d <- function (x) dt((x-.mu)/.s, df = .df)/.s   # Distribution function
+.q <- function (p) qt(p, df = .df) * .s + .mu    # Quantile for lower-tail prob
+.label <- bquote(t(.(.mu), .(.s), .(.df)))       # Parameters
+curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
+  add = .add, xlab = "Quantiles", ylab = "Probability density") # Curve
+abline(h = 0, col = "gray") # Baseline
+
+# Upper-tail probability (right area)
+.p2 <- 0.05; .x2 <- .x[.x >= .q(1 - .p2)]
+polygon(c(.x2, max(.x2), min(.x2)), .d(c(.x2, -Inf, -Inf)),
+  border = .col, col = "salmon")
+
+text(3, 0.05, expression(alpha), col = "red")
+```
+
+### Choix de *H~1~*
+
+- Le choix se fait en fonction d'information **connue _a priori_** du phénomène (valeur impossible d'un côté ou de l'autre)
+
+\vfill
+
+- Si pas d'information on utilise **un test bilatéral**
+
+\vfill
+
+- Si test unilatéral, attention au calcul en fonction de **l'ordre des niveaux de la variable qualitative** (*p1* - *p2*), voir fonction `levels()` pour afficher ces niveaux
+
+### Infos pratiques
+
+- Les mini-présentations sont disponibles sur https://github.com/BioDataScience-Course/sdd_lessons et sont enregistrées dans Teams
+
+\vfill
+
+- **A vous la parole maintenant\ !**

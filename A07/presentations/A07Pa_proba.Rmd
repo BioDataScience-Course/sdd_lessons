@@ -1,0 +1,56 @@
+---
+title: 'Science des données I : module 7'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Reprise et calculs probabilités - quantiles
+author: Philippe Grosjean & Guyliann Engels 
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{https://wp.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+### Reprise...
+
+C'est la reprise... au programme, l'AA consacrée à l'**inférence statistique**.
+
+\center
+
+![](figures/start.jpg){width='60%'}
+
+- Informations sur les mises-à-jour logicielles et matérielles
+
+- Réinstallation de l'application **BioDataScience** indispensable\ !
+
+- Déroulement de la semaine
+
+### Les probabilités, le B-A-BA des statistiques
+
+- Nous parlerons beaucoup de probabilités dans cette AA
+
+- Explication calcul quantile -> probabilité et probabilité -> quantile (voir démo)
+
+```{r, echo=FALSE, fig.height=2.6}
+par(mar = c(4.1, 4.1, 1.1, 2.1))
+# Normal distribution (density probability) with parameters:
+.mu <- 0; .s <- 1 #  mu = .mu and sigma = .s
+.col <- 1; .add <- FALSE # Plot parameters
+.x <- seq(-3.5*.s+.mu, 3.5*.s+.mu, l = 1000)     # Quantiles
+.d <- function (x) dnorm(x, mean = .mu, sd = .s) # Distribution function
+.q <- function (p) qnorm(p, mean = .mu, sd = .s) # Quantile for lower-tail prob
+.label <- bquote(N(.(.mu), .(.s)))               # Curve parameters
+curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
+  add = .add, xlab = "Quantiles", ylab = "Densité de probabilité") # Curve
+abline(h = 0, col = "gray") # Baseline
+
+# Upper-tail probability (right area)
+.p2 <- 0.1; .x2 <- .x[.x >= .q(1 - .p2)]
+polygon(c(.x2, max(.x2), min(.x2)), .d(c(.x2, -Inf, -Inf)),
+  border = .col, col = "salmon")
+
+```
+
