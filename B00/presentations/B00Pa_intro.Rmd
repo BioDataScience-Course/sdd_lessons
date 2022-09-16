@@ -1,0 +1,57 @@
+---
+title: 'Science des données II'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Préparation
+author: Philippe Grosjean & Guyliann Engels 
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{https://wp.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+### Reprise...
+
+C'est la reprise... pas encore tout-à-fait ! Durant ces deux heures, nous allons essentiellement nous **préparer** au cours de SDD II.
+
+\center
+
+![](figures/start.jpg){width="60%"}
+
+-   Mises-à-jour du logiciel
+
+-   Modifications dans la façon de travailler
+
+-   Travail pour le prochain cours
+
+### Installation logiciel
+
+Cette année-ci, nous utiliserons la **SciViews Box 2022**.
+
+### Rappels et nouveautés
+
+\center
+
+![](figures/change.jpg){width="40%"}
+
+-   **Séances assimilées à des TP**. Obligatoires. Si conflit avec un autre TP **obligatoire**, choix à votre jugement. Dans ce cas, *obligatoirement prévenir et rattraper la matière !*
+
+-   **Les présences sont enregistrées**. Les absences doivent être justifiées (certificat médical). Trop d'absences injustifiées ? Vous n'obtiendrez pas de note pour votre travail.
+
+-   **Pas d'examen en session** et **pas d'examen en seconde session** Mais il faut respecter le rythme du cours *(étudier d'avance la matière et faire les exercices H5P, Shiny et Learnr)*.
+
+-   Plus d'utilisation de Discord, remplacé par les **Issues dans GitHub**
+
+### Préparation pour le prochain cours
+
+\center
+
+![](figures/notes.jpg){width="40%"}
+
+-   Revoir ce qui n'était pas compris
+
+-   Se mettre à jour pour ceux qui ne le sont pas
