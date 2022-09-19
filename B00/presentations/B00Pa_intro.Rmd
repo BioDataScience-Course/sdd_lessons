@@ -54,6 +54,8 @@ Cette année-ci, nous utiliserons la **SciViews Box 2022** sur le cloud avec **S
 
 -   Fonctions "speedy" préfixées "s" (`smutate()`, `sfilter()`). Collecte non nécessaire
 
+-   `(s)group_by |> (s)summarise(....)` : pipe R de base `|>` si même étape logique
+
 -   Fonctions "fast" préfixées "f" (`fmean()`, `fmedian()`, ...). Fonctionnent sur un data frame, contrairement à `mean()` par exemple
 
 -   Création de data frames, exit `data.frame()`, `tibble()`, \``tribble()`, etc. Utiliser `dtx()`/`dtx_rows()` (ou `dtf()`, `dtt()`, `dtbl()`)
