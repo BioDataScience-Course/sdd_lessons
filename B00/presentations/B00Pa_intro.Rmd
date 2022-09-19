@@ -30,7 +30,9 @@ C'est la reprise... pas encore tout-à-fait ! Durant ces deux heures, nous allo
 
 ### Installation logiciel
 
-Cette année-ci, nous utiliserons la **SciViews Box 2022**.
+Cette année-ci, nous utiliserons la **SciViews Box 2022** sur le cloud avec **SaturnCloud**. Cliquez sur le bouton bleu **RStudio** en haut à droite pour les instructions.
+
+-   Nous allons le faire ensemble...
 
 ### Rappels et nouveautés
 
@@ -38,13 +40,23 @@ Cette année-ci, nous utiliserons la **SciViews Box 2022**.
 
 ![](figures/change.jpg){width="40%"}
 
--   **Séances assimilées à des TP**. Obligatoires. Si conflit avec un autre TP **obligatoire**, choix à votre jugement. Dans ce cas, *obligatoirement prévenir et rattraper la matière !*
+-   **Séances assimilées à des TP**. Obligatoires. Si conflit avec un autre TP **obligatoire**, choix à votre jugement. Dans ce cas, *obligatoirement prévenir et rattraper la matière = travail à faire en plus entre l'heure du midi !*
 
 -   **Les présences sont enregistrées**. Les absences doivent être justifiées (certificat médical). Trop d'absences injustifiées ? Vous n'obtiendrez pas de note pour votre travail.
 
 -   **Pas d'examen en session** et **pas d'examen en seconde session** Mais il faut respecter le rythme du cours *(étudier d'avance la matière et faire les exercices H5P, Shiny et Learnr)*.
 
--   Plus d'utilisation de Discord, remplacé par les **Issues dans GitHub**
+### Nouveautés dans SciViews::R
+
+-   `SciViews::R("model", lang = "fr")` : arguments supplémentaires
+
+-   Fonctions "tidy" (`mutate()`, `filter()`, ...) : **collecter** les résultats à la fin avec `collect_dtx()`, `%<-%` ou `%->%`
+
+-   Fonctions "speedy" préfixées "s" (`smutate()`, `sfilter()`). Collecte non nécessaire
+
+-   Fonctions "fast" préfixées "f" (`fmean()`, `fmedian()`, ...). Fonctionnent sur un data frame, contrairement à `mean()` par exemple
+
+-   Création de data frames, exit `data.frame()`, `tibble()`, \``tribble()`, etc. Utiliser `dtx()`/`dtx_rows()` (ou `dtf()`, `dtt()`, `dtbl()`)
 
 ### Préparation pour le prochain cours
 
@@ -55,3 +67,5 @@ Cette année-ci, nous utiliserons la **SciViews Box 2022**.
 -   Revoir ce qui n'était pas compris
 
 -   Se mettre à jour pour ceux qui ne le sont pas
+
+-   Préparer **tout** le module 1 (dorénavant, la préparation pour le début de semaine inclut *toute* la matière du module, sauf indications particulières)
