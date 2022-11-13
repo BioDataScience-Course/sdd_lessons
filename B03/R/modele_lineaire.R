@@ -50,6 +50,8 @@ chart(data = Babies, wt1 ~ smoke) +
 Babies_lm <- lm(data = Babies, wt ~ smoke * wt1)
 summary(Babies_lm)
 anova(Babies_lm)
+equatiomatic::extract_eq(Babies_lm)
+
 
 # Seulement smoke == 0
 summary(lm(data = Babies, wt ~ wt1, subset = smoke == 0))
@@ -72,6 +74,7 @@ chart(data = Babies, wt ~ wt1 | smoke) +
 Babies_lm2 <- lm(data = Babies, wt ~ smoke + wt1)
 summary(Babies_lm2)
 anova(Babies_lm2)
+equatiomatic::extract_eq(Babies_lm2)
 
 # Graphique (il faut ruser)
 offsets <- c(0, -0.238, 0.0227, 0.0355)
@@ -99,6 +102,7 @@ Babies_lm3 <- lm(data = Babies2, wt ~ smoke + wt1,
   contrasts = list(smoke = "contr.helmert"))
 summary(Babies_lm3)
 anova(Babies_lm3)
+equatiomatic::extract_eq(Babies_lm3)
 
 # Les contrastes utilisés:
 contr.helmert(4)
@@ -118,6 +122,7 @@ Babies %>.%
 Babies_lm4 <- lm(data = Babies, wt ~ smoke_preg + wt1)
 summary(Babies_lm4)
 anova(Babies_lm4)
+equatiomatic::extract_eq(Babies_lm4)
 
 # Graphique du modèle
 offsets <- c(0, -0.246)
