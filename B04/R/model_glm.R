@@ -54,7 +54,7 @@ babies_glm <- glm(data = babies_prem, premat ~ smoke + race + bmi + age,
 summary(babies_glm)
 
 
-# GGLM
+# GLMM
 # Données
 spe <- dtbl_rows(
   ~donor, ~conc, ~mobile, ~total,
