@@ -1,0 +1,83 @@
+---
+title: 'Science des données II : module 7'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Analyse en composantes principales
+author: Philippe Grosjean & Guyliann Engels 
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{https://wp.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+### Comprendre l'ACP
+
+-   Revoir le mécanisme, ni les calculs mathématiques derrière l'ACP
+
+-   Nous allons expliciter ensemble l'**idée générale** qui est à l'origine de cette technique
+
+-   Objectif : **réduire le nombre de dimensions**, tout en conservant un maximum de l'information utile initiale =\> **Comment déterminer l'information utile ?**
+
+### Photo d'un objet tridimensionnel
+
+Une photo (vue en 2D) d'une scène tridimensionnelle est une réduction de dimension. L'**angle** de prise de vue de l'objet est important.
+
+![](figures/projection2d.png)
+
+### Qu'est-ce que c'est ?
+
+![](figures/clip1.jpg)
+
+### Qu'est-ce que c'est ?
+
+![](figures/clip2.jpg)
+
+### Qu'est-ce que c'est ?
+
+![](figures/clip3.jpg)
+
+### Qu'est-ce que c'est ?
+
+![](figures/clipall.jpg)
+
+L'**angle sous lequel la projection de 3D en 2D se fait est important**. Certains angles portent plus d'information que d'autres.
+
+### Qu'est-ce que c'est ?
+
+![](figures/key1.jpg)
+
+### Qu'est-ce que c'est ?
+
+![](figures/key2.jpg)
+
+### Qu'est-ce que c'est ?
+
+![](figures/key3.jpg)
+
+En général, la projection qui correspond à l'**étalement le plus grand** de l'objet est aussi celle qui porte le plus d'information.
+
+### Qu'est-ce que c'est ?
+
+![](figures/keyall.jpg)
+
+En général, la projection qui correspond à l'**étalement le plus grand** de l'objet est aussi celle qui porte le plus d'information.
+
+### Application à l'ACP
+
+-   En général, la projection qui correspond à l'**étalement le plus grand** de l'objet est aussi celle qui porte le plus d'information.
+
+-   En statistique, l'étalement se mesure via la variance (ou la covariance si plus d'une variable).
+
+-   L'ACP détermine la projection en un nombre de dimensions réduites visant à **étaler le plus possible** le nuage de points au sens de la variance - covariance (ou de la corrélation si les données sont centrées et réduites).
+
+-   Note : les présentations sont disponibles sur <https://github.com/BioDataScience-Course/sdd_lessons>
+
+### Vous avez la parole !
+
+\center
+
+![](figures/expression.jpg){width="250"}
