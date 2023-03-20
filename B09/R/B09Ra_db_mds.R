@@ -1,4 +1,4 @@
-# SDD II Module 9 - partie 1 : bases de données
+# SDD II Module 9 - partie 1 : bases de données, partie 2: MDS
 # version 2022-2023, 2023-03-20
 # Ph. Grosjean, license CC BY-NC-SA 4.0
 #
@@ -259,3 +259,69 @@ who_dm %>.% # étape 1 de jointure inutile avec un objet dm
 dbDisconnect(con, shutdown = TRUE)
 unlink("duckdb_test.db") # Seulement pour effacer définitivement la base de données!
 
+
+# Positionnement multidimensionnel (MDS) ------------------------------
+
+SciViews::R("explore")
+
+## MDS métrique ou PCoA
+
+read("varespec", package = "vegan") %>.%
+  srename(., station = .rownames) %->%
+  veg
+veg
+
+# Visualisation pour décider de la métrique à utiliser
+veg %>.%
+  sselect(., -station) %>.% # Colonne 'station' pas utile ici
+  spivot_longer(., everything(), names_to = "espèce", values_to = "couverture") %>.%
+  chart(., espèce ~ couverture) +
+  geom_boxplot() + # Boites de dispersion
+  labs(x = "Espèce", y = "Couverture [%]")
+
+# Transformation des données
+veg %>.%
+  sselect(., -station) %>.%
+  spivot_longer(., everything(), names_to = "espèce", values_to = "couverture") %>.%
+  chart(., espèce ~ log1p(couverture)) + # Transformation log(couverture + 1)
+  geom_boxplot() +
+  labs(x = "Espèce", y = "Couverture [%]")
+
+# Calcul des distances
+veg %>.%
+  sselect(., -station) %>.%
+  log1p(.) %>.%
+  dissimilarity(., method = "bray") %->%
+  veg_dist
+
+# Intialisation du générateur pseudo-aléatoire
+set.seed(9)
+
+# MDS métrique
+veg_mds <- mds$metric(veg_dist)
+
+# Graphique
+chart(veg_mds, labels = veg$station, col = veg$station)
+
+# Indicateur GOF
+glance(veg_mds)
+
+
+## MDS non métrique
+
+# Initialisation générateur pseudo-aléatoire
+set.seed(295)
+
+# MDS non métrique
+veg_nmds <- mds$nonmetric(veg_dist) # Calcul
+
+# Graphique
+chart(veg_nmds, labels = veg$station)
+
+# Stress
+glance(veg_nmds)
+
+# Diagramme de Shepard
+veg_sh <- shepard(veg_dist, veg_nmds)
+chart(veg_sh) +
+  labs(x = "Dissimilarité observée", y = "Distance sur l'ordination")
