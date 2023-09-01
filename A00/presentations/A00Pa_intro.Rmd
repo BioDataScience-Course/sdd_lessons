@@ -1,0 +1,273 @@
+---
+title: 'Science des données I'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill First class meeting
+author: Philippe Grosjean & Guyliann Engels 
+institute: Université de Mons, Belgique\break Service d'Écologie numérique\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{https://wp.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+## Qui sommes nous ?
+
+### Prof. Philippe Grosjean
+
+\putat{190}{-115}{\includegraphics[width=50mm]{figures/urchin-growth.pdf}}
+
+\putat{245}{-115}{\includegraphics[width=40mm]{figures/urchins.png}}
+
+```{r out.width="50%", echo=FALSE}
+knitr::include_graphics("figures/phil-dive.png")
+```
+
+-   **Bioingénieur** + thèse de doctorat en biologie marine (croissance d'oursins)
+
+-   Capacités supplémentaires développées en **science des données** durant des post-docs et via de la consultance pendant 4 ans partout en Europe
+
+-   **Service EcoNum** créé en 2004 à l'Université de Mons
+
+-   Intéressé par des travaux **interdisciplinaires** : biologie, chimie,\
+    modélisation, statistiques, informatique
+
+-   **Écrit des logiciels** pour l'écologie en R, Python, ...
+
+### Guyliann Engels
+
+```{=tex}
+\columnsbegin
+\columnlarge
+```
+-   **Master** en Biologie des Organismes et Écologie à l'UMONS.
+
+-   **Mémoire** effectué dans le service EcoNum sur l'écophysiologie et l'écotoxicologie de la posidonie (*Posidonia oceanica*, une plante marine) en Méditerranée.
+
+-   **Assistant** dans le service EcoNum de 2017-2023.
+
+-   **Adjoint pédagogique** en biologie à l'UMONS depuis septembre 2023.
+
+\columnsmall
+
+![](figures/guyliann.jpg)
+
+\columnsend
+
+### Identification automatisée du plancton
+
+Le plancton (constitué des organismes aquatiques qui dérivent en pleine eau) forme des communautés très diversifiées. Un litre d'eau de mer contient typiquement des milliers d'espèces de plancton.
+
+*Dans le service EcoNum, nous développons des outils pour énumérer automatiquement plancton via l'analyse d'image combinée à la classification supervisée (une technique statistique que nous étudierons en Master 1).*
+
+```{r out.width="80%", echo=FALSE}
+knitr::include_graphics("figures/zooimage.png")
+```
+
+\putat{260}{120}{\includegraphics[width=30mm]{figures/copepod.jpg}}
+
+## Science des données
+
+### Science des données : une approche pragmatique
+
+![](figures/data-scientist-useful.jpg)
+
+### Science des données : à l'interface entre plusieurs disciplines
+
+```{=tex}
+\columnsbegin
+\columnhalf
+```
+-   La Science des Données, c'est la discipline qui s'intéresse à l'analyse de données *sous toutes ses formes*
+
+-   Très large et **interdisciplinaire** :
+
+    -   **(Bio)statistiques** et visualisation
+    -   Utilisation d'**outils informatiques**
+    -   Expertise dans le domaine (**biologie**)
+
+-   \alert{Il faut maîtriser simultanément les 3 domaines pour être un scientifique des données.}
+
+\columnhalf
+
+![](figures/data-science-venn.png)
+
+\columnsend
+
+### Pourquoi la science des données ?
+
+-   Discipline à la fois ancienne et **récente**
+    -   Evolution des statistiques, avec ses prémices dans les années 1960 (John Tukey).
+    -   Emerge comme science à part : 2001 William S. Cleveland, *"Data Science : An Action Plan for Expanding the Technical Area of field of Statistics"*.
+    -   Le terme **Data Scientist** n'est d'usage courant que depuis 2008.
+-   Besoin issu de la **quantité de données** disponibles (1 zettabyte = 1 milliard de terabytes = 1 000 000 000 000 000 000 000 octets). ![](figures/data-growth.png)
+
+### La science de données biologiques
+
+```{=tex}
+\columnsbegin
+\columnhalf
+```
+La biologie n'échappe pas au besoin d'analyser des (gros) jeux de données :
+
+-   **Génétique**, bases immenses
+-   **Biodiversité** animale et végétale
+-   **Etudes écologiques** avec images satellites, capteurs haute vitesse
+-   **Littérature** scientifique
+-   etc.
+
+\alert{Un biologiste analyse des données pratiquement quotidiennement sous une forme ou l'autre !}
+
+\columnhalf
+
+![](figures/data-genomic.jpg)
+
+\columnsend
+
+### Objectifs
+
+Nos objectifs principaux durant votre formation en `science des données biologiques` est de vous former afin d'être capable de :
+
+-   réaliser des analyses biologiques usuelles,
+
+-   présenter clairement ses résultats de manière reproductible avec des outils informatiques et statistiques professionnels
+
+-   développer votre esprit critique
+
+**Vous pouvez retrouver via la fiche du cours le détails de tous les objectifs <http://applications.umons.ac.be/web/fr/pde/2023-2024/ue/US-B2-SCBIOL-006-M.htm>**
+
+## Comment se déroule un cours ?
+
+### Cours *ex cathedra* + Travaux pratiques
+
+![](figures/organisation1.png)
+
+-   Le réel apprentissage se déroule **après** les séances de cours et d'exercices
+
+-   Un examen est nécessaire pour vérifier vos acquis
+
+D'après la science lors d'un cours *ex cathedra*, **vous n'apprenez rien**
+
+-\> Quelle perte de temps :(
+
+### Analyse de l'apprentissage
+
+```{=tex}
+\begin{center}
+\emph{Learning Analytics (LA) : can be defined as the measurement, collection, analysis, and reporting of data about learners and their contexts, for purposes of understanding and optimizing learning and the environments in which it occurs (Lang, Siemens, Wise, \& Gasevic, 2017)}
+\end{center}
+```
+\vfill
+
+![](figures/la.png)
+
+### Examens
+
+![](figures/fig_exams_projects-1.pdf)
+
+-\> les examens ne permettent pas d'évaluer correctement un étudiant
+
+### Pédagogie active et classe inversée
+
+**Cours classique *ex cathedra* + séances d'exercices**
+
+![](figures/organisation1.png)
+
+**Approche en classe inversée**
+
+![](figures/organisation2.png)
+
+-   *Aucune* séance en présentiel sans préparation
+
+-   Chaque heure de travail pleinement consacrée à l'apprentissage
+
+-   Vous êtes actifs **tout le temps** et vous gérez **à votre rythme**
+
+-   **Pas besoin d'un examen à la fin** : travail évalué dans sa globalité
+
+### C'est quoi la classe inversée ?
+
+![](figures/classe%20inversee.png) [(lien vers la vidéo)](https://www.youtube.com/watch?v=uLKmLDrGyjw)
+
+### Classe inversée et pédagogie active
+
+Notre approche : **pédagogie active en classe inversée** (vous apprenez *d'abord* à la maison, nous appliquons *ensuite* en présentiel).
+
+\vfill
+
+> I **hear** and I forget.
+
+> I **see** and I remember.
+
+> I **do** and I understand.
+
+> --- Confucius
+
+### C'est quoi la pédagogie active ?
+
+![](figures/p%C3%A9dagogies%20actives.png) [(lien vers la vidéo)](https://www.youtube.com/watch?v=ygjSle9Pkg4)
+
+### Et moi, je fais quoi dans tout cela ?
+
+\center
+
+![](figures/lisez.jpg){width="200"}
+
+-   Vous êtes **acteur de votre apprentissage**, les enseignants sont des **facilitateurs** (plus en retrait par rapport à l'approche classique).
+
+-   Plus de séparation entre **cours théorique** et **exercices** ; vos échanges avec le professeur et l'assistant sont similaires.
+
+-   **Vous posez les questions**, et vos enseignants vous répondent **individuellement**.
+
+## Organisation du cours
+
+### ECTS
+
+**European Credits Transfer System**, créé en 1988 de manière standardisée par la Commission Européenne comme correspondant à une **charge de travail totale** pour l'étudiant. Ce cours comprend 12 modules pour 6 ECTS (0.5 ECTS/module)
+
+![](figures/ects.jpg)
+
+## Apprentissage en 4 niveaux
+
+### Niveaux d'exercice = Apprendre, niveaux 1 à 4
+
+![](figures/apprendre.png){width="80%"}
+
+### Quatre niveaux d'exercices
+
+![](figures/apprendre2.png){width="80%"}
+
+### Construction de la note
+
+![](figures/grade_sdd1.png){height="80%"}
+
+-   Vous pouvez suivre votre progression sur moodle ou en fin du module de cours
+
+## Amélioration continue du cours
+
+### Être acteur de l'amélioration
+
+Tout au long de ce cours, nous vous demanderons votre avis ou votre ressenti sur une exercice, sur un chapitre ou encore sur une présentation.
+
+**Soyez honnête et constructif**
+
+------------------------------------------------------------------------
+
+```{=tex}
+\begin{center}
+\textbf{Avez-vous des questions ?}
+\end{center}
+```
+\centering
+
+![](figures/monkey2.jpg){width="30%"}
+
+\vfill
+
+**Ressources utiles :**
+
+-   Site web du cours : <https://wp.sciviews.org/>
+-   Cette présentation : <https://github.com/BioDataScience-Course/sdd_lessons/tree/2023-2024/A01/presentations>
