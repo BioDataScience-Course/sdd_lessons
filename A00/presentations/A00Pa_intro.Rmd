@@ -270,4 +270,4 @@ Tout au long de ce cours, nous vous demanderons votre avis ou votre ressenti sur
 **Ressources utiles :**
 
 -   Site web du cours : <https://wp.sciviews.org/>
--   Cette présentation : <https://github.com/BioDataScience-Course/sdd_lessons/tree/2023-2024/A01/presentations>
+-   Cette présentation : <https://github.com/BioDataScience-Course/sdd_lessons/tree/2023-2024/A00/presentations>

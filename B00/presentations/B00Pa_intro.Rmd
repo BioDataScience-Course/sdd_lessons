@@ -61,4 +61,4 @@ Cette année-ci, nous utiliserons la **SciViews Box 2023** sur le cloud avec **S
 **Ressources utiles :**
 
 -   Site web du cours : <https://wp.sciviews.org/>
--   Cette présentation : <https://github.com/BioDataScience-Course/sdd_lessons/tree/2023-2024/B01/presentations>
+-   Cette présentation : <https://github.com/BioDataScience-Course/sdd_lessons/tree/2023-2024/B00/presentations>
