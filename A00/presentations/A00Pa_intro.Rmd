@@ -28,7 +28,7 @@ knitr::include_graphics("figures/phil-dive.png")
 
 -   **Bioingénieur** + thèse de doctorat en biologie marine (croissance d'oursins)
 
--   Capacités supplémentaires développées en **science des données** durant des post-docs et via de la consultance pendant 4 ans partout en Europe
+-   Capacités supplémentaires développées en **science des données** durant des post-docs et via de la consultance pendant quatre ans partout en Europe
 
 -   **Service EcoNum** créé en 2004 à l'Université de Mons
 
@@ -57,18 +57,6 @@ knitr::include_graphics("figures/phil-dive.png")
 
 \columnsend
 
-### Identification automatisée du plancton
-
-Le plancton (constitué des organismes aquatiques qui dérivent en pleine eau) forme des communautés très diversifiées. Un litre d'eau de mer contient typiquement des milliers d'espèces de plancton.
-
-*Dans le service EcoNum, nous développons des outils pour énumérer automatiquement plancton via l'analyse d'image combinée à la classification supervisée (une technique statistique que nous étudierons en Master 1).*
-
-```{r out.width="80%", echo=FALSE}
-knitr::include_graphics("figures/zooimage.png")
-```
-
-\putat{260}{120}{\includegraphics[width=30mm]{figures/copepod.jpg}}
-
 ## Science des données
 
 ### Science des données : une approche pragmatique
@@ -89,7 +77,7 @@ knitr::include_graphics("figures/zooimage.png")
     -   Utilisation d'**outils informatiques**
     -   Expertise dans le domaine (**biologie**)
 
--   \alert{Il faut maîtriser simultanément les 3 domaines pour être un scientifique des données.}
+-   \alert{Il faut maîtriser simultanément les trois domaines pour être un scientifique des données.}
 
 \columnhalf
 
@@ -100,12 +88,12 @@ knitr::include_graphics("figures/zooimage.png")
 ### Pourquoi la science des données ?
 
 -   Discipline à la fois ancienne et **récente**
-    -   Evolution des statistiques, avec ses prémices dans les années 1960 (John Tukey).
-    -   Emerge comme science à part : 2001 William S. Cleveland, *"Data Science : An Action Plan for Expanding the Technical Area of field of Statistics"*.
+    -   Évolution des statistiques, avec ses prémices dans les années 1960 (John Tukey).
+    -   Émerge comme science à part : 2001 William S. Cleveland, *"Data Science : An Action Plan for Expanding the Technical Area of Field of Statistics"*.
     -   Le terme **Data Scientist** n'est d'usage courant que depuis 2008.
 -   Besoin issu de la **quantité de données** disponibles (1 zettabyte = 1 milliard de terabytes = 1 000 000 000 000 000 000 000 octets). ![](figures/data-growth.png)
 
-### La science de données biologiques
+### La science des données biologiques
 
 ```{=tex}
 \columnsbegin
@@ -115,11 +103,11 @@ La biologie n'échappe pas au besoin d'analyser des (gros) jeux de données :
 
 -   **Génétique**, bases immenses
 -   **Biodiversité** animale et végétale
--   **Etudes écologiques** avec images satellites, capteurs haute vitesse
+-   **Études écologiques** avec images satellites, capteurs haute vitesse
 -   **Littérature** scientifique
 -   etc.
 
-\alert{Un biologiste analyse des données pratiquement quotidiennement sous une forme ou l'autre !}
+\alert{Un biologiste analyse des données pratiquement quotidiennement sous une forme ou l'autre !}
 
 \columnhalf
 
@@ -129,17 +117,17 @@ La biologie n'échappe pas au besoin d'analyser des (gros) jeux de données :
 
 ### Objectifs
 
-Nos objectifs principaux durant votre formation en `science des données biologiques` est de vous former afin d'être capable de :
+Nos objectifs principaux durant votre formation en `science des données biologiques` est de vous rendre capable de :
 
 -   réaliser des analyses biologiques usuelles,
 
--   présenter clairement ses résultats de manière reproductible avec des outils informatiques et statistiques professionnels
+-   présenter clairement vos résultats de manière reproductible avec des outils informatiques et statistiques professionnels
 
 -   développer votre esprit critique
 
-**Vous pouvez retrouver via la fiche du cours le détails de tous les objectifs <http://applications.umons.ac.be/web/fr/pde/2023-2024/ue/US-B2-SCBIOL-006-M.htm>**
+**Vous pouvez retrouver via la [fiche du cours](http://applications.umons.ac.be/web/fr/pde/2023-2024/ue/US-B2-SCBIOL-006-M.htm) le détails de tous les objectifs.**
 
-## Comment se déroule un cours ?
+## Comment se déroule un cours ?
 
 ### Cours *ex cathedra* + Travaux pratiques
 
@@ -152,23 +140,6 @@ Nos objectifs principaux durant votre formation en `science des données biologi
 D'après la science lors d'un cours *ex cathedra*, **vous n'apprenez rien**
 
 -\> Quelle perte de temps :(
-
-### Analyse de l'apprentissage
-
-```{=tex}
-\begin{center}
-\emph{Learning Analytics (LA) : can be defined as the measurement, collection, analysis, and reporting of data about learners and their contexts, for purposes of understanding and optimizing learning and the environments in which it occurs (Lang, Siemens, Wise, \& Gasevic, 2017)}
-\end{center}
-```
-\vfill
-
-![](figures/la.png)
-
-### Examens
-
-![](figures/fig_exams_projects-1.pdf)
-
--\> les examens ne permettent pas d'évaluer correctement un étudiant
 
 ### Pédagogie active et classe inversée
 
@@ -186,9 +157,9 @@ D'après la science lors d'un cours *ex cathedra*, **vous n'apprenez rien**
 
 -   Vous êtes actifs **tout le temps** et vous gérez **à votre rythme**
 
--   **Pas besoin d'un examen à la fin** : travail évalué dans sa globalité
+-   **Pas besoin d'un examen à la fin** : travail évalué durant l'année
 
-### C'est quoi la classe inversée ?
+### C'est quoi la classe inversée ?
 
 ![](figures/classe%20inversee.png) [(lien vers la vidéo)](https://www.youtube.com/watch?v=uLKmLDrGyjw)
 
@@ -206,11 +177,11 @@ Notre approche : **pédagogie active en classe inversée** (vous apprenez *d'ab
 
 > --- Confucius
 
-### C'est quoi la pédagogie active ?
+### C'est quoi la pédagogie active ?
 
 ![](figures/p%C3%A9dagogies%20actives.png) [(lien vers la vidéo)](https://www.youtube.com/watch?v=ygjSle9Pkg4)
 
-### Et moi, je fais quoi dans tout cela ?
+### Et moi, je fais quoi dans tout cela ?
 
 \center
 
@@ -230,7 +201,7 @@ Notre approche : **pédagogie active en classe inversée** (vous apprenez *d'ab
 
 ![](figures/ects.jpg)
 
-## Apprentissage en 4 niveaux
+## Apprentissage en quatre niveaux
 
 ### Niveaux d'exercice = Apprendre, niveaux 1 à 4
 
@@ -240,19 +211,24 @@ Notre approche : **pédagogie active en classe inversée** (vous apprenez *d'ab
 
 ![](figures/apprendre2.png){width="80%"}
 
-### Construction de la note
+### Évaluation continue & planning
 
-![](figures/grade_sdd1.png){height="80%"}
+-   Le [planning des séances](https://wp.sciviews.org/sdd-umons2/?iframe=wp.sciviews.org/sdd-umons2-2023/planning-des-s%25C3%25A9ances.html) est synthétisé dans le cours en ligne
 
--   Vous pouvez suivre votre progression sur moodle ou en fin du module de cours
+-   Vous pouvez suivre votre progression sur [Moodle](https://moodle.umons.ac.be) ou à la fin de chaque module du cours en ligne
 
-## Amélioration continue du cours
+-   Vous aurez des projets (analyse de données biologiques) en séance
 
-### Être acteur de l'amélioration
+-   Vous aurez deux interrogations écrites par AA et un challenge
 
-Tout au long de ce cours, nous vous demanderons votre avis ou votre ressenti sur une exercice, sur un chapitre ou encore sur une présentation.
-
-**Soyez honnête et constructif**
+-   Note de l'AA (voir [plan de cours](https://github.com/BioDataScience-Course/BioDataScience-Common/tree/2023-2024/docs/plan_de_cours/sdd2_plan_cours_2023-2024.pdf)) :
+    * 25% des points pour les exercices (5% H5P-Shiny-Learnr, 20% challenge)
+    
+    * 25% des points pour les projets (5% individuels, 20% de groupe)
+    
+    * 25% première interrogation
+    
+    * 25% seconde interrogation
 
 ------------------------------------------------------------------------
 
@@ -269,5 +245,5 @@ Tout au long de ce cours, nous vous demanderons votre avis ou votre ressenti sur
 
 **Ressources utiles :**
 
--   Site web du cours : <https://wp.sciviews.org/>
+-   Site web du cours : <http://bds.sciviews.org/>
 -   Cette présentation : <https://github.com/BioDataScience-Course/sdd_lessons/tree/2023-2024/A00/presentations>
