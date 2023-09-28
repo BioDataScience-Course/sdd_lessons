@@ -58,7 +58,7 @@ Cliquez sur le bouton bleu **RStudio** en haut à droite pour les instructions d
 
 -   **Séances assimilées à des TP**. Obligatoires. Cela ne change pas.
 -   **Planning du travail** dans le cours (voir section [planning des séances](https://wp.sciviews.org/sdd-umons2/?iframe=wp.sciviews.org/sdd-umons2-2023/planning-des-s%25C3%25A9ances.html)). *Plus de message de rappel sur la matière à étudier, etc.*
--   **Deux interrogations et un challenge** par AA (quadrimestre). Répartition des points (voir [plan de cours](<https://github.com/BioDataScience-Course/BioDataScience-Common/tree/2023-2024/docs/plan_de_cours/sdd2_plan_cours_2023-2024.pdf>)) :
+-   **Deux interrogations et un challenge** par AA (quadrimestre). Répartition des points (voir [plan de cours](https://github.com/BioDataScience-Course/BioDataScience-Common/tree/2023-2024/docs/plan_de_cours/sdd2_plan_cours_2023-2024.pdf)) :
     -   25% des points pour les exercices (5% H5P-Shiny-Learnr, 20% challenge)
     -   25% des points pour les projets (5% individuels, 20% de groupe)
     -   25% première interrogation
