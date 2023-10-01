@@ -1,0 +1,84 @@
+---
+title: 'Science des données III'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Reprise et installation du logiciel
+author: Philippe Grosjean & Guyliann Engels 
+institute: Université de Mons, Belgique\break Service d'Écologie numérique\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{https://wp.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+### Reprise...
+
+C'est la reprise... pas encore tout-à-fait ! Durant ces deux heures, nous allons essentiellement nous **préparer** au cours de SDD III.
+
+\center
+
+![](figures/start.jpg){width="55%"}
+
+-   Installation du logiciel et nouveautés
+
+-   Modifications dans la façon de travailler
+
+-   Projet individuel **C01Ia_debug** pour se remettre dans le bain
+
+-   Travail pour le prochain cours
+
+### Installation du logiciel
+
+\center
+
+![](figures/saturncloud.png){width="40%"}
+
+Cette année-ci, nous utiliserons la **SciViews Box 2023**, toujours dans le Cloud avec **Saturn Cloud**. Mais il y a deux changements notables :
+
+1.  Nous utiliserons une ressource dans l'organisation **EcoNum** pour le cours (frais pris en charge par le labo)
+
+2.  Votre forfait gratuit passe de 30h à 150h/mois.
+
+Cliquez sur le bouton bleu **RStudio** en haut à droite pour les instructions d'installation (nous allons le faire ensemble).
+
+### Nouveauté : `tabularise()`
+
+-   Avec `SciViews::R` et `chart()` vous obteniez déjà de beaux graphiques
+
+-   Maintenant `tabularise()` vous permet aussi d'obtenir de belles tables (démo...) !
+
+![](figures/tabularise.png)
+
+### Changements dans la gestion des séances
+
+\center
+
+![](figures/change.jpg){width="40%"}
+
+-   **Séances assimilées à des TP**. Obligatoires. Cela ne change pas.
+-   **Planning du travail** dans le cours (voir section [planning des séances](https://wp.sciviews.org/sdd-umons3/?iframe=wp.sciviews.org/sdd-umons3-2023/temps.html)). *Plus de message de rappel sur la matière à étudier, etc.*
+-   **Deux interrogations et un challenge**. Répartition des points (voir [plan de cours](https://github.com/BioDataScience-Course/BioDataScience-Common/tree/2023-2024/docs/plan_de_cours/sdd3_plan_cours_2023-2024.pdf)) :
+    -   25% des points pour les exercices (5% H5P-Shiny-Learnr, 20% challenge)
+    -   25% des points pour les projets (5% individuels, 20% de groupe)
+    -   25% première interrogation
+    -   25% seconde interrogation
+
+### Préparation pour le prochain cours
+
+\center
+
+![](figures/notes.jpg){width="40%"}
+
+-   Avancer dans **C01Ia_debug** et faire son auto-évaluation par rapport à la matière des cours précédents à revoir pour se mettre à jour
+
+-   Se mettre à jour pour ceux qui ne le sont pas
+
+-   Préparer **tout** le module 1
+
+**Ressources utiles :**
+
+-   Site web du cours : <http://bds.sciviews.org/>
+-   Cette présentation : <https://github.com/BioDataScience-Course/sdd_lessons/tree/2023-2024/C00/presentations>

@@ -1,0 +1,77 @@
+---
+title: 'Science des données III : module 2'
+subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill Validation croisée et interprétation
+author: Philippe Grosjean & Guyliann Engels
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{https://wp.sciviews.org} \break \url{sdd@sciviews.org}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+
+# Classification supervisée (machine learning)
+
+## Validation croisée
+
+### La validation croisée
+
+L'obligation de séparer ses précieuses données en set d'apprentissage et set de test est très contraignante.
+
+![Séparation aléatoire en set d'apprentissage et set de test](figures/split-set.pdf)
+
+### La validation croisée (2)
+
+- La **validation croisée** est une technique générale qui permet d'utiliser toutes les données en apprentissage et en test, mais **pas simultanément**
+
+- L'évaluation des performances en non biaisée
+
+
+### La validation croisée - principe
+
+Séparation aléatoire en _k_ sous-ensembles de mêmes effectifs  
+(exemple : jeu de données classé manuellement séparé en _k_ = 7 blocs).
+
+![Validation croisée, sépation du jeu de données en 7 sous-ensembles](figures/cv01.pdf)
+
+
+### La validation croisée - principe
+
+**Etape 1 :** le premier bloc est set de test, le reste set d'apprentissage. Classification du set de test.
+
+![Validation croisée, étape 1](figures/cv02.pdf)
+
+
+### La validation croisée - principe
+
+**Etape 2 :** le second bloc est set de test, le reste set d'apprentissage. Pooler la classification du set de test avec celle issue de l'étape précédente.
+
+![Validation croisée, étape 1](figures/cv03.pdf)
+
+
+### La validation croisée - principe
+
+**Etape 7 :** à ce stage, _k_ classifieurs ont été utilisés pour classer au final tous les individus du jeu de données initial.
+
+![Validation croisée, étape 1](figures/cv04.pdf)
+
+
+### La validation croisée - principe
+
+**Etape finale :** les classes manuelles et automatiques de l'ensemble sont croisées dans la matrice de confusion, et les métriques sont calculées pour quantifier les performances.
+
+![Validation croisée, étape 1](figures/cv05.pdf)
+
+
+## Interprétation
+
+...
+
+### Utilisation des métriques
+
+...
