@@ -79,4 +79,4 @@ Cliquez sur le bouton bleu **RStudio** en haut à droite pour les instructions d
 **Ressources utiles :**
 
 -   Site web du cours : <http://bds.sciviews.org/>
--   Cette présentation : <https://github.com/BioDataScience-Course/sdd_lessons/tree/2023-2024/B00/presentations>
+-   Cette présentation : <https://github.com/BioDataScience-Course/sdd_lessons/tree/2024-2025/B00/presentations>
