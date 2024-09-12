@@ -14,50 +14,65 @@ knitr::opts_chunk$set(echo = TRUE)
 SciViews::R
 ```
 
+## Organisation de la salle
+
+-   se placer par 4 (PhG + GE)
+
+-   ordi + câbles
+
+-   postit jaune
+
+-   remplissage des feuilles (+ infdos pour login GitHub en rappelant de ne pas créer le compte avant validation)
+
 ## Qui sommes nous ?
 
-### Prof. Philippe Grosjean
+### Présentation
 
-\putat{190}{-115}{\includegraphics[width=50mm]{figures/urchin-growth.pdf}}
-
-\putat{245}{-115}{\includegraphics[width=40mm]{figures/urchins.png}}
+Une dia avec les 3 photos + [sdd\@sciviews.org](mailto:sdd@sciviews.org){.email} + wp.sciviews.org & email (3 l'un après l'autre)
 
 ```{r out.width="50%", echo=FALSE}
 knitr::include_graphics("figures/phil-dive.png")
 ```
 
--   **Bioingénieur** + thèse de doctorat en biologie marine (croissance d'oursins)
-
--   Capacités supplémentaires développées en **science des données** durant des post-docs et via de la consultance pendant quatre ans partout en Europe
-
--   **Service EcoNum** créé en 2004 à l'Université de Mons
-
--   Intéressé par des travaux **interdisciplinaires** : biologie, chimie,\
-    modélisation, statistiques, informatique
-
--   **Écrit des logiciels** pour l'écologie en R, Python, ...
-
-### Guyliann Engels
-
-```{=tex}
-\columnsbegin
-\columnlarge
-```
--   **Master** en Biologie des Organismes et Écologie à l'UMONS.
-
--   **Mémoire** effectué dans le service EcoNum sur l'écophysiologie et l'écotoxicologie de la posidonie (*Posidonia oceanica*, une plante marine) en Méditerranée.
-
--   **Assistant** dans le service EcoNum de 2017-2023.
-
--   **Adjoint pédagogique** en biologie à l'UMONS depuis septembre 2023.
-
-\columnsmall
-
 ![](figures/guyliann.jpg)
 
-\columnsend
+## Espace Moodle
+
+-   Rentrer dedans + on y reviendra... nom Moodle 'Science des données I : visualisation' respecter maj/min mot de passe : sdd1umons + afficher postit
+
+cliquer sur lier à wp.sciviews.org
+
+## Compte GitHub
+
+(validation faite PrénomNom) (tout le monde)
+
+Page accueil
+
+liste qui reprend les étapes (rappeler les élements importants sur la dia)
+
+Suite à cela, 'une dia) enregistrement GitHub dans le cours
+
+Histoire, deux étudiants... (PhG) En parallèle, créer comptes SaturnCloud (GE) - adresse mail Matricules -\> prérécupéré de GESTAC (excel) + compléter au moment de checker les logins GitHub
+
+------------------------------------------------------------------------
+
+-   bouton RStudio -\> étape 1 connexion Saturn avec GitHub, étape 2 = machine svbox2024sdd
+
+------------------------------------------------------------------------
+
+3 dias sur science des données (PhG) - récupéer les feuilles + créer compte posit (GE)
+
+------------------------------------------------------------------------
+
+étape 3 = SSH GitHub (attente synchro) + étape 4 api key + post-it
+
+lancer la machine...
+
+------------------------------------------------------------------------
 
 ## Science des données
+
+3 dias avec data scientist + Vennn + taille des données
 
 ### Science des données : une approche pragmatique
 
@@ -115,6 +130,8 @@ La biologie n'échappe pas au besoin d'analyser des (gros) jeux de données :
 
 \columnsend
 
+------------------------------------------------------------------------
+
 ### Objectifs
 
 Nos objectifs principaux durant votre formation en `science des données biologiques` est de vous rendre capable de :
@@ -125,7 +142,7 @@ Nos objectifs principaux durant votre formation en `science des données biologi
 
 -   développer votre esprit critique
 
-**Vous pouvez retrouver via la [fiche du cours](http://applications.umons.ac.be/web/fr/pde/2023-2024/ue/US-B2-SCBIOL-006-M.htm) le détails de tous les objectifs.**
+**Vous pouvez retrouver via la [fiche du cours](http://applications.umons.ac.be/web/fr/pde/2024-2025/ue/US-B2-SCBIOL-006-M.htm) le détails de tous les objectifs.**
 
 ## Comment se déroule un cours ?
 
@@ -222,13 +239,22 @@ Notre approche : **pédagogie active en classe inversée** (vous apprenez *d'ab
 -   Vous aurez deux interrogations écrites par AA et un challenge
 
 -   Note de l'AA (voir [plan de cours](https://github.com/BioDataScience-Course/BioDataScience-Common/tree/2023-2024/docs/plan_de_cours/sdd2_plan_cours_2023-2024.pdf)) :
-    * 25% des points pour les exercices (5% H5P-Shiny-Learnr, 20% challenge)
-    
-    * 25% des points pour les projets (5% individuels, 20% de groupe)
-    
-    * 25% première interrogation
-    
-    * 25% seconde interrogation
+
+    -   25% des points pour les exercices (5% H5P-Shiny-Learnr, 20% challenge)
+
+    -   25% des points pour les projets (5% individuels, 20% de groupe)
+
+    -   25% première interrogation
+
+    -   25% seconde interrogation
+
+------
+
+Terminer en vérifiant la machine + learnr + aide
+
+Si reste du temps, explication IA + halucination
+
+Et s'il reste encore du temps, wooclap
 
 ------------------------------------------------------------------------
 
