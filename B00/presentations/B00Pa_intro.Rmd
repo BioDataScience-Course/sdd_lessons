@@ -37,17 +37,17 @@ C'est la reprise... pas encore tout-à-fait ! Durant ces deux heures, nous allo
 
 Cette année, nous utiliserons la **SciViews Box 2024** dans le Cloud avec **Saturn Cloud**. Deux changements notables :
 
-1.  La machine n'est plus créée dans le compte gratuit, limité à 2h/mois. Prévenez-nous pour des tâches lourdes dans la SciViews Box 2024 pour d'autres cours.
+1.  La machine n'est plus créée dans le compte gratuit, limité à 2h/mois. Prévenez-nous si vous utilisez la SciViews Box 2024 pour d'autres cours.
 
 2.  Un login et mot de passe sont nécessaires pour accéder aux apps Shiny et au rapport de progression.
 
 ### Étapes de l'installation
 
-0.  Accéder au cours sur Moodle **Science des données II : modélisation** (mdp : sdd2umons) et se connecter à son compte GitHub <https://github.com/>.
+0.  Accéder au cours sur Moodle **Science des données II : modélisation** et se connecter à son compte GitHub <https://github.com/>.
 1.  Aller sur le site du cours : <https://wp.sciviews.org/>
 2.  Lier le cours et se connecter avec son compte GitHub.
 
-Cliquez sur le bouton bleu **RStudio** en haut à droite pour les instructions d'installation (nous le ferons ensemble).
+Cliquer sur le bouton bleu **RStudio** en haut à droite pour les instructions d'installation (nous le ferons ensemble).
 
 3.  Rejoindre l'organisation Econum de Saturn Cloud (invitation par mail).
 4.  Créer votre ressource : svbox2024sdd2 (attention à son nom).
@@ -57,7 +57,7 @@ Cliquez sur le bouton bleu **RStudio** en haut à droite pour les instructions d
 
 ### Nouveauté : chatbot
 
--   ...
+-   Un nouvel addin "Help" facilite l'accès à divers pages d'aide, mais aussi à un chatbot spécialement entraîné pour répondre à vos questions dans le cadre du cours (démonstration en séance). **Utilisez ces pages ou ce chatbot avant de poser des questions dans les issues ou à vos encadrants**.
 
 -   Toujours respecter les règles sur l'IA formulées dans le README d'un projet ou, si cela n'est pas précisé, celles du plan de cours.
 
@@ -117,7 +117,7 @@ flextable(ec) |>
 
 ![](figures/notes.jpg){width="40%"}
 
--   Revoir ce qui n'était pas compris
+-   Revoir ce qui n'était pas compris ou oublié de SDD I
 
 -   Se mettre à jour pour ceux qui ne le sont pas
 
