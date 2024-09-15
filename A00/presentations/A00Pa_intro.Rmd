@@ -16,63 +16,68 @@ SciViews::R
 
 ## Organisation de la salle
 
--   se placer par 4 (PhG + GE)
+-   Se placer par quatre par rangée (groupe de travail, même place toute l'année)
 
--   ordi + câbles
+-   Allumer son ordinateur ou l'ordinateur de la salle (un par étudiant)
 
--   postit jaune
+-   Utiliser un câble ethernet à la place du wifi (plus rapide)
 
--   remplissage des feuilles (+ infdos pour login GitHub en rappelant de ne pas créer le compte avant validation)
+-   Se munir d'un post-it jaune pour les questions
+
+-   Remplir les questionnaires sur les tables
 
 ## Qui sommes nous ?
 
 ### Présentation
 
-Une dia avec les 3 photos + [sdd\@sciviews.org](mailto:sdd@sciviews.org){.email} + wp.sciviews.org & email (3 l'un après l'autre)
+Philippe Grosjean, Guyliann Engels, Clément Van Hoeck ([sdd\@sciviews.org](mailto:sdd@sciviews.org){.email})
+
+```{=tex}
+\columnsbegin
+\columnhalf
+\center
+```
 
 ```{r out.width="50%", echo=FALSE}
-knitr::include_graphics("figures/phil-dive.png")
+knitr::include_graphics("figures/PhilippeGrosjean.jpg")
 ```
+
+![](figures/clément.vanHoeck.jpg)
+
+\columnhalf
 
 ![](figures/guyliann.jpg)
 
-## Espace Moodle
+\columnsend
 
--   Rentrer dedans + on y reviendra... nom Moodle 'Science des données I : visualisation' respecter maj/min mot de passe : sdd1umons + afficher postit
+## Installation et configuration des logiciels
 
-cliquer sur lier à wp.sciviews.org
+### Espace Moodle
 
-## Compte GitHub
+1.  Accéder au cours sur Moodle **Science des données I : visualisation**
+2.  Cliquer sur l'item **Lier et aller à wp.sciviews.org**
+3.  Dans le site du cours, cliquer sur "Home"
+4.  Lire la page
 
-(validation faite PrénomNom) (tout le monde)
 
-Page accueil
+### Compte GitHub
 
-liste qui reprend les étapes (rappeler les élements importants sur la dia)
+1.  Choisir un identifiant GitHub (PrénomNom) et le faire valider par un enseignant
+2.  Créer son compte GitHub
+3.  Cliquer sur "Login GitHub" dans le cours pour s'y identifier
 
-Suite à cela, 'une dia) enregistrement GitHub dans le cours
+### Compte Saturn Cloud
 
-Histoire, deux étudiants... (PhG) En parallèle, créer comptes SaturnCloud (GE) - adresse mail Matricules -\> prérécupéré de GESTAC (excel) + compléter au moment de checker les logins GitHub
+Cliquer sur le bouton bleu **RStudio** en haut à droite dans le site du cours pour les instructions d'installation (nous le ferons ensemble).
 
-------------------------------------------------------------------------
+1.  Invitation par mail -> rejoindre l'organisation Econum de Saturn Cloud
+2.  Créer sa ressource svbox2024sdd
+3.  Invitation par mail -> rejoindre Posit Connect
+4.  Générer une API KEY sur Posit Connect
+5.  Créer un nouveau secret dans son compte Saturn Cloud pour l'API KEY
 
--   bouton RStudio -\> étape 1 connexion Saturn avec GitHub, étape 2 = machine svbox2024sdd
-
-------------------------------------------------------------------------
-
-3 dias sur science des données (PhG) - récupéer les feuilles + créer compte posit (GE)
-
-------------------------------------------------------------------------
-
-étape 3 = SSH GitHub (attente synchro) + étape 4 api key + post-it
-
-lancer la machine...
-
-------------------------------------------------------------------------
 
 ## Science des données
-
-3 dias avec data scientist + Vennn + taille des données
 
 ### Science des données : une approche pragmatique
 
@@ -102,47 +107,8 @@ lancer la machine...
 
 ### Pourquoi la science des données ?
 
--   Discipline à la fois ancienne et **récente**
-    -   Évolution des statistiques, avec ses prémices dans les années 1960 (John Tukey).
-    -   Émerge comme science à part : 2001 William S. Cleveland, *"Data Science : An Action Plan for Expanding the Technical Area of Field of Statistics"*.
-    -   Le terme **Data Scientist** n'est d'usage courant que depuis 2008.
 -   Besoin issu de la **quantité de données** disponibles (1 zettabyte = 1 milliard de terabytes = 1 000 000 000 000 000 000 000 octets). ![](figures/data-growth.png)
 
-### La science des données biologiques
-
-```{=tex}
-\columnsbegin
-\columnhalf
-```
-La biologie n'échappe pas au besoin d'analyser des (gros) jeux de données :
-
--   **Génétique**, bases immenses
--   **Biodiversité** animale et végétale
--   **Études écologiques** avec images satellites, capteurs haute vitesse
--   **Littérature** scientifique
--   etc.
-
-\alert{Un biologiste analyse des données pratiquement quotidiennement sous une forme ou l'autre !}
-
-\columnhalf
-
-![](figures/data-genomic.jpg)
-
-\columnsend
-
-------------------------------------------------------------------------
-
-### Objectifs
-
-Nos objectifs principaux durant votre formation en `science des données biologiques` est de vous rendre capable de :
-
--   réaliser des analyses biologiques usuelles,
-
--   présenter clairement vos résultats de manière reproductible avec des outils informatiques et statistiques professionnels
-
--   développer votre esprit critique
-
-**Vous pouvez retrouver via la [fiche du cours](http://applications.umons.ac.be/web/fr/pde/2024-2025/ue/US-B2-SCBIOL-006-M.htm) le détails de tous les objectifs.**
 
 ## Comment se déroule un cours ?
 
@@ -210,53 +176,33 @@ Notre approche : **pédagogie active en classe inversée** (vous apprenez *d'ab
 
 -   **Vous posez les questions**, et vos enseignants vous répondent **individuellement**.
 
-## Organisation du cours
 
-### ECTS
-
-**European Credits Transfer System**, créé en 1988 de manière standardisée par la Commission Européenne comme correspondant à une **charge de travail totale** pour l'étudiant. Ce cours comprend 12 modules pour 6 ECTS (0.5 ECTS/module)
-
-![](figures/ects.jpg)
-
-## Apprentissage en quatre niveaux
-
-### Niveaux d'exercice = Apprendre, niveaux 1 à 4
-
-![](figures/apprendre.png){width="80%"}
-
-### Quatre niveaux d'exercices
+### Apprentissage en quatre niveaux
 
 ![](figures/apprendre2.png){width="80%"}
 
 ### Évaluation continue & planning
 
--   Le [planning des séances](https://wp.sciviews.org/sdd-umons2/?iframe=wp.sciviews.org/sdd-umons2-2023/planning-des-s%25C3%25A9ances.html) est synthétisé dans le cours en ligne
+-   Le [planning des séances](https://wp.sciviews.org/sdd-umons2/?iframe=wp.sciviews.org/sdd-umons2-2024/planning-des-s%25C3%25A9ances.html) est synthétisé dans le cours en ligne
 
--   Vous pouvez suivre votre progression sur [Moodle](https://moodle.umons.ac.be) ou à la fin de chaque module du cours en ligne
+-   Suivi de votre progression dans [Moodle](https://moodle.umons.ac.be) ou à la fin de chaque module du cours
 
 -   Vous aurez des projets (analyse de données biologiques) en séance
 
--   Vous aurez deux interrogations écrites par AA et un challenge
+-   Vous aurez quatre interrogations écrites par AA et un challenge
 
--   Note de l'AA (voir [plan de cours](https://github.com/BioDataScience-Course/BioDataScience-Common/tree/2023-2024/docs/plan_de_cours/sdd2_plan_cours_2023-2024.pdf)) :
+-   Note de l'AA (voir [plan de cours](https://github.com/BioDataScience-Course/BioDataScience-Common/tree/2024-2025/docs/plan_de_cours/sdd2_plan_cours_2024-2025.pdf)) :
 
-    -   25% des points pour les exercices (5% H5P-Shiny-Learnr, 20% challenge)
+    -   6% des points pour les exercices (2% H5P-Shiny et 4% tutoriels learnr)
 
-    -   25% des points pour les projets (5% individuels, 20% de groupe)
+    -   6% pour les projets individuels
 
-    -   25% première interrogation
+    -   28% pour les projets de groupe
 
-    -   25% seconde interrogation
+    -   5 x 12% pour les interrogations et le challenge
 
-------
 
-Terminer en vérifiant la machine + learnr + aide
-
-Si reste du temps, explication IA + halucination
-
-Et s'il reste encore du temps, wooclap
-
-------------------------------------------------------------------------
+------------
 
 ```{=tex}
 \begin{center}
