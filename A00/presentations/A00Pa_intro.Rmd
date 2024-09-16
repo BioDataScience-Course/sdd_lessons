@@ -38,11 +38,12 @@ Philippe Grosjean, Guyliann Engels, Clément Van Hoeck ([sdd\@sciviews.org](mail
 \center
 ```
 
-```{r out.width="50%", echo=FALSE}
+```{r out.width="45%", echo=FALSE}
 knitr::include_graphics("figures/PhilippeGrosjean.jpg")
 ```
 
-![](figures/clément.vanHoeck.jpg)
+![](figures/clément.vanHoeck.png){width="45%"}
+
 
 \columnhalf
 
