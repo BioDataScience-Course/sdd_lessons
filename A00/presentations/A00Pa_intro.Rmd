@@ -62,7 +62,7 @@ knitr::include_graphics("figures/PhilippeGrosjean.jpg")
 
 ### Compte GitHub
 
-1.  Choisir un identifiant GitHub (PrénomNom) et le faire valider par un enseignant
+1.  Choisir un identifiant GitHub (PrenomNom) et le faire valider par un enseignant
 2.  Créer son compte GitHub
 3.  Cliquer sur "Login GitHub" dans le cours pour s'y identifier
 
