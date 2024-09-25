@@ -7,11 +7,12 @@ institute: Université de Mons, Belgique\break Service d'Écologie numérique\br
 date: ''
 fontfamily: mathpazo
 fontsize: 9pt
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-SciViews::R
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+# SciViews::R
 ```
 
 ### Reprise...
@@ -36,21 +37,31 @@ C'est la reprise... pas encore tout-à-fait ! Durant ces deux heures, nous allo
 
 ![](figures/saturncloud.png){width="40%"}
 
-Cette année-ci, nous utiliserons la **SciViews Box 2023**, toujours dans le Cloud avec **Saturn Cloud**. Mais il y a deux changements notables :
+Cette année-ci, nous utiliserons la **SciViews Box 2024**, toujours dans le Cloud avec **Saturn Cloud**. Mais il y a deux changements notables :
 
-1.  Nous utiliserons une ressource dans l'organisation **EcoNum** pour le cours (frais pris en charge par le labo)
+1.  La machine n'est plus créée dans le compte gratuit, limité à 2h/mois. Prévenez-nous si vous utilisez la SciViews Box 2024 pour d'autres cours.
 
-2.  Votre forfait gratuit passe de 30h à 150h/mois.
+2.  Un login et mot de passe sont nécessaires pour accéder aux apps Shiny et au rapport de progression.
 
-Cliquez sur le bouton bleu **RStudio** en haut à droite pour les instructions d'installation (nous allons le faire ensemble).
+### Étapes de l'installation
 
-### Nouveauté : `tabularise()`
+0.  Accéder au cours sur Moodle **Science des données III : exploration et prédiction** et se connecter à son compte GitHub <https://github.com/>.
+1.  Aller sur le site du cours : <https://wp.sciviews.org/>
+2.  Lier le cours et se connecter avec son compte GitHub.
 
--   Avec `SciViews::R` et `chart()` vous obteniez déjà de beaux graphiques
+Cliquer sur le bouton bleu **RStudio** en haut à droite pour les instructions d'installation (nous le ferons ensemble).
 
--   Maintenant `tabularise()` vous permet aussi d'obtenir de belles tables (démo...) !
+3.  Rejoindre l'organisation Econum de Saturn Cloud (invitation par mail).
+4.  Créer votre ressource : svbox2024sdd3 (attention à son nom, il fautr rajouter un "3" à la fin).
+5.  Rejoindre Posit Connect (invitation par mail).
+6.  Générer une API KEY sur Posit Connect.
+7.  Créer un nouveau secret dans votre compte Saturn Cloud pour l'API KEY.
 
-![](figures/tabularise.png)
+### Nouveauté : chatbot
+
+-   Un nouvel addin "Help" facilite l'accès à divers pages d'aide, mais aussi à un chatbot spécialement entraîné pour répondre à vos questions dans le cadre du cours (démonstration en séance). **Utilisez ces pages ou ce chatbot avant de poser des questions dans les issues ou à vos encadrants**.
+
+-   Toujours respecter les règles sur l'IA formulées dans le README d'un projet ou, si cela n'est pas précisé, celles du plan de cours.
 
 ### Changements dans la gestion des séances
 
@@ -58,13 +69,49 @@ Cliquez sur le bouton bleu **RStudio** en haut à droite pour les instructions d
 
 ![](figures/change.jpg){width="40%"}
 
+-   **Rappel, le plan de cours** est l'élément indispensable à connaitre (voir [plan de cours](https://github.com/BioDataScience-Course/BioDataScience-Common/tree/2024-2025/docs/plan_de_cours/sdd3_plan_cours_2024-2025.pdf)).
+
 -   **Séances assimilées à des TP**. Obligatoires. Cela ne change pas.
--   **Planning du travail** dans le cours (voir section [planning des séances](https://wp.sciviews.org/sdd-umons3/?iframe=wp.sciviews.org/sdd-umons3-2023/temps.html)). *Plus de message de rappel sur la matière à étudier, etc.*
--   **Deux interrogations et un challenge**. Répartition des points (voir [plan de cours](https://github.com/BioDataScience-Course/BioDataScience-Common/tree/2023-2024/docs/plan_de_cours/sdd3_plan_cours_2023-2024.pdf)) :
-    -   25% des points pour les exercices (5% H5P-Shiny-Learnr, 20% challenge)
-    -   25% des points pour les projets (5% individuels, 20% de groupe)
-    -   25% première interrogation
-    -   25% seconde interrogation
+
+-   **Rappel, le planning du travail** dans le cours (voir section [planning des séances](https://wp.sciviews.org/sdd-umons3/?iframe=wp.sciviews.org/sdd-umons3-2024/temps.html)). *Plus de message de rappel sur la matière à étudier, etc.*
+
+### Gestion des modules
+
+-   Chaque module est travaillé pendant **une semaine**
+
+-   **Deux séances de 2h et de 4h** en présentiel, respectivement et 12 à 18h de travail au total pour l'étudiant (= 0.6 ECTS) par module
+
+-   Un module **une semaine sur deux** pour laisser le temps de finaliser le précédent et de préparer le suivant
+
+![](figures/semaine_type.pdf){width="80%"}
+
+### Évaluation continue
+
+**Évaluation continue** prenant en compte **toute votre activité** (*chaque* exercice donne des points) :
+
+-   Exercices N1 & 2 en distanciel
+-   Projets individuels et en groupe
+-   Une évaluations sommative par module
+
+```{r, fig.width=8}
+ec <- data.frame(
+  Niveau = c("Niveau 1", "Niveau 2", "Niveau 3", "Niveau 4", "Évaluations"),
+  Type = c("Exercices H5P et shiny", "Tutoriels learnr", "Projets individuels cadrés", "Projets de groupe", "Interrogations & challenges"),
+  Pourcentage = c("2%", "4%", "6%", "28%", "12% x 5"),
+  Fraction = c(2, 4, 6, 28, 60)
+)
+library(flextable)
+set_flextable_defaults(font.size = 14, background.color = "white")
+flextable(ec) |>
+  theme_booktabs() |>
+  set_table_properties(width = 1) |>
+  mk_par(j = 4, value = as_paragraph(
+    minibar(value = Fraction,
+      max = 100, height = .15, barcol = "darkred")), part = "body") |>
+  set_header_labels(Fraction = "") |>
+  autofit() |>
+  plot(fit = "width", just = NULL)
+```
 
 ### Préparation pour le prochain cours
 

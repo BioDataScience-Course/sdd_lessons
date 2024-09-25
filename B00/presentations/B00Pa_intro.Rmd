@@ -27,6 +27,8 @@ C'est la reprise... pas encore tout-à-fait ! Durant ces deux heures, nous allo
 
 -   Modifications dans la façon de travailler
 
+-   Projet individuel **C01Ia_debug** pour se remettre dans le bain
+
 -   Travail pour le prochain cours
 
 ### Installation du logiciel
@@ -35,7 +37,7 @@ C'est la reprise... pas encore tout-à-fait ! Durant ces deux heures, nous allo
 
 ![](figures/saturncloud.png){width="40%"}
 
-Cette année, nous utiliserons la **SciViews Box 2024** dans le Cloud avec **Saturn Cloud**. Deux changements notables :
+Cette année, nous utiliserons la **SciViews Box 2024** dans le Cloud avec **Saturn Cloud**. Deux changements notables :
 
 1.  La machine n'est plus créée dans le compte gratuit, limité à 2h/mois. Prévenez-nous si vous utilisez la SciViews Box 2024 pour d'autres cours.
 
