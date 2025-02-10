@@ -46,4 +46,6 @@ round(mat <- dissimilarity(q_2, method = "canberra"), 2)
 # ci-dessus.
 
 # solution
-cluster(mat, method = "complete") |> chart()
+clust <- cluster(mat, method = "complete")
+str(clust)
+chart(clust)
