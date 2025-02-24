@@ -95,7 +95,7 @@ chart(data = tibble(Quantiles = .x, Prob = .d(.x)), Prob ~ Quantiles) +
   annotate("text", x = 3, y = 0.04, label = "Zone de non rejet", col = "black") +
   annotate("text", x = 11.5, y = 0.05, label = "plain(Zone ~ de ~ rejet) == plain(seuil) ~ alpha", parse = TRUE, col = "red") +
   annotate("segment", x = 8.8, y = 0.045, xend = 8.2, yend = 0.01,
-    size = 0.5, col = "red", arrow = arrow(length = unit(0.2, "cm")))  #+
+    linewidth = 0.5, col = "red", arrow = arrow(length = unit(0.2, "cm")))  #+
   # annotate("text", x = 6.5, y = 0.25, label = "chi[obs]^2 == 5.61", parse = TRUE,
   #   col = "red", fontface = "bold.italic") +
   # annotate("text", x = 7.4, y = 0.2, label = "(aire à droite = valeur P)",
@@ -149,7 +149,7 @@ chart(data = tibble(Quantiles = .x, Prob = .d(.x)), Prob ~ Quantiles) +
   annotate("text", x = 3, y = 0.04, label = "Zone de non rejet", col = "black") +
   annotate("text", x = 8.5, y = 0.07, label = "plain(Zone ~ de ~ rejet)", parse = TRUE, col = "red") +
   annotate("segment", x = 8.8, y = 0.045, xend = 8.2, yend = 0.01,
-    size = 0.5, col = "red", arrow = arrow(length = unit(0.2, "cm")))  +
+    linewidth = 0.5, col = "red", arrow = arrow(length = unit(0.2, "cm")))  +
    annotate("text", x = 13.5, y = 0.15, label = "chi[obs]^2 == 10.556", parse = TRUE,
      col = "red", fontface = "bold.italic") 
 ```
