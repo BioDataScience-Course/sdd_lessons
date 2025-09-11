@@ -23,13 +23,11 @@ C'est la reprise... pas encore tout-à-fait ! Durant ces deux heures, nous allo
 
 ![](figures/start.jpg){width="55%"}
 
--   Installation du logiciel et nouveautés
+-   Installation du logiciel 
 
--   Modifications dans la façon de travailler
+-   Organisation du cours de SDD3
 
--   Projet individuel **C01Ia_debug** pour se remettre dans le bain
-
--   Travail pour le prochain cours
+-   Travail pour le prochain cours et nouveautés
 
 ### Installation du logiciel
 
@@ -37,11 +35,7 @@ C'est la reprise... pas encore tout-à-fait ! Durant ces deux heures, nous allo
 
 ![](figures/saturncloud.png){width="40%"}
 
-Cette année-ci, nous utiliserons la **SciViews Box 2024**, toujours dans le Cloud avec **Saturn Cloud**. Mais il y a deux changements notables :
-
-1.  La machine n'est plus créée dans le compte gratuit, limité à 2h/mois. Prévenez-nous si vous utilisez la SciViews Box 2024 pour d'autres cours.
-
-2.  Un login et mot de passe sont nécessaires pour accéder aux apps Shiny et au rapport de progression.
+Cette année, nous utiliserons la **SciViews Box 2025** dans le Cloud avec **Saturn Cloud**.
 
 ### Étapes de l'installation
 
@@ -49,31 +43,25 @@ Cette année-ci, nous utiliserons la **SciViews Box 2024**, toujours dans le Clo
 1.  Aller sur le site du cours : <https://wp.sciviews.org/>
 2.  Lier le cours et se connecter avec son compte GitHub.
 
-Cliquer sur le bouton bleu **RStudio** en haut à droite pour les instructions d'installation (nous le ferons ensemble).
+Cliquer sur le bouton bleu **RStudio** en haut à droite puis suivez les instructions d'installation.
 
-3.  Rejoindre l'organisation Econum de Saturn Cloud (invitation par mail).
-4.  Créer votre ressource : svbox2024sdd3 (attention à son nom, il fautr rajouter un "3" à la fin).
-5.  Rejoindre Posit Connect (invitation par mail).
-6.  Générer une API KEY sur Posit Connect.
-7.  Créer un nouveau secret dans votre compte Saturn Cloud pour l'API KEY.
+Résumé des étapes
 
-### Nouveauté : chatbot
+3.  Invitation par mail -> rejoindre l'organisation Econum de Saturn Cloud
+4.  Générer la clé ssh sur Saturn Cloud
+5.  Ajouter la clé ssh dans GitHub
+6.  Invitation par mail -> rejoindre Posit Connect
+7.  Générer une API KEY sur Posit Connect
+8.  Créer un nouveau secret dans son compte Saturn Cloud pour l'API KEY
+9.  Créer sa ressource svbox2025sdd3 (attention à son nom, il faut rajouter un "3" à la fin)
 
--   Un nouvel addin "Help" facilite l'accès à divers pages d'aide, mais aussi à un chatbot spécialement entraîné pour répondre à vos questions dans le cadre du cours (démonstration en séance). **Utilisez ces pages ou ce chatbot avant de poser des questions dans les issues ou à vos encadrants**.
+### Gestion des séances
 
--   Toujours respecter les règles sur l'IA formulées dans le README d'un projet ou, si cela n'est pas précisé, celles du plan de cours.
-
-### Changements dans la gestion des séances
-
-\center
-
-![](figures/change.jpg){width="40%"}
-
--   **Rappel, le plan de cours** est l'élément indispensable à connaitre (voir [plan de cours](https://github.com/BioDataScience-Course/BioDataScience-Common/tree/2024-2025/docs/plan_de_cours/sdd3_plan_cours_2024-2025.pdf)).
+-   **Le plan de cours** est l'élément indispensable à connaitre (voir [plan de cours](https://github.com/BioDataScience-Course/BioDataScience-Common/tree/2025-2026/docs/plan_de_cours/sdd3_plan_cours_2025-2026.pdf)).
 
 -   **Séances assimilées à des TP**. Obligatoires. Cela ne change pas.
 
--   **Rappel, le planning du travail** dans le cours (voir section [planning des séances](https://wp.sciviews.org/sdd-umons3/?iframe=wp.sciviews.org/sdd-umons3-2024/temps.html)). *Plus de message de rappel sur la matière à étudier, etc.*
+-   **Le planning du travail** dans le cours (voir section [planning des séances](https://wp.sciviews.org/sdd-umons3/?iframe=wp.sciviews.org/sdd-umons3-2025/planning.html)). *Plus de message de rappel sur la matière à étudier, etc.*
 
 ### Gestion des modules
 
@@ -119,13 +107,18 @@ flextable(ec) |>
 
 ![](figures/notes.jpg){width="40%"}
 
--   Avancer dans **C01Ia_debug** et faire son auto-évaluation par rapport à la matière des cours précédents à revoir pour se mettre à jour
+-   faire son auto-évaluation par rapport à la matière des cours précédents à revoir pour se mettre à jour
 
 -   Se mettre à jour pour ceux qui ne le sont pas
 
--   Préparer **tout** le module 1
+-   Préparer l’ensemble du module 1 : réaliser tous les exercices de niveaux 1 et 2, accessibles directement depuis le cours en ligne, sans utiliser la ressource Saturn Cloud.
 
 **Ressources utiles :**
 
 -   Site web du cours : <http://bds.sciviews.org/>
--   Cette présentation : <https://github.com/BioDataScience-Course/sdd_lessons/tree/2024-2025/C00/presentations>
+-   Cette présentation : <https://github.com/BioDataScience-Course/sdd_lessons/tree/2025-2026/C00/presentations>
+
+### Nouveauté : Tutoriels 
+
+- Les tutoriels sont désormais accessibles directement depuis le cours en ligne, sans avoir à utiliser une ressource sur Saturn Cloud
+

@@ -105,9 +105,13 @@ flextable(ec) |>
 
 -   Se mettre à jour pour ceux qui ne le sont pas
 
--   Préparer **tout** le module 1  (réaliser tous les exercices de niveaux 1 et 2 disponible directement depuis le cours en ligne sans utilisation de la ressource Saturn Cloud)
+-   Préparer l’ensemble du module 1 : réaliser tous les exercices de niveaux 1 et 2, accessibles directement depuis le cours en ligne, sans utiliser la ressource Saturn Cloud.
 
 **Ressources utiles :**
 
 -   Site web du cours : <http://bds.sciviews.org/>
 -   Cette présentation : <https://github.com/BioDataScience-Course/sdd_lessons/tree/2025-2026/B00/presentations>
+
+### Nouveauté : Tutoriels 
+
+- Les tutoriels sont désormais accessibles directement depuis le cours en ligne, sans avoir à utiliser une ressource sur Saturn Cloud
