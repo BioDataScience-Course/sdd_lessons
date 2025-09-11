@@ -30,7 +30,7 @@ SciViews::R
 
 ### Présentation
 
-Philippe Grosjean, Guyliann Engels, Clément Van Hoeck ([sdd\@sciviews.org](mailto:sdd@sciviews.org){.email})
+Philippe Grosjean, Guyliann Engels ([sdd\@sciviews.org](mailto:sdd@sciviews.org){.email})
 
 ```{=tex}
 \columnsbegin
@@ -38,16 +38,15 @@ Philippe Grosjean, Guyliann Engels, Clément Van Hoeck ([sdd\@sciviews.org](mail
 \center
 ```
 
-```{r out.width="45%", echo=FALSE}
+```{r out.width="85%", echo=FALSE}
 knitr::include_graphics("figures/PhilippeGrosjean.jpg")
 ```
 
-![](figures/clément.vanHoeck.png){width="45%"}
-
-
 \columnhalf
 
-![](figures/guyliann.jpg)
+```{r out.width="85%", echo=FALSE}
+knitr::include_graphics("figures/guyliann.jpg")
+```
 
 \columnsend
 
@@ -63,20 +62,31 @@ knitr::include_graphics("figures/PhilippeGrosjean.jpg")
 
 ### Compte GitHub
 
+Lire la section *Bien débuter...* : <https://wp.sciviews.org> 
+
+\vfill
+
+Résumé des étapes
+
 1.  Choisir un identifiant GitHub (PrenomNom) et le faire valider par un enseignant
 2.  Créer son compte GitHub
 3.  Cliquer sur "Login GitHub" dans le cours pour s'y identifier
 
 ### Compte Saturn Cloud
 
-Cliquer sur le bouton bleu **RStudio** en haut à droite dans le site du cours pour les instructions d'installation (nous le ferons ensemble).
+Cliquer sur le bouton bleu **RStudio** en haut à droite dans le site du cours pour les instructions d'installation.
+
+\vfill
+
+Résumé des étapes
 
 1.  Invitation par mail -> rejoindre l'organisation Econum de Saturn Cloud
-2.  Créer sa ressource svbox2024sdd
-3.  Invitation par mail -> rejoindre Posit Connect
-4.  Générer une API KEY sur Posit Connect
-5.  Créer un nouveau secret dans son compte Saturn Cloud pour l'API KEY
-
+2.  Générer la clé ssh sur Saturn Cloud
+3.  Ajouter la clé ssh dans GitHub
+4.  Invitation par mail -> rejoindre Posit Connect
+5.  Générer une API KEY sur Posit Connect
+6.  Créer un nouveau secret dans son compte Saturn Cloud pour l'API KEY
+7.  Créer sa ressource svbox2025sdd
 
 ## Science des données
 
@@ -184,7 +194,7 @@ Notre approche : **pédagogie active en classe inversée** (vous apprenez *d'ab
 
 ### Évaluation continue & planning
 
--   Le [planning des séances](https://wp.sciviews.org/sdd-umons2/?iframe=wp.sciviews.org/sdd-umons2-2024/planning-des-s%25C3%25A9ances.html) est synthétisé dans le cours en ligne
+-   Le [planning des séances](https://wp.sciviews.org/sdd-umons2/?iframe=wp.sciviews.org/sdd-umons2-2025/planning-des-s%25C3%25A9ances.html) est synthétisé dans le cours en ligne
 
 -   Suivi de votre progression dans [Moodle](https://moodle.umons.ac.be) ou à la fin de chaque module du cours
 
@@ -192,7 +202,7 @@ Notre approche : **pédagogie active en classe inversée** (vous apprenez *d'ab
 
 -   Vous aurez quatre interrogations écrites par AA et un challenge
 
--   Note de l'AA (voir [plan de cours](https://github.com/BioDataScience-Course/BioDataScience-Common/tree/2024-2025/docs/plan_de_cours/sdd2_plan_cours_2024-2025.pdf)) :
+-   Note de l'AA (voir [plan de cours](https://github.com/BioDataScience-Course/BioDataScience-Common/tree/2025-2026/docs/plan_de_cours/sdd1_plan_cours_2025-2026.pdf)) :
 
     -   6% des points pour les exercices (2% H5P-Shiny et 4% tutoriels learnr)
 
@@ -219,4 +229,4 @@ Notre approche : **pédagogie active en classe inversée** (vous apprenez *d'ab
 **Ressources utiles :**
 
 -   Site web du cours : <http://bds.sciviews.org/>
--   Cette présentation : <https://github.com/BioDataScience-Course/sdd_lessons/tree/2024-2025/A00/presentations>
+-   Cette présentation : <https://github.com/BioDataScience-Course/sdd_lessons/tree/2025-2026/A00/presentations>
