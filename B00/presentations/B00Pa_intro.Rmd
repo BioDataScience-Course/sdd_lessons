@@ -23,59 +23,41 @@ C'est la reprise... pas encore tout-à-fait ! Durant ces deux heures, nous allo
 
 ![](figures/start.jpg){width="60%"}
 
--   Installation du logiciel et nouveautés
+-   Installation du logiciel 
 
--   Modifications dans la façon de travailler
+-   Rappel sur l'organisation des cours de SDD
 
--   Projet individuel **C01Ia_debug** pour se remettre dans le bain
+-   Travail pour le prochain cours et nouveautés
 
--   Travail pour le prochain cours
-
-### Installation du logiciel
+### Installation et configuration des logiciels
 
 \center
 
 ![](figures/saturncloud.png){width="40%"}
 
-Cette année, nous utiliserons la **SciViews Box 2024** dans le Cloud avec **Saturn Cloud**. Deux changements notables :
-
-1.  La machine n'est plus créée dans le compte gratuit, limité à 2h/mois. Prévenez-nous si vous utilisez la SciViews Box 2024 pour d'autres cours.
-
-2.  Un login et mot de passe sont nécessaires pour accéder aux apps Shiny et au rapport de progression.
+Cette année, nous utiliserons la **SciViews Box 2025** dans le Cloud avec **Saturn Cloud**.
 
 ### Étapes de l'installation
 
 0.  Accéder au cours sur Moodle **Science des données II : modélisation** et se connecter à son compte GitHub <https://github.com/>.
 1.  Aller sur le site du cours : <https://wp.sciviews.org/>
 2.  Lier le cours et se connecter avec son compte GitHub.
-
-Cliquer sur le bouton bleu **RStudio** en haut à droite pour les instructions d'installation (nous le ferons ensemble).
-
 3.  Rejoindre l'organisation Econum de Saturn Cloud (invitation par mail).
-4.  Créer votre ressource : svbox2024sdd2 (attention à son nom).
-5.  Rejoindre Posit Connect (invitation par mail).
-6.  Générer une API KEY sur Posit Connect.
-7.  Créer un nouveau secret dans votre compte Saturn Cloud pour l'API KEY.
 
-### Nouveauté : chatbot
+Cliquer sur le bouton bleu **RStudio** en haut à droite puis suivez les instructions d'installation.
 
--   Un nouvel addin "Help" facilite l'accès à divers pages d'aide, mais aussi à un chatbot spécialement entraîné pour répondre à vos questions dans le cadre du cours (démonstration en séance). **Utilisez ces pages ou ce chatbot avant de poser des questions dans les issues ou à vos encadrants**.
+4.  Créer votre ressource : svbox2025sdd2 (attention à son nom).
 
--   Toujours respecter les règles sur l'IA formulées dans le README d'un projet ou, si cela n'est pas précisé, celles du plan de cours.
 
-### Changements dans la gestion des séances
+### Gestion des séances : Rappel
 
-\center
+-   **le plan de cours** est l'élément indispensable à connaitre (voir [plan de cours](https://github.com/BioDataScience-Course/BioDataScience-Common/tree/2025-2026/docs/plan_de_cours/sdd2_plan_cours_2025-2026.pdf)).
 
-![](figures/change.jpg){width="40%"}
+-   **séances assimilées à des TP**. Obligatoires. Cela ne change pas.
 
--   **Rappel, le plan de cours** est l'élément indispensable à connaitre (voir [plan de cours](https://github.com/BioDataScience-Course/BioDataScience-Common/tree/2024-2025/docs/plan_de_cours/sdd2_plan_cours_2024-2025.pdf)).
+-   **planning du travail** dans le cours (voir section [planning des séances](https://wp.sciviews.org/sdd-umons2/?iframe=wp.sciviews.org/sdd-umons2-2025/planning.html)). 
 
--   **Séances assimilées à des TP**. Obligatoires. Cela ne change pas.
-
--   **Rappel, le planning du travail** dans le cours (voir section [planning des séances](https://wp.sciviews.org/sdd-umons2/?iframe=wp.sciviews.org/sdd-umons2-2024/planning-des-s%25C3%25A9ances.html)). *Plus de message de rappel sur la matière à étudier, etc.*
-
-### Gestion des modules
+### Gestion des modules : Rappel
 
 -   Chaque module est travaillé pendant **une semaine**
 
@@ -85,7 +67,7 @@ Cliquer sur le bouton bleu **RStudio** en haut à droite pour les instructions d
 
 ![](figures/semaine_type.pdf){width="80%"}
 
-### Évaluation continue
+### Évaluation continue : Rappel
 
 **Évaluation continue** prenant en compte **toute votre activité** (*chaque* exercice donne des points) :
 
@@ -123,9 +105,9 @@ flextable(ec) |>
 
 -   Se mettre à jour pour ceux qui ne le sont pas
 
--   Préparer **tout** le module 1
+-   Préparer **tout** le module 1  (réaliser tous les exercices de niveaux 1 et 2 disponible directement depuis le cours en ligne sans utilisation de la ressource Saturn Cloud)
 
 **Ressources utiles :**
 
 -   Site web du cours : <http://bds.sciviews.org/>
--   Cette présentation : <https://github.com/BioDataScience-Course/sdd_lessons/tree/2024-2025/B00/presentations>
+-   Cette présentation : <https://github.com/BioDataScience-Course/sdd_lessons/tree/2025-2026/B00/presentations>
