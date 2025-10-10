@@ -16,7 +16,7 @@ SciViews::R
 
 ## Organisation de la salle
 
--   Se placer par quatre par rangée (groupe de travail, même place toute l'année)
+-   Placez-vous par quatre par rangée (groupe de travail, même place toute l'année)
 
 -   Allumer son ordinateur ou l'ordinateur de la salle (un par étudiant)
 
