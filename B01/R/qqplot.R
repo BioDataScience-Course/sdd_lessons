@@ -1,5 +1,5 @@
 # Graphiques quantile-quantile de différentes distributions
-# Copyright (c) 2023, Ph. Grosjean <phgrosjean@sciviews.org> & G. Enngels
+# Copyright (c) 2023-2026, Ph. Grosjean <phgrosjean@sciviews.org> & G. Enngels
 
 SciViews::R("infer", lang = "fr")
 

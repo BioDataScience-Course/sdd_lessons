@@ -1,4 +1,7 @@
+# SDD I module 6
+# Copyright (c) 2026, Philippe Grosjean & Guyliann Engels
 # Exploration des distribution
+
 SciViews::R("infer", lang = "fr")
 
 N <- dist_normal(mean = 50, sd = 10)
@@ -45,7 +48,7 @@ set.seed(835)
 generate(U, 10)
 runif(10, min = 2, max = 10)
 
-# Vérification de l'exercice 5 avec generate()
+# Moyenne et écart type d'un échantillon généré selon une distribution connue
 x1 <- generate(N, 10000)[[1]]
 mean(x1)
 sd(x1)
