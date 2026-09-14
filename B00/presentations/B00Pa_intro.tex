@@ -1,0 +1,486 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  9pt,
+  ignorenonframetext,
+]{beamer}
+\newif\ifbibliography
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% remove section numbering
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usefonttheme[]{serif}
+\usepackage[]{mathpazo}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% Document Class options:
+% - You can use article(beamer) or presentation(beamer)
+% - In presentation, you can use following options:
+%    'trans' for transparent, 'handout' for printing-friendly version
+%    'notes' also output notes, 'notesonly' only output notes
+
+% If you have several lectures defined in the same document, uncomment this:
+%\includeonlylecture{cours02}
+
+\usepackage{fontspec}
+%\fontfamily{ppl}\selectfont
+\setmainfont{Arial}
+%\setmainfont{DejaVu LGC Sans}
+%\setmainfont[SmallCapsFont=Fontin SmallCaps]{Fontin-Regular}
+%\setmainfont{Gentium Basic}
+%\setsansfont{DejaVu LGC Sans}
+%\setmonofont{DejaVu LGC Sans Mono}
+%\setmainfont{Calibri}
+%\setmainfont{Cambria}
+%\setsansfont{Candara}
+%\setmonofont{Consolas}
+
+% UMONS-EcoNum template configuration
+\mode<all>
+{
+  \definecolor{umons-red}{RGB}{168, 0, 57}
+  \definecolor{umons-turquoise}{RGB}{0, 171, 204}
+  \definecolor{umons-gray}{RGB}{150, 150, 150}
+  \definecolor{umons-gray2}{RGB}{110, 110, 110}
+  \usepackage[labelfont=bf, tableposition=top]{caption}
+}
+\mode<article>
+{
+  \usepackage{beamerbasearticle}
+  \usepackage{fullpage}
+  \pdfimageresolution 96
+}
+\mode<beamer>
+{
+  % Customizable items (make sure corresponding pictures are in /template subdir):
+  % The background image
+  \usebackgroundtemplate{\includegraphics[width=1.07\paperwidth,
+height=1.07\paperheight]{../../template/background-hex.jpg}}
+  % The logo picture
+  \logo{\includegraphics[width=2cm]{../../template/UMONS-logo.pdf}}
+}
+\mode<handout>
+{
+  \definecolor{umons-red}{RGB}{84, 84, 84}
+  \definecolor{umons-turquoise}{RGB}{168, 168, 168}
+  \usepackage{pgfpages}
+  \pgfpagesuselayout{2 on 1}[a4paper, border shrink=5mm]
+}
+\mode<presentation>
+{
+  % General theme to use
+  \usetheme{CambridgeUS}
+  %\usetheme{AnnArbor}
+  %\usetheme{default}
+  %\usetheme{Pittsburgh}
+  %\usetheme{Dresden}
+  %\usetheme{Hannover}
+  % Color theme (but must colors redefined hereunder)
+  \usecolortheme{beaver}
+  % Theme used for bullets
+  \useinnertheme{rectangles}
+  %or \useinnertheme{circles}
+  % This is to get semi-transparent covered items
+  \setbeamercovered{transparent}
+  % Rounded rectangular blocks without shadow
+  \setbeamertemplate{blocks}[rounded][shadow=false]
+ %\usepackage{beamerthemeshadow}
+
+  \setbeamersize{text margin left=1em,text margin right=1em}
+  \setbeamerfont{title}{size=\huge}
+  \setbeamerfont{subtitle}{size=\large}
+  \setbeamerfont{institute}{size=\small}
+  \setbeamerfont{date}{size=\small}
+  \setbeamerfont{framesubtitle}{size=\small}
+  % This stands out a little bit more than umons-red!
+  \setbeamercolor{alerted text}{fg=red!80!black}
+  %\setbeamercolor{alerted text}{fg=umons-red}
+  \setbeamercolor*{palette primary}{fg=black, bg=umons-turquoise}
+  \setbeamercolor*{palette secondary}{fg=black, bg=umons-turquoise}
+  \setbeamercolor*{palette tertiary}{fg=umons-gray!30, bg=umons-red!80!black}
+  \setbeamercolor*{palette quaternary}{fg=black, bg=umons-turquoise}
+  \setbeamercolor*{upper separation line head left}{parent=palette tertiary}
+  \setbeamercolor*{upper separation line head right}{parent=palette primary}
+  \setbeamercolor{title}{fg=umons-red}
+  \setbeamercolor*{titlelike}{fg=umons-red}
+  \setbeamercolor{institute}{fg=umons-gray2}
+  \setbeamercolor{date}{fg=umons-gray2}
+  \setbeamercolor{frametitle}{fg=umons-red, bg=white}
+  \setbeamercolor{frametitle right}{bg=white}
+  \setbeamercolor{structure}{fg=umons-turquoise}
+  \setbeamercolor*{separation line}{}
+  \setbeamercolor*{fine separation line}{}
+  \setbeamercolor*{sidebar}{fg=umons-red,bg=white}
+  \setbeamercolor*{palette sidebar primary}{fg=umons-turquoise!10!black}
+  \setbeamercolor*{palette sidebar secondary}{fg=umons-red}
+  \setbeamercolor*{palette sidebar tertiary}{fg=umons-red!50!black}
+  \setbeamercolor*{palette sidebar quaternary}{fg=umons-red}
+  \setbeamercolor*{example text}{fg=umons-gray2}
+
+  % Change the footer
+  \makeatother
+  \setbeamertemplate{footline}
+  {
+    \leavevmode%
+    \hbox{%
+    \begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.57\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertshorttitle\hspace*{3em}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.08\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+      \insertframenumber{} / \inserttotalframenumber\hspace*{1ex}
+    \end{beamercolorbox}}%
+    \vskip0pt%
+  }
+  \makeatletter
+  \setbeamertemplate{navigation symbols}{}
+
+  % Custom Sweave styles
+  %\definecolor{SinputColor}{RGB}{25, 25, 125}
+  %\definecolor{SoutputColor}{RGB}{110, 110, 110}
+  %\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontsize=\small,formatcom=\color{SinputColor}}
+  %\DefineVerbatimEnvironment{Soutput}{Verbatim}{fontsize=\small,formatcom=\color{SoutputColor}}
+  %\DefineVerbatimEnvironment{Scode}{Verbatim}{fontsize=\small,\color{SinputColor}}
+}
+
+% To get coherent font between text and equations
+\usefonttheme{professionalfonts}
+%\usepackage{mathpazo}
+% Useful package in this context
+\usepackage{listings}
+% Command used to place a picture somewhere in the slide (relative to current pos)
+\newcommand{\putat}[3]{\begin{picture}(0,0)(0,0)\put(#1,#2){#3}\end{picture}}
+
+% Idem, but in absolute pos (slide = 128x96mm)
+\usepackage{textpos}
+\newcommand{\putabs}[3]{\begin{textblock*}{10mm}[0,0](#1,#2){#3}\end{textblock*}}
+
+% Commands useful to place columns in the slides
+\newcommand{\columnsbegin}{\begin{columns}}
+\newcommand{\columnsend}{\end{columns}}
+\newcommand{\columnhalf}{\column{.5\textwidth}}
+\newcommand{\columnlarge}{\column{.66\textwidth}}
+\newcommand{\columnsmall}{\column{.33\textwidth}}
+\newcommand{\columnverylarge}{\column{.75\textwidth}}
+\newcommand{\columnverysmall}{\column{.25\textwidth}}
+
+% Copyright notices and sources:
+% The background picture: http://www.uberpiglet.com/vectors/20-amazing-vector-backgrounds/
+% UMONS-EcoNum template is partly inspired from a work done by:
+% C. Troestler <Christophe.Troestler@umons.ac.be> licensed under GNU GPL v3 or later.
+
+% SLIDE NOTES:
+% For slide notes, use the \note{} beamer style in your document.
+% To make sure to generate note pages even where there are no notes
+% (in order to have side-by-side slides at left and notes at right),
+% we add this:
+\makeatletter
+\def\beamer@framenotesbegin{%
+  \gdef\beamer@noteitems{}%
+  \gdef\beamer@notes{{}}%
+}
+\makeatother
+% Uncomment this line to print notes:
+%\setbeameroption{show notes}
+% To interleave slides and notes in the PDF:
+%\setbeamertemplate{note page}[plain]
+% To get only notes:
+%\setbeameroption{show only notes}
+
+% Uncomment the following 3 lines in presentation mode for dual screen
+% use (and specify 'left', 'top', 'right' or 'bottom' for second screen...)
+%\usepackage{pgfpages}
+%\setbeameroption{second mode text on second screen=right}
+%\setbeameroption{show notes on second screen}
+
+% More packages and options
+\usepackage{graphicx}
+\usepackage{rotating}
+%\setbeamertemplate{caption}[numbered]
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+%\mode<presentation>
+\usepackage{wasysym}
+%\usepackage{amsmath}
+
+% Redefine colors for links
+\hypersetup{colorlinks=true,urlcolor=umons-red,linkcolor=umons-red,% link color controls section, subsection, and title
+citecolor = umons-red, anchorcolor = umons-red}
+% We do not want to change link colors in infolines
+\addtobeamertemplate{headline}{\hypersetup{allcolors=.}}{}
+\addtobeamertemplate{footline}{\hypersetup{allcolors=.}}{}
+
+% Do not print slides with first level header
+\AtBeginSection[]{}
+
+% Redefine how subsection slides appear
+\AtBeginSubsection{
+  \frame{
+    \centering
+    \LARGE
+    \insertsubsection
+  }
+}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
+\hypersetup{
+  pdftitle={Science des données II},
+  pdfauthor={Philippe Grosjean \& Guyliann Engels},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{\texorpdfstring{Science des données II}{Science des données II}}
+\subtitle{\texorpdfstring{\includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
+\includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf}
+\vfill Reprise et installation du
+logiciel}{  Reprise et installation du logiciel}}
+\author{\texorpdfstring{Philippe Grosjean \& Guyliann
+Engels}{Philippe Grosjean \& Guyliann Engels}}
+\date{}
+\institute{Université de Mons, Belgique\break Service d'Écologie
+numérique\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf}
+\break \url{https://wp.sciviews.org} \break \url{sdd@sciviews.org}}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Reprise\ldots{}}
+\protect\phantomsection\label{reprise}
+C'est la reprise\ldots{} pas encore tout-à-fait~! Durant ces deux
+heures, nous allons essentiellement nous \textbf{préparer} au cours de
+SDD II.
+
+\center
+
+\includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{B00Pa_intro_files/figures/start.jpg}
+
+\begin{itemize}
+\item
+  Installation du logiciel
+\item
+  Rappel sur l'organisation des cours de SDD
+\item
+  Travail pour le prochain cours et nouveautés
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Installation et configuration des logiciels}
+\protect\phantomsection\label{installation-et-configuration-des-logiciels}
+\center
+
+\includegraphics[width=0.4\linewidth,height=\textheight,keepaspectratio]{B00Pa_intro_files/figures/saturncloud.png}
+
+Cette année, nous utiliserons la \textbf{SciViews Box 2026} dans le
+Cloud avec \textbf{Saturn Cloud}.
+\end{frame}
+
+\begin{frame}{Étapes de l'installation}
+\protect\phantomsection\label{uxe9tapes-de-linstallation}
+\begin{enumerate}
+\setcounter{enumi}{-1}
+\tightlist
+\item
+  Accéder au cours sur Moodle \textbf{Science des données II :
+  modélisation} et se connecter à son compte GitHub
+  \url{https://github.com/}.
+\item
+  Aller sur le site du cours : \url{https://wp.sciviews.org/}
+\item
+  Lier le cours et se connecter avec son compte GitHub.
+\item
+  Rejoindre l'organisation Econum de Saturn Cloud (invitation par mail).
+\end{enumerate}
+
+Cliquer sur le bouton bleu \textbf{RStudio} en haut à droite puis suivez
+les instructions d'installation.
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Créer votre ressource : \textbf{svbox2026sdd2} (attention à son nom).
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Gestion des séances : Rappel}
+\protect\phantomsection\label{gestion-des-suxe9ances-rappel}
+\begin{itemize}
+\item
+  \textbf{le plan de cours} est l'élément indispensable à connaitre
+  (voir
+  \href{https://github.com/BioDataScience-Course/BioDataScience-Common/tree/2026-2027/docs/plan_de_cours/sdd2_plan_cours_2026-2027.pdf}{plan
+  de cours}).
+\item
+  \textbf{séances assimilées à des TP}. Obligatoires. Cela ne change
+  pas.
+\item
+  \textbf{planning du travail} dans le cours (voir section
+  \href{https://wp.sciviews.org/sdd-umons2/?iframe=wp.sciviews.org/sdd-umons2-2026/planning.html}{planning
+  des séances}).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Gestion des modules : Rappel}
+\protect\phantomsection\label{gestion-des-modules-rappel}
+\begin{itemize}
+\item
+  Chaque module est travaillé pendant \textbf{une semaine}
+\item
+  \textbf{Deux séances de 2h et de 4h} en présentiel, respectivement et
+  12 à 15h de travail au total pour l'étudiant (= 0.5 ECTS) par module
+\item
+  Un module \textbf{une semaine sur deux} pour laisser le temps de
+  finaliser le précédent et de préparer le suivant
+\end{itemize}
+
+\includegraphics[width=0.8\linewidth,height=\textheight,keepaspectratio]{B00Pa_intro_files/figures/semaine_type.pdf}
+\end{frame}
+
+\begin{frame}{Évaluation continue : Rappel}
+\protect\phantomsection\label{uxe9valuation-continue-rappel}
+\textbf{Évaluation continue} prenant en compte \textbf{toute votre
+activité} (\emph{chaque} exercice donne des points)~:
+
+\begin{itemize}
+\tightlist
+\item
+  Exercices N1 \& 2 en distanciel
+\item
+  Projets individuels et en groupe
+\item
+  Une évaluations sommative par module
+\end{itemize}
+
+\pandocbounded{\includegraphics[keepaspectratio]{B00Pa_intro_files/B00Pa_intro_files/figure-beamer/unnamed-chunk-1-1.pdf}}
+\end{frame}
+
+\begin{frame}{Préparation pour le prochain cours}
+\protect\phantomsection\label{pruxe9paration-pour-le-prochain-cours}
+\center
+
+\includegraphics[width=0.4\linewidth,height=\textheight,keepaspectratio]{B00Pa_intro_files/figures/notes.jpg}
+
+\begin{itemize}
+\item
+  Revoir ce qui n'était pas compris ou oublié de SDD I
+\item
+  Se mettre à jour pour ceux qui ne le sont pas
+\item
+  Exceptionnellement, il ne faut \emph{pas} préparer le module 1. Il est
+  assez léger et nous le travaillerons ensemble en séance (et
+  actuellement, il n'est pas encore complètement finalisé).
+\end{itemize}
+
+\textbf{Ressources utiles~:}
+
+\begin{itemize}
+\tightlist
+\item
+  Site web du cours : \url{http://bds.sciviews.org/}
+\item
+  Cette présentation~:
+  \url{https://github.com/BioDataScience-Course/sdd_lessons/tree/2026-2027/B00/presentations}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Nouveauté : Tutoriels}
+\protect\phantomsection\label{nouveautuxe9-tutoriels}
+\begin{itemize}
+\item
+  Nouvelle SciViews Box 2026 comme workspace dans une interface remaniée
+  sur Saturn Cloud
+\item
+  GitHub Classroom n'existant plus, nous créons nous-mêmes vos dépôts et
+  vous aurez uniquement un lien URL vers GitHub pour y accéder.
+\end{itemize}
+\end{frame}
+
+\end{document}
