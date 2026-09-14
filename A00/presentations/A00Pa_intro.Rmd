@@ -1,12 +1,16 @@
 ---
-title: 'Science des données I'
-subtitle:  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/biodatascience.png}
-  \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/SciViews-logo.pdf} \vfill First class meeting
-author: Philippe Grosjean & Guyliann Engels 
-institute: Université de Mons, Belgique\break Service d'Écologie numérique\break \includegraphics[width=.08\textwidth,height=.1\textheight]{../../template/EcoNum-logo.pdf} \break \url{https://wp.sciviews.org} \break \url{sdd@sciviews.org}
+title: "Science des données I"
+author: "Philippe Grosjean & Guyliann Engels"
 date: ''
+output: pdf_document
+subtitle: "\\includegraphics[width=.08\\textwidth,height=.1\\textheight]{../../template/biodatascience.png}
+  \\includegraphics[width=.08\\textwidth,height=.1\\textheight]{../../template/SciViews-logo.pdf}
+  \\vfill First class meeting"
 fontfamily: mathpazo
 fontsize: 9pt
+institute: "Université de Mons, Belgique\\break Service d'Écologie numérique\\break
+  \\includegraphics[width=.08\\textwidth,height=.1\\textheight]{../../template/EcoNum-logo.pdf}
+  \\break \\url{https://wp.sciviews.org} \\break \\url{sdd@sciviews.org}"
 ---
 
 ```{r setup, include=FALSE}
